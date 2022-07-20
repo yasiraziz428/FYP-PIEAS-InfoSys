@@ -1,5 +1,5 @@
-import { React, useState, useEffect } from "react";
-import { axios } from "axios";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Employee = () => {
@@ -7,18 +7,19 @@ const Employee = () => {
 
   useEffect(() => {
     loadUsers();
+    console.log("Data received1");
   }, []);
 
   const loadUsers = async () => {
     const result = await axios.get("http://localhost:3003/employees");
+    console.log(result);
     setUser(result.data.reverse());
-    console.log("Data received");
   };
 
-  // const deleteEmployee = async (id) => {
-  //   await axios.delete(`http://localhost:3003/employees/${id}`);
-  //   loadUsers();
-  // };
+  const deleteUser = async (id) => {
+    await axios.delete(`http://localhost:3003/employees/${id}`);
+    loadUsers();
+  };
   return (
     <div className="container">
       <Link
@@ -56,7 +57,8 @@ const Employee = () => {
                     </Link>
                     <Link
                       className="btn btn-outline-danger"
-                      // onClick={() => deleteEmployee(employees.id)}
+                      to="#"
+                      onClick={() => deleteUser(employees.id)}
                     >
                       <i class="fa fa-trash"></i>
                     </Link>

@@ -27,13 +27,6 @@
       "designation": "RF",
       "managerialPosition": "PC",
       "id": 4
-    },
-    {
-      "employeeName": "zombier",
-      "department": "EE",
-      "designation": "RF",
-      "managerialPosition": "HOD",
-      "id": 5
     }
   ]
 }

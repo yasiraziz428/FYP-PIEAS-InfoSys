@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 const EditEmployee = () => {
@@ -21,7 +21,7 @@ const EditEmployee = () => {
   };
 
   useEffect(() => {
-    loadEmployee();
+    loadUsers();
   }, []);
 
   const onSubmit = async (e) => {
@@ -31,7 +31,7 @@ const EditEmployee = () => {
     console.log("Submitted!");
   };
 
-  const loadEmployee = async () => {
+  const loadUsers = async () => {
     const result = await axios.get(`http://localhost:3003/employees/${id}`);
     setEmployee(result.data);
   };
