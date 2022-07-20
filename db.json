@@ -1,32 +1,36 @@
 {
   "employees": [
     {
-      "employeeName": "Yaris",
+      "employeeName": "Yasir Aziz",
       "department": "EE",
       "designation": "TA",
       "managerialPosition": "CC",
       "id": 1
     },
     {
-      "employeeName": "Saad",
-      "department": "EE",
+      "employeeName": "Saeed Ahmad Khan",
+      "department": "MME",
+      "designation": "VF",
+      "managerialPosition": "PC",
+      "id": 5
+    },
+    {
+      "employeeName": "Tanveer",
+      "department": "PHY",
       "designation": "RF",
       "managerialPosition": "HOD",
-      "id": 2
-    },
+      "id": 6
+    }
+  ],
+  "courses": [
     {
-      "employeeName": "zubair",
-      "department": "CHE",
-      "designation": "RF",
-      "managerialPosition": "DEAN",
-      "id": 3
-    },
-    {
-      "employeeName": "Humair",
-      "department": "CIS",
-      "designation": "RF",
-      "managerialPosition": "PC",
-      "id": 4
+      "degree": "EE",
+      "courseNo": "MSA-653",
+      "courseTitle": "Programming ",
+      "program": "CHE",
+      "theory": "2",
+      "lab": "0",
+      "id": 1
     }
   ]
 }

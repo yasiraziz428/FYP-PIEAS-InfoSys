@@ -29,8 +29,8 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" exact to="./user">
-                  User
+                <NavLink className="nav-link" exact to="./course">
+                  Course
                 </NavLink>
               </li>
               <li className="nav-item dropdown">
