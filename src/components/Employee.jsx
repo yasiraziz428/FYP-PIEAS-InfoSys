@@ -15,7 +15,7 @@ const Employee = () => {
     console.log(result);
     setUser(result.data.reverse());
   };
-
+  //Heloo mfggg
   const deleteUser = async (id) => {
     await axios.delete(`http://localhost:3003/employees/${id}`);
     loadUsers();
