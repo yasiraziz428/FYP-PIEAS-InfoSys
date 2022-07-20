@@ -1,0 +1,39 @@
+{
+  "employees": [
+    {
+      "employeeName": "Yaris",
+      "department": "EE",
+      "designation": "TA",
+      "managerialPosition": "CC",
+      "id": 1
+    },
+    {
+      "employeeName": "Saad",
+      "department": "EE",
+      "designation": "RF",
+      "managerialPosition": "HOD",
+      "id": 2
+    },
+    {
+      "employeeName": "zubair",
+      "department": "CHE",
+      "designation": "RF",
+      "managerialPosition": "DEAN",
+      "id": 3
+    },
+    {
+      "employeeName": "Humair",
+      "department": "CIS",
+      "designation": "RF",
+      "managerialPosition": "PC",
+      "id": 4
+    },
+    {
+      "employeeName": "zombier",
+      "department": "EE",
+      "designation": "RF",
+      "managerialPosition": "HOD",
+      "id": 5
+    }
+  ]
+}
