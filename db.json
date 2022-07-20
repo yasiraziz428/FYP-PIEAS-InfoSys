@@ -31,6 +31,24 @@
       "theory": "2",
       "lab": "0",
       "id": 1
+    },
+    {
+      "degree": "ME",
+      "courseNo": "XXX-123",
+      "courseTitle": "OOP",
+      "program": "CIS",
+      "theory": "3",
+      "lab": "0",
+      "id": 2
+    },
+    {
+      "degree": "ME",
+      "courseNo": "XXX-123",
+      "courseTitle": "OOP",
+      "program": "CIS",
+      "theory": "0",
+      "lab": "1",
+      "id": 3
     }
   ]
 }

@@ -140,7 +140,7 @@ const AddEmployee = () => {
               name="submitButton"
               id="submitButton"
             >
-              Submit
+              Add Employee
             </button>
           </div>
         </div>

@@ -41,7 +41,7 @@ const EditCourse = () => {
     <div className="container w-50 shadow px-5 pb-5">
       <form onSubmit={(e) => onSubmit(e)}>
         <div className="rendered-form mt-5">
-          <h1 className="text-center pt-4">Add Course</h1>
+          <h1 className="text-center pt-4">Edit Course</h1>
 
           <div className="formbuilder-select form-group field-degreeList">
             <label for="degreeList" className="formbuilder-select-label">
@@ -162,7 +162,7 @@ const EditCourse = () => {
               name="submitButton"
               id="submitButton"
             >
-              Submit
+              Update Course
             </button>
           </div>
         </div>

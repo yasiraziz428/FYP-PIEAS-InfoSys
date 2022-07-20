@@ -2,8 +2,10 @@ import { React } from "react";
 
 const Home = () => {
   return (
-    <div className="container">
-      <h1>Welcome</h1>
+    <div className="container align-middle">
+      <h1 className="d-flex justify-content-center mt-5 pt-5 fst-italic">
+        Welcome!
+      </h1>
     </div>
   );
 };

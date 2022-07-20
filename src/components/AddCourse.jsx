@@ -151,7 +151,7 @@ const AddCourse = () => {
               name="submitButton"
               id="submitButton"
             >
-              Submit
+              Add Course
             </button>
           </div>
         </div>
