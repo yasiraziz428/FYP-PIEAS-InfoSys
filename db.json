@@ -50,5 +50,20 @@
       "lab": "1",
       "id": 3
     }
+  ],
+  "workloads": [
+    {
+      "semester": "Spring",
+      "year": "2022",
+      "employee": "",
+      "course": "",
+      "noOfStudents": "24",
+      "projectSupervisions": "1",
+      "intJournal": "2",
+      "nationalJournal": "0",
+      "intConference": "1",
+      "nationalConference": "0",
+      "id": 1
+    }
   ]
 }

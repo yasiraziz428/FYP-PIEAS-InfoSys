@@ -33,6 +33,16 @@ const Navbar = () => {
                   Course
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" exact to="./workload">
+                  Workload
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" exact to="./payment">
+                  Payment
+                </NavLink>
+              </li>
               <li className="nav-item dropdown">
                 <Link
                   className="nav-link dropdown-toggle"

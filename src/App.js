@@ -10,6 +10,10 @@ import EditEmployee from "./components/EditEmployee";
 import Course from "./components/Course";
 import AddCourse from "./components/AddCourse";
 import EditCourse from "./components/EditCourse";
+import Workload from "./components/Workload";
+import AddWorkload from "./components/AddWorkload";
+import Payment from "./components/Payment";
+import EditWorkload from "./components/EditWorkload";
 
 const App = () => {
   return (
@@ -20,11 +24,15 @@ const App = () => {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/home" element={<Home />} />
           <Route exact path="/employee" element={<Employee />} />
+          <Route exact path="/employee/add" element={<AddEmployee />} />
+          <Route exact path="/employee/edit/:id" element={<EditEmployee />} />
           <Route exact path="/course" element={<Course />} />
           <Route exact path="/course/add" element={<AddCourse />} />
           <Route exact path="/course/edit/:id" element={<EditCourse />} />
-          <Route exact path="/employee/add" element={<AddEmployee />} />
-          <Route exact path="/employee/edit/:id" element={<EditEmployee />} />
+          <Route exact path="/workload" element={<Workload />} />
+          <Route exact path="/workload/add" element={<AddWorkload />} />
+          <Route exact path="/workload/edit/:id" element={<EditWorkload />} />
+          <Route exact path="/payment" element={<Payment />} />
         </Routes>
       </BrowserRouter>
     </div>
