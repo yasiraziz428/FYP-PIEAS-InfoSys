@@ -46,14 +46,14 @@ const AddCourse = () => {
               <option selected="true" id="degreeList-0">
                 Select
               </option>
-              <option id="degreeList-1" value="ME">
+              <option id="degreeList-1" value="BS">
                 BS
               </option>
-              <option id="degreeList-2" value="EE">
+              <option id="degreeList-2" value="MS">
                 MS
               </option>
-              <option id="degreeList-3" value="CIS">
-                PHD
+              <option id="degreeList-3" value="PhD">
+                PhD
               </option>
             </select>
           </div>
@@ -70,7 +70,7 @@ const AddCourse = () => {
               onChange={(e) => onInputChange(e)}
             />
           </div>
-          <div className="formbuilder-text form-group mt-5 field-text-1654851224189">
+          <div className="formbuilder-text form-group field-text-1654851224189">
             <label for="text-1654851224189" className="formbuilder-text-label">
               Course Title
             </label>
@@ -130,7 +130,7 @@ const AddCourse = () => {
               onChange={(e) => onInputChange(e)}
             />
           </div>
-          <div className="formbuilder-text form-group mt-5 field-text-1654851224189">
+          <div className="formbuilder-text form-group field-text-1654851224189">
             <label for="text-1654851224189" className="formbuilder-text-label">
               Lab Credit Hours
             </label>

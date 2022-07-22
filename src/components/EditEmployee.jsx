@@ -21,7 +21,7 @@ const EditEmployee = () => {
   };
 
   useEffect(() => {
-    loadUsers();
+    loadEmployee();
   }, []);
 
   const onSubmit = async (e) => {
@@ -31,7 +31,7 @@ const EditEmployee = () => {
     console.log("Submitted!");
   };
 
-  const loadUsers = async () => {
+  const loadEmployee = async () => {
     const result = await axios.get(`http://localhost:3003/employees/${id}`);
     setEmployee(result.data);
   };

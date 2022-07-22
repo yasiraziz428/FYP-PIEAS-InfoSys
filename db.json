@@ -20,11 +20,18 @@
       "designation": "RF",
       "managerialPosition": "HOD",
       "id": 6
+    },
+    {
+      "employeeName": "Ahmad Kamal Baig",
+      "department": "ME",
+      "designation": "RF",
+      "managerialPosition": "HOD",
+      "id": 7
     }
   ],
   "courses": [
     {
-      "degree": "EE",
+      "degree": "BS",
       "courseNo": "MSA-653",
       "courseTitle": "Programming ",
       "program": "CHE",
@@ -33,7 +40,7 @@
       "id": 1
     },
     {
-      "degree": "ME",
+      "degree": "BS",
       "courseNo": "XXX-123",
       "courseTitle": "OOP",
       "program": "CIS",
@@ -42,28 +49,49 @@
       "id": 2
     },
     {
-      "degree": "ME",
+      "degree": "MS",
       "courseNo": "XXX-123",
       "courseTitle": "OOP",
       "program": "CIS",
       "theory": "0",
       "lab": "1",
       "id": 3
+    },
+    {
+      "degree": "MS",
+      "courseNo": "CSA-568",
+      "courseTitle": "OOP Lab",
+      "program": "CIS",
+      "theory": "0",
+      "lab": "1",
+      "id": 4
+    },
+    {
+      "degree": "BS",
+      "courseNo": "XXX-123",
+      "courseTitle": "Programming Lab",
+      "program": "CIS",
+      "theory": "0",
+      "lab": "3",
+      "id": 5
     }
   ],
   "workloads": [
     {
       "semester": "Spring",
       "year": "2022",
-      "employee": "",
-      "course": "",
-      "noOfStudents": "24",
-      "projectSupervisions": "1",
-      "intJournal": "2",
-      "nationalJournal": "0",
-      "intConference": "1",
-      "nationalConference": "0",
+      "employeeName": "Yasir Aziz",
+      "courseTitle1": "Programming",
+      "courseTitle2": "OOP Lab",
+      "courseTitle3": "Programming Lab",
+      "noOfStudents": "22",
+      "projectSupervisions": "12",
+      "intJournal": "56",
+      "nationalJournal": "12",
+      "intConference": "16",
+      "nationalConference": "19",
       "id": 1
     }
-  ]
+  ],
+  "payments": []
 }

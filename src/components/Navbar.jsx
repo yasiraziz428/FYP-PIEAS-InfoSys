@@ -7,7 +7,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container">
           <Link className="navbar-brand" to="./home">
-            Navbar
+            PIEAS InfoSys
           </Link>
           <button
             className="navbar-toggler"
@@ -23,7 +23,7 @@ const Navbar = () => {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
+              <li className="ms-5 nav-item active">
                 <NavLink className="nav-link" exact to="./employee">
                   Employee
                 </NavLink>

@@ -35,7 +35,9 @@ const Workload = () => {
             <th>Semester</th>
             <th>Year</th>
             <th>Employee</th>
-            <th>Course</th>
+            <th>Course 1</th>
+            <th>Course 2</th>
+            <th>Course 3</th>
             <th>Number of Students</th>
             <th>Project Supervisions</th>
             <th>International Journal</th>
@@ -53,8 +55,10 @@ const Workload = () => {
                   <th scope="row">{index + 1}</th>
                   <td>{workloads.semester}</td>
                   <td>{workloads.year}</td>
-                  <td>{workloads.employee}</td>
-                  <td>{workloads.course}</td>
+                  <td>{workloads.employeeName}</td>
+                  <td>{workloads.courseTitle1}</td>
+                  <td>{workloads.courseTitle2}</td>
+                  <td>{workloads.courseTitle3}</td>
                   <td>{workloads.noOfStudents}</td>
                   <td>{workloads.projectSupervisions}</td>
                   <td>{workloads.intJournal}</td>

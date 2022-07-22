@@ -1,5 +1,5 @@
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AddWorkload = () => {
@@ -7,8 +7,10 @@ const AddWorkload = () => {
   const [workload, setWorkload] = useState({
     semester: "",
     year: "",
-    employee: "",
-    course: "",
+    employeeName: "",
+    courseTitle1: "",
+    courseTitle2: "",
+    courseTitle3: "",
     noOfStudents: "",
     projectSupervisions: "",
     intJournal: "",
@@ -20,8 +22,8 @@ const AddWorkload = () => {
   const {
     semester,
     year,
-    employee,
-    course,
+    //employeeName,
+    //courseTitle,
     noOfStudents,
     projectSupervisions,
     intJournal,
@@ -29,6 +31,28 @@ const AddWorkload = () => {
     intConference,
     nationalConference,
   } = workload;
+
+  const [employee, setEmployee] = useState([]);
+
+  useEffect(() => {
+    loadEmployee();
+  }, []);
+
+  const loadEmployee = async () => {
+    const result = await axios.get("http://localhost:3003/employees");
+    setEmployee(result.data);
+  };
+
+  const [course, setCourse] = useState([]);
+
+  useEffect(() => {
+    loadCourse();
+  }, []);
+
+  const loadCourse = async () => {
+    const result = await axios.get("http://localhost:3003/courses");
+    setCourse(result.data);
+  };
 
   const onInputChange = (e) => {
     setWorkload({ ...workload, [e.target.name]: e.target.value });
@@ -87,30 +111,34 @@ const AddWorkload = () => {
             </label>
             <select
               className="form-control"
-              name="employee"
-              id="employee"
-              value={employee}
+              name="employeeName"
+              id="employeeName"
               onChange={(e) => onInputChange(e)}
             >
               <option selected="true" id="DesignationList-0">
-                Select
+                -- Select --
               </option>
+              {employee.map((e) => (
+                <option id="">{e.employeeName}</option>
+              ))}
             </select>
           </div>
           <div className="formbuilder-select form-group field-CourseList">
             <label for="CourseList" className="formbuilder-select-label">
-              Select Course
+              Select Course 1
             </label>
             <select
               className="form-control"
-              name="course"
+              name="courseTitle1"
               id="course"
-              value={course}
               onChange={(e) => onInputChange(e)}
             >
               <option selected="true" id="DesignationList-0">
-                Select
+                -- Select --
               </option>
+              {course.map((e) => (
+                <option id="">{(e.courseTitle1 = e.courseTitle)}</option>
+              ))}
             </select>
           </div>
           <div className="formbuilder-select form-group field-CourseList">
@@ -119,14 +147,16 @@ const AddWorkload = () => {
             </label>
             <select
               className="form-control"
-              name="course"
+              name="courseTitle2"
               id="course"
-              value={course}
               onChange={(e) => onInputChange(e)}
             >
               <option selected="true" id="DesignationList-0">
-                Select
+                -- Select --
               </option>
+              {course.map((e) => (
+                <option id="">{(e.courseTitle2 = e.courseTitle)}</option>
+              ))}
             </select>
           </div>
           <div className="formbuilder-select form-group field-CourseList">
@@ -135,14 +165,16 @@ const AddWorkload = () => {
             </label>
             <select
               className="form-control"
-              name="course"
+              name="courseTitle3"
               id="course"
-              value={course}
               onChange={(e) => onInputChange(e)}
             >
               <option selected="true" id="DesignationList-0">
-                Select
+                -- Select --
               </option>
+              {course.map((e) => (
+                <option id="">{(e.courseTitle3 = e.courseTitle)}</option>
+              ))}
             </select>
           </div>
           <div className="formbuilder-text form-group mt-5 field-text-1654851224189">
