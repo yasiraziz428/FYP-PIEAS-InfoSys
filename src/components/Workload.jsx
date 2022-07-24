@@ -11,7 +11,7 @@ const Workload = () => {
 
   const loadWorkload = async () => {
     const result = await axios.get("http://localhost:3003/workloads");
-    console.log(result);
+
     setWorkload(result.data.reverse());
   };
 
@@ -19,6 +19,38 @@ const Workload = () => {
     await axios.delete(`http://localhost:3003/workloads/${id}`);
     loadWorkload();
   };
+
+  // function CalculateWorkload(
+  //   wtotalCrHr,
+  //   wNoOfstudents,
+  //   wMP,
+  //   wPS,
+  //   wIJ,
+  //   wNJ,
+  //   wIC,
+  //   wNC,
+  //   wDG
+  // ) {
+  //   useEffect(() => {
+  //     loadCourses();
+  //   }, []);
+
+  //   const loadCourses = async () => {
+  //     const result = await axios.get("http://localhost:3003/courses");
+  //     return result;
+  //   };
+
+  //   useEffect(() => {
+  //     loadParameters();
+  //   }, []);
+
+  //   const loadParameters = async () => {
+  //     const result = await axios.get("http://localhost:3003/parameters");
+  //     return result;
+  //   };
+
+  //   return(loadCourses.result.theory * loadParameters.result.wtotalCrHr);
+  // }
 
   return (
     <div className="container">
@@ -38,6 +70,7 @@ const Workload = () => {
             <th>Course 1</th>
             <th>Course 2</th>
             <th>Course 3</th>
+            <th>Managerial Position</th>
             <th>Number of Students</th>
             <th>Project Supervisions</th>
             <th>International Journal</th>
@@ -59,6 +92,7 @@ const Workload = () => {
                   <td>{workloads.courseTitle1}</td>
                   <td>{workloads.courseTitle2}</td>
                   <td>{workloads.courseTitle3}</td>
+                  <td>{workloads.managerialPosition}</td>
                   <td>{workloads.noOfStudents}</td>
                   <td>{workloads.projectSupervisions}</td>
                   <td>{workloads.intJournal}</td>

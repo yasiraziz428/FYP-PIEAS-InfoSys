@@ -22,13 +22,7 @@ const Payment = () => {
 
   return (
     <div className="container">
-      <Link
-        to="/workload/add"
-        className="btn btn-outline-dark position-relative mt-3 end-0"
-      >
-        Add Payment
-      </Link>
-      <table className="table caption-top border shadow mt-2">
+      <table className="table caption-top border shadow mt-5">
         <thead>
           <tr>
             <th>#</th>
@@ -46,13 +40,13 @@ const Payment = () => {
             ? payment.map((payments, index) => (
                 <tr>
                   <th scope="row">{index + 1}</th>
-                  <td>{payments.semester}</td>
-                  <td>{payments.year}</td>
-                  <td>{payments.employee}</td>
-                  <td>{payments.course}</td>
-                  <td>{payments.noOfStudents}</td>
-                  <td>{payments.projectSupervisions}</td>
-                  <td>{payments.intJournal}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                   <td>
                     <Link
                       className="btn btn-outline-primary me-2"

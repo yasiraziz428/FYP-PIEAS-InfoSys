@@ -11,6 +11,7 @@ const AddWorkload = () => {
     courseTitle1: "",
     courseTitle2: "",
     courseTitle3: "",
+    managerialPosition: "",
     noOfStudents: "",
     projectSupervisions: "",
     intJournal: "",
@@ -22,6 +23,7 @@ const AddWorkload = () => {
   const {
     semester,
     year,
+    managerialPosition,
     //employeeName,
     //courseTitle,
     noOfStudents,
@@ -60,7 +62,57 @@ const AddWorkload = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:3003/workloads", workload);
+
+    //First get values of all three courses from workload getter of useState
+    const courses_response = await axios.get("http://localhost:3003/courses");
+    const parameters_response = await axios.get(
+      "http://localhost:3003/parameters"
+    );
+    const courses = courses_response.data;
+    const parameters = parameters_response.data;
+    const title1 = workload["courseTitle1"];
+    const title2 = workload["courseTitle2"];
+    const title3 = workload["courseTitle3"];
+
+    const selectedCourses = [title1, title2, title3];
+
+    const theories = [];
+    const labs = [];
+    selectedCourses.forEach((course) => {
+      console.log(courses);
+      const courseObject = courses.find((c) => c.courseTitle === course);
+      console.log(courseObject);
+      theories.push(Number(courseObject.theory));
+      labs.push(Number(courseObject.lab));
+    });
+
+    const sumTheories = theories.reduce((prev, curr) => prev + curr, 0);
+    const sumLabs = labs.reduce((prev, curr) => prev + curr, 0);
+
+    console.log(sumTheories, sumLabs);
+    console.log(parameters);
+    console.log(parameters["wTheory"], parameters["wLab"]);
+    console.log(parameters.wTheory, parameters.wLab);
+
+    const final_score =
+      Number(parameters["wTheory"]) * sumTheories +
+      Number(parameters["wLab"]) * sumLabs;
+
+    console.log(final_score);
+
+    //Fetch all courses from json server
+    //Get credit hours of three courses from fetched courses details + add them afterwards
+    //Fetch parameters from json server
+    //Declare final_score = 0
+    //Start multiplying parameters with respective fields of workload getter variable of useState
+    //Add them and set final score to that summed value
+    //now add key to workload getter with key "workload" and value as "final score" calculated above
+
+    await axios.post("http://localhost:3003/workloads", {
+      ...workload,
+      workLoad: final_score,
+    });
+    setWorkload({ ...workload, workLoad: final_score });
     navigate("/workload");
     console.log("Submitted!");
   };
@@ -177,7 +229,38 @@ const AddWorkload = () => {
               ))}
             </select>
           </div>
-          <div className="formbuilder-text form-group mt-5 field-text-1654851224189">
+          <div className="formbuilder-select form-group  mt-5 field-MPList">
+            <label for="MPList" className="formbuilder-select-label">
+              Managerial Position
+            </label>
+            <select
+              className="form-control"
+              name="managerialPosition"
+              id="MPList"
+              value={managerialPosition}
+              onChange={(e) => onInputChange(e)}
+            >
+              <option selected="true" id="MPList-0">
+                Select
+              </option>
+              <option id="MPList-1" value="HOD">
+                Head of Department
+              </option>
+              <option id="MPList-2" value="CC">
+                Course Coordinator
+              </option>
+              <option id="MPList-3" value="DEAN">
+                DEAN
+              </option>
+              <option id="MPList-4" value="PC">
+                Project Coordinator
+              </option>
+              <option id="MPList-5" value="FP">
+                Focal Person
+              </option>
+            </select>
+          </div>
+          <div className="formbuilder-text form-group field-text-1654851224189">
             <label for="text-1654851224189" className="formbuilder-text-label">
               No of Students
             </label>
