@@ -10,11 +10,9 @@ const EditEmployee = () => {
     employeeName: "",
     department: "",
     designation: "",
-    managerialPosition: "",
   });
 
-  const { employeeName, department, designation, managerialPosition } =
-    employee;
+  const { employeeName, department, designation } = employee;
 
   const onInputChange = (e) => {
     setEmployee({ ...employee, [e.target.name]: e.target.value });
@@ -110,37 +108,6 @@ const EditEmployee = () => {
               </option>
               <option id="DesignationList-3" value="TA">
                 TA / Lab Engr.
-              </option>
-            </select>
-          </div>
-          <div className="formbuilder-select form-group field-MPList">
-            <label for="MPList" className="formbuilder-select-label">
-              Managerial Position
-            </label>
-            <select
-              className="form-control"
-              name="managerialPosition"
-              id="MPList"
-              value={managerialPosition}
-              onChange={(e) => onInputChange(e)}
-            >
-              <option selected="true" id="MPList-0">
-                Select
-              </option>
-              <option id="MPList-1" value="HOD">
-                Head of Department
-              </option>
-              <option id="MPList-2" value="CC">
-                Course Coordinator
-              </option>
-              <option id="MPList-3" value="DEAN">
-                DEAN
-              </option>
-              <option id="MPList-4" value="PC">
-                Project Coordinator
-              </option>
-              <option id="MPList-5" value="FP">
-                Focal Person
               </option>
             </select>
           </div>

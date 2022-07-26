@@ -28,7 +28,7 @@ const EditCourse = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.put(`http://localhost:3003/courses/${id}`, course);
-    navigate("/employee");
+    navigate("/course");
     console.log("Submitted!");
   };
 
@@ -57,13 +57,13 @@ const EditCourse = () => {
               <option selected="true" id="degreeList-0">
                 Select
               </option>
-              <option id="degreeList-1" value="ME">
+              <option id="degreeList-1" value="BS">
                 BS
               </option>
-              <option id="degreeList-2" value="EE">
+              <option id="degreeList-2" value="MS">
                 MS
               </option>
-              <option id="degreeList-3" value="CIS">
+              <option id="degreeList-3" value="PhD">
                 PHD
               </option>
             </select>

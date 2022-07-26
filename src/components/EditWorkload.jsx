@@ -12,12 +12,14 @@ const EditWorkload = () => {
     courseTitle1: "",
     courseTitle2: "",
     courseTitle3: "",
+    managerialPosition: "",
     noOfStudents: "",
     projectSupervisions: "",
     intJournal: "",
     nationalJournal: "",
     intConference: "",
     nationalConference: "",
+    workLoad: "",
   });
 
   const {
@@ -27,6 +29,7 @@ const EditWorkload = () => {
     courseTitle1,
     courseTitle2,
     courseTitle3,
+    managerialPosition,
     noOfStudents,
     projectSupervisions,
     intJournal,
@@ -44,9 +47,91 @@ const EditWorkload = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:3003/workloads/${id}`, workload);
-    navigate("/workload");
+
+    const courses_response = await axios.get("http://localhost:3003/courses");
+
+    const parameters_response = await axios.get(
+      "http://localhost:3003/parameters"
+    );
+
+    const courses = courses_response.data;
+    const parameters = parameters_response.data;
+    const title1 = workload["courseTitle1"];
+    const title2 = workload["courseTitle2"];
+    const title3 = workload["courseTitle3"];
+    const selectedMP = workload["managerialPosition"];
+    const wMP = parameters["wManagerialPosition"][selectedMP];
+    const noS = workload["noOfStudents"];
+    const wPS = workload["projectSupervisions"];
+    const wIJ = workload["intJournal"];
+    const wNJ = workload["nationalJournal"];
+    const wIC = workload["intConference"];
+    const wNC = workload["nationalConference"];
+
+    const selectedCourses = [title1, title2, title3];
+
+    const theories = [];
+    const labs = [];
+    selectedCourses.forEach((course) => {
+      //console.log(courses);
+      const courseObject = courses.find((c) => c.courseTitle === course); //getting courseTitle from every selected course
+      theories.push(Number(courseObject.theory));
+      labs.push(Number(courseObject.lab));
+    });
+
+    const sumTheories = theories.reduce((prev, curr) => prev + curr, 0);
+    console.log("theories " + sumTheories);
+    const sumLabs = labs.reduce((prev, curr) => prev + curr, 2);
+    console.log("Labs " + sumLabs);
+    console.log(Number(parameters["wNumberOfStudents"]));
+    console.log(Number(parameters["wProjectSupervisions"]));
+    console.log(Number(parameters["wInternationalJournal"]));
+    console.log(Number(parameters["wNationalJournal"]));
+    console.log(Number(parameters["wInternationalConference"]));
+    console.log(Number(parameters["wNationalConference"]));
+
+    //console.log(sumTheories, sumLabs);
+    // console.log(parameters);
+    //console.log(parameters["wTheory"], parameters["wLab"]);
+    //console.log(parameters.wTheory, parameters.wLab);
+
+    const final_score =
+      Number(parameters["wTheory"]) * sumTheories +
+      Number(parameters["wLab"]) * sumLabs +
+      Number(wMP) +
+      Number(noS) * Number(parameters["wNumberOfStudents"]) +
+      Number(wPS) * Number(parameters["wProjectSupervisions"]) +
+      Number(wIJ) * Number(parameters["wInternationalJournal"]) +
+      Number(wNJ) * Number(parameters["wNationalJournal"]) +
+      Number(wIC) * Number(parameters["wInternationalConference"]) +
+      Number(wNC) * Number(parameters["wNationalConference"]);
+
+    //console.log(final_score);
+
+    //Fetch all courses from json server
+    //Get credit hours of three courses from fetched courses details + add them afterwards
+    //Fetch parameters from json server
+    //Declare final_score = 0
+    //Start multiplying parameters with respective fields of workload getter variable of useState
+    //Add them and set final score to that summed value
+    //now add key to workload getter with key "workload" and value as "final score" calculated above
+
+    //navigate("/workload");
     console.log("Submitted!");
+
+    console.log("Updated Workload" + final_score);
+    await axios.put(`http://localhost:3003/workloads/${id}`, {
+      ...workload,
+      workLoad: final_score,
+    });
+    setWorkload({ ...workload, workLoad: final_score });
+    console.log("Updated Workload" + final_score);
+    navigate("/workload");
+
+    // await axios.post("http://localhost:3003/workloads", {
+    //   ...workload,
+    //   workLoad: final_score.toPrecision(3),
+    // });
   };
 
   const loadWorkload = async () => {
@@ -80,7 +165,7 @@ const EditWorkload = () => {
     <div className="container w-50 shadow px-5 pb-5">
       <form onSubmit={(e) => onSubmit(e)}>
         <div className="rendered-form mt-5">
-          <h1 className="text-center pt-4">Add Workload</h1>
+          <h1 className="text-center pt-4">Edit Workload</h1>
           <div className="formbuilder-select form-group field-SemesterList">
             <label for="SemesterList" className="formbuilder-select-label">
               Semester
@@ -146,7 +231,7 @@ const EditWorkload = () => {
               value={courseTitle1}
               onChange={(e) => onInputChange(e)}
             >
-              <option selected="true" id="DesignationList-0">
+              <option selected="true" id="DesignationList-0" value={0}>
                 -- Select --
               </option>
               {course.map((e) => (
@@ -165,7 +250,7 @@ const EditWorkload = () => {
               value={courseTitle2}
               onChange={(e) => onInputChange(e)}
             >
-              <option selected="true" id="DesignationList-0">
+              <option selected="true" id="DesignationList-0" value={0}>
                 -- Select --
               </option>
               {course.map((e) => (
@@ -184,12 +269,43 @@ const EditWorkload = () => {
               value={courseTitle3}
               onChange={(e) => onInputChange(e)}
             >
-              <option selected="true" id="DesignationList-0">
+              <option selected="true" id="DesignationList-0" value={0}>
                 -- Select --
               </option>
               {course.map((e) => (
                 <option id="">{(e.courseTitle3 = e.courseTitle)}</option>
               ))}
+            </select>
+          </div>
+          <div className="formbuilder-select form-group  mt-5 field-MPList">
+            <label for="MPList" className="formbuilder-select-label">
+              Managerial Position
+            </label>
+            <select
+              className="form-control"
+              name="managerialPosition"
+              id="MPList"
+              value={managerialPosition}
+              onChange={(e) => onInputChange(e)}
+            >
+              <option selected="true" id="MPList-0" value={0}>
+                -- Select --
+              </option>
+              <option id="MPList-1" value="HOD">
+                Head of Department
+              </option>
+              <option id="MPList-2" value="CC">
+                Course Coordinator
+              </option>
+              <option id="MPList-3" value="DEAN">
+                DEAN
+              </option>
+              <option id="MPList-4" value="PC">
+                Project Coordinator
+              </option>
+              <option id="MPList-5" value="FP">
+                Focal Person
+              </option>
             </select>
           </div>
           <div className="formbuilder-text form-group mt-5 field-text-1654851224189">
@@ -277,7 +393,7 @@ const EditWorkload = () => {
               name="submitButton"
               id="submitButton"
             >
-              Add Workload
+              Update Workload
             </button>
           </div>
         </div>

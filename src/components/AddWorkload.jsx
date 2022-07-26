@@ -65,40 +65,103 @@ const AddWorkload = () => {
 
     //First get values of all three courses from workload getter of useState
     const courses_response = await axios.get("http://localhost:3003/courses");
+
     const parameters_response = await axios.get(
       "http://localhost:3003/parameters"
     );
+
     const courses = courses_response.data;
     const parameters = parameters_response.data;
     const title1 = workload["courseTitle1"];
     const title2 = workload["courseTitle2"];
     const title3 = workload["courseTitle3"];
 
-    const selectedCourses = [title1, title2, title3];
+    const selectedMP = workload["managerialPosition"];
+    const wMP = parameters["wManagerialPosition"][selectedMP];
+    const noS = workload["noOfStudents"];
+    const wPS = workload["projectSupervisions"];
+    const wIJ = workload["intJournal"];
+    const wNJ = workload["nationalJournal"];
+    const wIC = workload["intConference"];
+    const wNC = workload["nationalConference"];
 
-    const theories = [];
-    const labs = [];
+    let selectedCourses = [title1, title2, title3];
+
+    // const theories = [];
+    // const labs = [];
+    let sumTheories = 0;
+    let sumLabs = 0;
     selectedCourses.forEach((course) => {
-      console.log(courses);
-      const courseObject = courses.find((c) => c.courseTitle === course);
-      console.log(courseObject);
-      theories.push(Number(courseObject.theory));
-      labs.push(Number(courseObject.lab));
+      const courseObject = courses.find((c) => c.courseTitle === course); //getting courseTitle from every selected course
+      switch (courseObject.degree) {
+        case "BS":
+          sumTheories +=
+            Number(courseObject.theory) *
+            Number(parameters["wTheory"]) *
+            Number(parameters["degree"]["wBS"]);
+          sumLabs +=
+            Number(courseObject.labs) *
+            Number(parameters["wLab"]) *
+            Number(parameters["degree"]["wBS"]);
+          break;
+
+        case "MS":
+          sumTheories +=
+            Number(courseObject.theory) *
+            Number(parameters["wTheory"]) *
+            Number(parameters["degree"]["wMS"]);
+          sumLabs +=
+            Number(courseObject.labs) *
+            Number(parameters["wLab"]) *
+            Number(parameters["degree"]["wMS"]);
+          break;
+        case "PhD":
+          sumTheories +=
+            Number(courseObject.theory) *
+            Number(parameters["wTheory"]) *
+            Number(parameters["degree"]["wPhD"]);
+          sumLabs +=
+            Number(courseObject.labs) *
+            Number(parameters["wLab"]) *
+            Number(parameters["degree"]["wPhD"]);
+          break;
+
+        default:
+      }
+      // theories.push(Number(courseObject.theory));
+      // labs.push(Number(courseObject.lab));
     });
 
-    const sumTheories = theories.reduce((prev, curr) => prev + curr, 0);
-    const sumLabs = labs.reduce((prev, curr) => prev + curr, 0);
+    // const sumTheories = theories.reduce((prev, curr) => prev + curr, 0);
+    // console.log("theories " + sumTheories);
+    // const sumLabs = labs.reduce((prev, curr) => prev + curr, 2);
+    // console.log("Labs " + sumLabs);
+    console.log(Number(parameters["wNumberOfStudents"]));
+    console.log(Number(parameters["wProjectSupervisions"]));
+    console.log(Number(parameters["wInternationalJournal"]));
+    console.log(Number(parameters["wNationalJournal"]));
+    console.log(Number(parameters["wInternationalConference"]));
+    console.log(Number(parameters["wNationalConference"]));
 
-    console.log(sumTheories, sumLabs);
-    console.log(parameters);
-    console.log(parameters["wTheory"], parameters["wLab"]);
-    console.log(parameters.wTheory, parameters.wLab);
+    //console.log(sumTheories, sumLabs);
+    // console.log(parameters);
+    //console.log(parameters["wTheory"], parameters["wLab"]);
+    //console.log(parameters.wTheory, parameters.wLab);
 
     const final_score =
-      Number(parameters["wTheory"]) * sumTheories +
-      Number(parameters["wLab"]) * sumLabs;
+      // Number(parameters["wTheory"]) * sumTheories +
+      // Number(parameters["wLab"]) * sumLabs +
+      Number(sumTheories) +
+      Number(sumLabs) +
+      Number(wMP) +
+      Number(noS) * Number(parameters["wNumberOfStudents"]) +
+      Number(wPS) * Number(parameters["wProjectSupervisions"]) +
+      Number(wIJ) * Number(parameters["wInternationalJournal"]) +
+      Number(wNJ) * Number(parameters["wNationalJournal"]) +
+      Number(wIC) * Number(parameters["wInternationalConference"]) +
+      Number(wNC) * Number(parameters["wNationalConference"]);
 
-    console.log(final_score);
+    //console.log(final_score);
 
     //Fetch all courses from json server
     //Get credit hours of three courses from fetched courses details + add them afterwards
@@ -110,7 +173,7 @@ const AddWorkload = () => {
 
     await axios.post("http://localhost:3003/workloads", {
       ...workload,
-      workLoad: final_score,
+      workLoad: final_score.toPrecision(3),
     });
     setWorkload({ ...workload, workLoad: final_score });
     navigate("/workload");
@@ -203,7 +266,7 @@ const AddWorkload = () => {
               id="course"
               onChange={(e) => onInputChange(e)}
             >
-              <option selected="true" id="DesignationList-0">
+              <option selected="true" value="none">
                 -- Select --
               </option>
               {course.map((e) => (
@@ -221,7 +284,7 @@ const AddWorkload = () => {
               id="course"
               onChange={(e) => onInputChange(e)}
             >
-              <option selected="true" id="DesignationList-0">
+              <option selected="true" value="none">
                 -- Select --
               </option>
               {course.map((e) => (
@@ -240,8 +303,8 @@ const AddWorkload = () => {
               value={managerialPosition}
               onChange={(e) => onInputChange(e)}
             >
-              <option selected="true" id="MPList-0">
-                Select
+              <option selected="true" value={0}>
+                -- Select --
               </option>
               <option id="MPList-1" value="HOD">
                 Head of Department

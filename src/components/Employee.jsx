@@ -35,7 +35,6 @@ const Employee = () => {
             <th>Name</th>
             <th>Deptartment</th>
             <th>Designation</th>
-            <th>Managerial Position</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -47,7 +46,6 @@ const Employee = () => {
                   <td>{employees.employeeName}</td>
                   <td>{employees.department}</td>
                   <td>{employees.designation}</td>
-                  <td>{employees.managerialPosition}</td>
                   <td>
                     <Link
                       className="btn btn-outline-primary me-2"

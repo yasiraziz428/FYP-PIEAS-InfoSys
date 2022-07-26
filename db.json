@@ -27,13 +27,50 @@
       "designation": "RF",
       "managerialPosition": "HOD",
       "id": 7
+    },
+    {
+      "employeeName": "Humair Abbas",
+      "department": "EE",
+      "designation": "RF",
+      "id": 8
+    },
+    {
+      "employeeName": "Ahmad Abdullah",
+      "department": "EE",
+      "designation": "RF",
+      "id": 9
+    },
+    {
+      "employeeName": "Saeed Khattak",
+      "department": "MME",
+      "designation": "VF",
+      "id": 10
+    },
+    {
+      "employeeName": "Ahmad Dar",
+      "department": "CHE",
+      "designation": "TA",
+      "id": 11
+    },
+    {
+      "employeeName": "Ali Haidar",
+      "department": "CIS",
+      "designation": "VF",
+      "id": 12
+    },
+    {
+      "employeeName": "Zubair Nasir Khan",
+      "department": "PHY",
+      "designation": "TA",
+      "id": 13,
+      "managerialPosition": "Select"
     }
   ],
   "courses": [
     {
       "degree": "BS",
       "courseNo": "MSA-653",
-      "courseTitle": "Programming ",
+      "courseTitle": "Programming",
       "program": "CHE",
       "theory": "2",
       "lab": "0",
@@ -74,6 +111,51 @@
       "theory": "0",
       "lab": "3",
       "id": 5
+    },
+    {
+      "degree": "BS",
+      "courseNo": "ABC-123",
+      "courseTitle": "Islamiyat",
+      "program": "CIS",
+      "theory": "2",
+      "lab": "0",
+      "id": 6
+    },
+    {
+      "degree": "BS",
+      "courseNo": "ABC-123",
+      "courseTitle": "DSA L",
+      "program": "CIS",
+      "theory": "0",
+      "lab": "1",
+      "id": 7
+    },
+    {
+      "degree": "MS",
+      "courseNo": "ABC-123",
+      "courseTitle": "DSA T",
+      "program": "CIS",
+      "theory": "3",
+      "lab": "0",
+      "id": 8
+    },
+    {
+      "degree": "BS",
+      "courseNo": "ABC-123",
+      "courseTitle": "IAD T",
+      "program": "CIS",
+      "theory": "3",
+      "lab": "0",
+      "id": 9
+    },
+    {
+      "degree": "BS",
+      "courseNo": "ABC-123",
+      "courseTitle": "IAD L",
+      "program": "CIS",
+      "theory": "0",
+      "lab": "1",
+      "id": 10
     }
   ],
   "workloads": [
@@ -253,21 +335,166 @@
       "nationalConference": "0",
       "workLoad": 1.1,
       "id": 11
+    },
+    {
+      "semester": "Spring",
+      "year": "2022",
+      "employeeName": "Ahmad Kamal Baig",
+      "courseTitle1": "OOP Lab",
+      "courseTitle2": "OOP",
+      "courseTitle3": "Programming Lab",
+      "managerialPosition": "FP",
+      "noOfStudents": "52",
+      "projectSupervisions": "6",
+      "intJournal": "5",
+      "nationalJournal": "2",
+      "intConference": "1",
+      "nationalConference": "1",
+      "workLoad": 1.1,
+      "id": 12
+    },
+    {
+      "semester": "Spring",
+      "year": "2022",
+      "employeeName": "Tanveer",
+      "courseTitle1": "OOP",
+      "courseTitle2": "OOP Lab",
+      "courseTitle3": "Programming Lab",
+      "managerialPosition": "DEAN",
+      "noOfStudents": "40",
+      "projectSupervisions": "34",
+      "intJournal": "14",
+      "nationalJournal": "17",
+      "intConference": "22",
+      "nationalConference": "23",
+      "workLoad": 1.1,
+      "id": 13
+    },
+    {
+      "semester": "Spring",
+      "year": "2022",
+      "employeeName": "Yasir Aziz",
+      "courseTitle1": "OOP",
+      "courseTitle2": "OOP Lab",
+      "courseTitle3": "Programming Lab",
+      "managerialPosition": "DEAN",
+      "noOfStudents": "700",
+      "projectSupervisions": "50",
+      "intJournal": "50",
+      "nationalJournal": "50",
+      "intConference": "50",
+      "nationalConference": "50",
+      "workLoad": 96.8,
+      "id": 19
+    },
+    {
+      "semester": "Spring",
+      "year": "2022",
+      "employeeName": "Yasir Aziz",
+      "courseTitle1": "OOP Lab",
+      "courseTitle2": "OOP",
+      "courseTitle3": "Programming Lab",
+      "managerialPosition": "0",
+      "noOfStudents": "5",
+      "projectSupervisions": "5",
+      "intJournal": "5",
+      "nationalJournal": "55",
+      "intConference": "5",
+      "nationalConference": "5",
+      "workLoad": null,
+      "id": 24
+    },
+    {
+      "semester": "",
+      "year": "",
+      "employeeName": "Saeed Ahmad Khan",
+      "courseTitle1": "OOP",
+      "courseTitle2": "OOP Lab",
+      "courseTitle3": "Programming Lab",
+      "managerialPosition": "",
+      "noOfStudents": "20",
+      "projectSupervisions": "1",
+      "intJournal": "3",
+      "nationalJournal": "2",
+      "intConference": "22",
+      "nationalConference": "3",
+      "workLoad": null,
+      "id": 25
+    },
+    {
+      "semester": "",
+      "year": "",
+      "employeeName": "Yasir Aziz",
+      "courseTitle1": "Programming",
+      "courseTitle2": "OOP Lab",
+      "courseTitle3": "Programming Lab",
+      "managerialPosition": "",
+      "noOfStudents": "",
+      "projectSupervisions": "",
+      "intJournal": "",
+      "nationalJournal": "",
+      "intConference": "",
+      "nationalConference": "",
+      "workLoad": "NaN",
+      "id": 26
+    },
+    {
+      "semester": "",
+      "year": "",
+      "employeeName": "Saeed Ahmad Khan",
+      "courseTitle1": "DSA T",
+      "courseTitle2": "Programming Lab",
+      "courseTitle3": "Programming",
+      "managerialPosition": "",
+      "noOfStudents": "",
+      "projectSupervisions": "",
+      "intJournal": "",
+      "nationalJournal": "",
+      "intConference": "",
+      "nationalConference": "",
+      "workLoad": "NaN",
+      "id": 27
+    },
+    {
+      "semester": "",
+      "year": "",
+      "employeeName": "",
+      "courseTitle1": "Programming",
+      "courseTitle2": "",
+      "courseTitle3": "",
+      "managerialPosition": "",
+      "noOfStudents": "",
+      "projectSupervisions": "",
+      "intJournal": "",
+      "nationalJournal": "",
+      "intConference": "",
+      "nationalConference": "",
+      "workLoad": "NaN",
+      "id": 28
     }
   ],
   "parameters": {
-    "wBS": "0.2",
-    "wMS": "0.3",
-    "wPhD": "0.4",
+    "degree": {
+      "wBS": "0.2",
+      "wMS": "0.3",
+      "wPhD": "0.4"
+    },
     "wTheory": "0.1",
     "wLab": "0.2",
-    "wNumberOfStudents": "0.2",
+    "wManagerialPosition": {
+      "HOD": "0.2",
+      "DEAN": "0.3",
+      "CC": "0.1",
+      "FP": "0.1",
+      "PC": "0.1",
+      "select": 0
+    },
+    "wNumberOfStudents": "0.1",
     "wProjectSupervisions": "0.1",
     "wInternationalJournal": "0.1",
     "wNationalJournal": "0.1",
     "wInternationalConference": "0.1",
-    "wNationalConference": "0.1",
-    "wManagerialPosition": "0.1"
+    "wNationalConference": "0.1"
   },
   "payments": []
 }
