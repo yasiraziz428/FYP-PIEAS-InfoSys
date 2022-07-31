@@ -18,6 +18,7 @@ const AddWorkload = () => {
     nationalJournal: "",
     intConference: "",
     nationalConference: "",
+    contactHours: "",
   });
 
   const {
@@ -85,12 +86,18 @@ const AddWorkload = () => {
     const wIC = workload["intConference"];
     const wNC = workload["nationalConference"];
 
-    let selectedCourses = [title1, title2, title3];
+    const selectedCourses = [];
+    if (title1) selectedCourses.push(title1);
+    if (title2) selectedCourses.push(title2);
+    if (title3) selectedCourses.push(title3);
 
     // const theories = [];
     // const labs = [];
     let sumTheories = 0;
     let sumLabs = 0;
+    let bsContactHrs = 0;
+    let msContactHrs = 0;
+    let phdContactHrs = 0;
     selectedCourses.forEach((course) => {
       const courseObject = courses.find((c) => c.courseTitle === course); //getting courseTitle from every selected course
       switch (courseObject.degree) {
@@ -100,9 +107,12 @@ const AddWorkload = () => {
             Number(parameters["wTheory"]) *
             Number(parameters["degree"]["wBS"]);
           sumLabs +=
-            Number(courseObject.labs) *
+            Number(courseObject.lab) *
             Number(parameters["wLab"]) *
             Number(parameters["degree"]["wBS"]);
+
+          bsContactHrs +=
+            Number(courseObject.theory) + 3 * Number(courseObject.lab);
           break;
 
         case "MS":
@@ -111,9 +121,12 @@ const AddWorkload = () => {
             Number(parameters["wTheory"]) *
             Number(parameters["degree"]["wMS"]);
           sumLabs +=
-            Number(courseObject.labs) *
+            Number(courseObject.lab) *
             Number(parameters["wLab"]) *
             Number(parameters["degree"]["wMS"]);
+
+          msContactHrs +=
+            Number(courseObject.theory) + 3 * Number(courseObject.lab);
           break;
         case "PhD":
           sumTheories +=
@@ -121,13 +134,20 @@ const AddWorkload = () => {
             Number(parameters["wTheory"]) *
             Number(parameters["degree"]["wPhD"]);
           sumLabs +=
-            Number(courseObject.labs) *
+            Number(courseObject.lab) *
             Number(parameters["wLab"]) *
             Number(parameters["degree"]["wPhD"]);
+
+          phdContactHrs +=
+            Number(courseObject.theory) + 3 * Number(courseObject.lab);
           break;
 
         default:
       }
+
+      console.log("Course Object theory " + courseObject.theory);
+      console.log("Course Object Lab " + courseObject.lab);
+
       // theories.push(Number(courseObject.theory));
       // labs.push(Number(courseObject.lab));
     });
@@ -136,12 +156,12 @@ const AddWorkload = () => {
     // console.log("theories " + sumTheories);
     // const sumLabs = labs.reduce((prev, curr) => prev + curr, 2);
     // console.log("Labs " + sumLabs);
-    console.log(Number(parameters["wNumberOfStudents"]));
-    console.log(Number(parameters["wProjectSupervisions"]));
-    console.log(Number(parameters["wInternationalJournal"]));
-    console.log(Number(parameters["wNationalJournal"]));
-    console.log(Number(parameters["wInternationalConference"]));
-    console.log(Number(parameters["wNationalConference"]));
+    // console.log(Number(parameters["wNumberOfStudents"]));
+    // console.log(Number(parameters["wProjectSupervisions"]));
+    // console.log(Number(parameters["wInternationalJournal"]));
+    // console.log(Number(parameters["wNationalJournal"]));
+    // console.log(Number(parameters["wInternationalConference"]));
+    // console.log(Number(parameters["wNationalConference"]));
 
     //console.log(sumTheories, sumLabs);
     // console.log(parameters);
@@ -174,10 +194,21 @@ const AddWorkload = () => {
     await axios.post("http://localhost:3003/workloads", {
       ...workload,
       workLoad: final_score.toPrecision(3),
+      bsContactHrs,
+      msContactHrs,
+      phdContactHrs,
     });
-    setWorkload({ ...workload, workLoad: final_score });
+    // await axios.post("http://localhost:3003/employees", {
+    //   ...employee,
+    // });
+    setWorkload({
+      ...workload,
+      workLoad: final_score,
+      bsContactHrs,
+      msContactHrs,
+      phdContactHrs,
+    });
     navigate("/workload");
-    console.log("Submitted!");
   };
 
   return (
@@ -245,10 +276,10 @@ const AddWorkload = () => {
             <select
               className="form-control"
               name="courseTitle1"
-              id="course"
+              id="course1"
               onChange={(e) => onInputChange(e)}
             >
-              <option selected="true" id="DesignationList-0">
+              <option selected="true" id="DesignationList-0" value={0}>
                 -- Select --
               </option>
               {course.map((e) => (
@@ -263,10 +294,10 @@ const AddWorkload = () => {
             <select
               className="form-control"
               name="courseTitle2"
-              id="course"
+              id="course2"
               onChange={(e) => onInputChange(e)}
             >
-              <option selected="true" value="none">
+              <option selected="true" value={0}>
                 -- Select --
               </option>
               {course.map((e) => (
@@ -281,10 +312,10 @@ const AddWorkload = () => {
             <select
               className="form-control"
               name="courseTitle3"
-              id="course"
+              id="course3"
               onChange={(e) => onInputChange(e)}
             >
-              <option selected="true" value="none">
+              <option selected="true" value={0}>
                 -- Select --
               </option>
               {course.map((e) => (
@@ -303,8 +334,8 @@ const AddWorkload = () => {
               value={managerialPosition}
               onChange={(e) => onInputChange(e)}
             >
-              <option selected="true" value={0}>
-                -- Select --
+              <option id="MPList-0" value="select">
+                Select
               </option>
               <option id="MPList-1" value="HOD">
                 Head of Department

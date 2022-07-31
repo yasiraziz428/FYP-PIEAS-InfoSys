@@ -42,7 +42,7 @@ const Employee = () => {
           {employee
             ? employee.map((employees, index) => (
                 <tr>
-                  <th scope="row">{index + 1}</th>
+                  <th>{index + 1}</th>
                   <td>{employees.employeeName}</td>
                   <td>{employees.department}</td>
                   <td>{employees.designation}</td>
