@@ -1,14 +1,25 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AddEmployee = () => {
   let navigate = useNavigate();
+
   const [employee, setEmployee] = useState({
     employeeName: "",
     department: "",
     designation: "",
   });
+  const [designations, setDesignations] = useState([]);
+
+  useEffect(() => {
+    loadDesignations();
+  }, []);
+
+  const loadDesignations = async () => {
+    const result = await axios.get("http://localhost:3003/designations");
+    setDesignations(result.data);
+  };
 
   const { employeeName, department, designation } = employee;
 
@@ -89,15 +100,11 @@ const AddEmployee = () => {
               <option selected="true" id="DesignationList-0">
                 Select
               </option>
-              <option id="DesignationList-1" value="RF">
-                Regular Faculty
-              </option>
-              <option id="DesignationList-2" value="VF">
-                Visiting Faculty
-              </option>
-              <option id="DesignationList-3" value="TA">
-                TA / Lab Engr.
-              </option>
+              {designations.map((d) => (
+                <option id="DesignationList-1" value={d.name}>
+                  {d.name}
+                </option>
+              ))}
             </select>
           </div>
 

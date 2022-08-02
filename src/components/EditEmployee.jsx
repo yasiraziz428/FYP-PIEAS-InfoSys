@@ -11,6 +11,7 @@ const EditEmployee = () => {
     department: "",
     designation: "",
   });
+  const [designations, setDesignations] = useState([]);
 
   const { employeeName, department, designation } = employee;
 
@@ -20,6 +21,7 @@ const EditEmployee = () => {
 
   useEffect(() => {
     loadEmployee();
+    loadDesignations();
   }, []);
 
   const onSubmit = async (e) => {
@@ -32,6 +34,11 @@ const EditEmployee = () => {
   const loadEmployee = async () => {
     const result = await axios.get(`http://localhost:3003/employees/${id}`);
     setEmployee(result.data);
+  };
+
+  const loadDesignations = async () => {
+    const result = await axios.get("http://localhost:3003/designations");
+    setDesignations(result.data);
   };
 
   return (
@@ -100,15 +107,11 @@ const EditEmployee = () => {
               <option selected="true" id="DesignationList-0">
                 Select
               </option>
-              <option id="DesignationList-1" value="RF">
-                Regular Faculty
-              </option>
-              <option id="DesignationList-2" value="VF">
-                Visiting Faculty
-              </option>
-              <option id="DesignationList-3" value="TA">
-                TA / Lab Engr.
-              </option>
+              {designations.map((d) => (
+                <option id="DesignationList-1" value={d.name}>
+                  {d.name}
+                </option>
+              ))}
             </select>
           </div>
           <div className="formbuilder-button form-group field-submitButton">

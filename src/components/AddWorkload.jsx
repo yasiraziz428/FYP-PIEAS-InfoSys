@@ -19,6 +19,7 @@ const AddWorkload = () => {
     intConference: "",
     nationalConference: "",
     contactHours: "",
+    GCR: "",
   });
 
   const {
@@ -33,6 +34,7 @@ const AddWorkload = () => {
     nationalJournal,
     intConference,
     nationalConference,
+    GCR,
   } = workload;
 
   const [employee, setEmployee] = useState([]);
@@ -95,6 +97,7 @@ const AddWorkload = () => {
     // const labs = [];
     let sumTheories = 0;
     let sumLabs = 0;
+    let sumCreditHrs = 0;
     let bsContactHrs = 0;
     let msContactHrs = 0;
     let phdContactHrs = 0;
@@ -144,14 +147,14 @@ const AddWorkload = () => {
 
         default:
       }
-
+      sumCreditHrs += Number(courseObject.theory) + Number(courseObject.lab);
       console.log("Course Object theory " + courseObject.theory);
       console.log("Course Object Lab " + courseObject.lab);
 
       // theories.push(Number(courseObject.theory));
       // labs.push(Number(courseObject.lab));
     });
-
+    console.log("Total Credit Hours: ", sumCreditHrs);
     // const sumTheories = theories.reduce((prev, curr) => prev + curr, 0);
     // console.log("theories " + sumTheories);
     // const sumLabs = labs.reduce((prev, curr) => prev + curr, 2);
@@ -179,7 +182,8 @@ const AddWorkload = () => {
       Number(wIJ) * Number(parameters["wInternationalJournal"]) +
       Number(wNJ) * Number(parameters["wNationalJournal"]) +
       Number(wIC) * Number(parameters["wInternationalConference"]) +
-      Number(wNC) * Number(parameters["wNationalConference"]);
+      Number(wNC) * Number(parameters["wNationalConference"]) +
+      Number(GCR) * Number(parameters["wGCR"]);
 
     //console.log(final_score);
 
@@ -197,6 +201,7 @@ const AddWorkload = () => {
       bsContactHrs,
       msContactHrs,
       phdContactHrs,
+      totalClasses: sumCreditHrs * parameters.totalWeeksInSemester,
     });
     // await axios.post("http://localhost:3003/employees", {
     //   ...employee,
@@ -214,62 +219,133 @@ const AddWorkload = () => {
   return (
     <div className="container w-50 shadow px-5 pb-5">
       <form onSubmit={(e) => onSubmit(e)}>
-        <div className="rendered-form mt-5">
-          <h1 className="text-center pt-4">Add Workload</h1>
-          <div className="formbuilder-select form-group field-SemesterList">
-            <label for="SemesterList" className="formbuilder-select-label">
-              Semester
-            </label>
-            <select
-              className="form-control"
-              name="semester"
-              id="semester"
-              value={semester}
-              onChange={(e) => onInputChange(e)}
-            >
-              <option selected="true" id="SemesterList-0">
-                Select
-              </option>
-              <option id="SemesterList-1" value="Spring">
-                Spring
-              </option>
-              <option id="SemesterList-2" value="Fall">
-                Fall
-              </option>
-            </select>
+        <div className="rendered-form mt-3">
+          <h1 className="text-center pt-5">Add Workload</h1>
+          <div className="row mt-5">
+            <div className="col-6">
+              <div className="formbuilder-select form-group field-SemesterList">
+                <label>Semester</label>
+                <select
+                  className="form-control"
+                  name="semester"
+                  id="semester"
+                  value={semester}
+                  onChange={(e) => onInputChange(e)}
+                >
+                  <option selected="true" id="SemesterList-0">
+                    -- Select --
+                  </option>
+                  <option id="SemesterList-1" value="Spring">
+                    Spring
+                  </option>
+                  <option id="SemesterList-2" value="Fall">
+                    Fall
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div className="col-6">
+              <div className="formbuilder-text form-group field-text-1654851224189">
+                <label>Year</label>
+                <input
+                  type="text"
+                  placeholder="Year"
+                  className="form-control"
+                  name="year"
+                  value={year}
+                  onChange={(e) => onInputChange(e)}
+                />
+              </div>
+            </div>
           </div>
-          <div className="formbuilder-text form-group field-text-1654851224189">
-            <label for="text-1654851224189" className="formbuilder-text-label">
-              Year
-            </label>
-            <input
-              type="text"
-              placeholder="Year"
-              className="form-control"
-              name="year"
-              value={year}
-              onChange={(e) => onInputChange(e)}
-            />
+
+          <div className="row">
+            <div className="col-6">
+              <div className="formbuilder-select  mt-5 form-group field-EmployeeList">
+                <label for="EmployeeList" className="formbuilder-select-label">
+                  Select Employee
+                </label>
+                <select
+                  className="form-control"
+                  name="employeeName"
+                  id="employeeName"
+                  onChange={(e) => onInputChange(e)}
+                >
+                  <option selected="true" id="DesignationList-0">
+                    -- Select --
+                  </option>
+                  {employee.map((e) => (
+                    <option id="">{e.employeeName}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="col-6">
+              <div className="formbuilder-select form-group  mt-5 field-MPList">
+                <label for="MPList" className="formbuilder-select-label">
+                  Managerial Position
+                </label>
+                <select
+                  className="form-control"
+                  name="managerialPosition"
+                  id="MPList"
+                  value={managerialPosition}
+                  onChange={(e) => onInputChange(e)}
+                >
+                  <option id="MPList-0" value="">
+                    -- Select --
+                  </option>
+                  <option id="MPList-1" value="Rector / Pro-Rector">
+                    Rector / Pro-Rector
+                  </option>
+                  <option id="MPList-2" value="Dean / Director">
+                    Dean / Director
+                  </option>
+                  <option id="MPList-3" value="Registrar / Controller">
+                    Registrar / Controller
+                  </option>
+                  <option id="MPList-4" value="Head of Department">
+                    Head of Department
+                  </option>
+                  <option id="MPList-5" value="Head of Division">
+                    Head of Division
+                  </option>
+                  <option id="MPList-6" value="Head / Incharge of Section">
+                    Head / Incharge of Section
+                  </option>
+                  <option id="MPList-7" value="Project Director">
+                    Project Director
+                  </option>
+                  <option id="MPList-8" value="Course / Project Coordinator">
+                    Course / Project Coordinator
+                  </option>
+                  <option
+                    id="MPList-9"
+                    value="Conference / Short Course Coordinator"
+                  >
+                    Conference / Short Course Coordinator
+                  </option>
+                  <option
+                    id="MPList-10"
+                    value="Conference / Short Course Team Member"
+                  >
+                    Conference / Short Course Team Member
+                  </option>
+                  <option id="MPList-11" value="Visit Coordinator">
+                    Visit Coordinator
+                  </option>
+                  <option id="MPList-12" value="One Day Seminar Organisor">
+                    One Day Seminar Organisor
+                  </option>
+                  <option id="MPList-13" value="Focal Person">
+                    Focal Person
+                  </option>
+                </select>
+              </div>
+            </div>
           </div>
-          <div className="formbuilder-select  mt-5 form-group field-EmployeeList">
-            <label for="EmployeeList" className="formbuilder-select-label">
-              Select Employee
-            </label>
-            <select
-              className="form-control"
-              name="employeeName"
-              id="employeeName"
-              onChange={(e) => onInputChange(e)}
-            >
-              <option selected="true" id="DesignationList-0">
-                -- Select --
-              </option>
-              {employee.map((e) => (
-                <option id="">{e.employeeName}</option>
-              ))}
-            </select>
-          </div>
-          <div className="formbuilder-select form-group field-CourseList">
+
+          <div className="formbuilder-select form-group field-CourseList col-6 mt-3">
             <label for="CourseList" className="formbuilder-select-label">
               Select Course 1
             </label>
@@ -287,7 +363,7 @@ const AddWorkload = () => {
               ))}
             </select>
           </div>
-          <div className="formbuilder-select form-group field-CourseList">
+          <div className="formbuilder-select form-group field-CourseList col-6">
             <label for="CourseList" className="formbuilder-select-label">
               Select Course 2
             </label>
@@ -305,7 +381,7 @@ const AddWorkload = () => {
               ))}
             </select>
           </div>
-          <div className="formbuilder-select form-group field-CourseList">
+          <div className="formbuilder-select form-group field-CourseList col-6">
             <label for="CourseList" className="formbuilder-select-label">
               Select Course 3
             </label>
@@ -323,118 +399,109 @@ const AddWorkload = () => {
               ))}
             </select>
           </div>
-          <div className="formbuilder-select form-group  mt-5 field-MPList">
-            <label for="MPList" className="formbuilder-select-label">
-              Managerial Position
-            </label>
-            <select
-              className="form-control"
-              name="managerialPosition"
-              id="MPList"
-              value={managerialPosition}
-              onChange={(e) => onInputChange(e)}
-            >
-              <option id="MPList-0" value="select">
-                Select
-              </option>
-              <option id="MPList-1" value="HOD">
-                Head of Department
-              </option>
-              <option id="MPList-2" value="CC">
-                Course Coordinator
-              </option>
-              <option id="MPList-3" value="DEAN">
-                DEAN
-              </option>
-              <option id="MPList-4" value="PC">
-                Project Coordinator
-              </option>
-              <option id="MPList-5" value="FP">
-                Focal Person
-              </option>
-            </select>
+
+          <div className="row">
+            <div className="col-3">
+              <div className="formbuilder-text form-group field-text-1654851224189 mt-5 ">
+                <label>Number of Students</label>
+                <input
+                  type="number"
+                  placeholder="No of Students"
+                  className="form-control"
+                  name="noOfStudents"
+                  value={noOfStudents}
+                  onChange={(e) => onInputChange(e)}
+                />
+              </div>
+            </div>
           </div>
-          <div className="formbuilder-text form-group field-text-1654851224189">
-            <label for="text-1654851224189" className="formbuilder-text-label">
-              No of Students
-            </label>
-            <input
-              type="number"
-              placeholder="No of Students"
-              className="form-control"
-              name="noOfStudents"
-              value={noOfStudents}
-              onChange={(e) => onInputChange(e)}
-            />
+
+          <h1 className="mt-5">R & D</h1>
+          <div className="col-3">
+            <div className="formbuilder-text form-group mt-2 field-text-1654851224189 mt-5 ">
+              <label>Project Supervisions</label>
+              <input
+                type="number"
+                placeholder="Project Supervisions"
+                className="form-control"
+                name="projectSupervisions"
+                value={projectSupervisions}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
+            <div className="col-3">
+              <div className="formbuilder-text form-group mt-2 field-text-1654851224189 mt-5 ">
+                <label>General / Conference Reviewer</label>
+                <input
+                  type="number"
+                  placeholder="General / Conference Reviewer"
+                  className="form-control"
+                  name="GCR"
+                  value={GCR}
+                  onChange={(e) => onInputChange(e)}
+                />
+              </div>
+            </div>
           </div>
-          <div className="formbuilder-text form-group mt-2 field-text-1654851224189">
-            <label for="text-1654851224189" className="formbuilder-text-label">
-              Project Supervisions
-            </label>
-            <input
-              type="number"
-              placeholder="Project Supervisions"
-              className="form-control"
-              name="projectSupervisions"
-              value={projectSupervisions}
-              onChange={(e) => onInputChange(e)}
-            />
+
+          <div className="row">
+            <div className="col-3">
+              <div className="formbuilder-text form-group mt-2 field-text-1654851224189">
+                <label>International Journal</label>
+                <input
+                  type="number"
+                  placeholder="International Journal"
+                  className="form-control"
+                  name="intJournal"
+                  value={intJournal}
+                  onChange={(e) => onInputChange(e)}
+                />
+              </div>
+            </div>
+            <div className="col-3">
+              <div className="formbuilder-text form-group mt-2 field-text-1654851224189">
+                <label>National Journal</label>
+                <input
+                  type="number"
+                  placeholder="National Journal"
+                  className="form-control"
+                  name="nationalJournal"
+                  value={nationalJournal}
+                  onChange={(e) => onInputChange(e)}
+                />
+              </div>
+            </div>
+            <div className="col-3">
+              <div className="formbuilder-text form-group mt-2 field-text-1654851224189">
+                <label>International Conference</label>
+                <input
+                  type="number"
+                  placeholder="International Conference"
+                  className="form-control"
+                  name="intConference"
+                  value={intConference}
+                  onChange={(e) => onInputChange(e)}
+                />
+              </div>
+            </div>
+            <div className="col-3">
+              <div className="formbuilder-text form-group mt-2 field-text-1654851224189">
+                <label>National Conference</label>
+                <input
+                  type="number"
+                  placeholder="National Conference"
+                  className="form-control"
+                  name="nationalConference"
+                  value={nationalConference}
+                  onChange={(e) => onInputChange(e)}
+                />
+              </div>
+            </div>
           </div>
-          <div className="formbuilder-text form-group mt-2 field-text-1654851224189">
-            <label for="text-1654851224189" className="formbuilder-text-label">
-              International Journal
-            </label>
-            <input
-              type="number"
-              placeholder="International Journal"
-              className="form-control"
-              name="intJournal"
-              value={intJournal}
-              onChange={(e) => onInputChange(e)}
-            />
-          </div>
-          <div className="formbuilder-text form-group mt-2 field-text-1654851224189">
-            <label for="text-1654851224189" className="formbuilder-text-label">
-              National Journal
-            </label>
-            <input
-              type="number"
-              placeholder="National Journal"
-              className="form-control"
-              name="nationalJournal"
-              value={nationalJournal}
-              onChange={(e) => onInputChange(e)}
-            />
-          </div>
-          <div className="formbuilder-text form-group mt-2 field-text-1654851224189">
-            <label for="text-1654851224189" className="formbuilder-text-label">
-              International Conference
-            </label>
-            <input
-              type="number"
-              placeholder="International Conference"
-              className="form-control"
-              name="intConference"
-              value={intConference}
-              onChange={(e) => onInputChange(e)}
-            />
-          </div>
-          <div className="formbuilder-text form-group mt-2 field-text-1654851224189">
-            <label for="text-1654851224189" className="formbuilder-text-label">
-              National Conference
-            </label>
-            <input
-              type="number"
-              placeholder="National Conference"
-              className="form-control"
-              name="nationalConference"
-              value={nationalConference}
-              onChange={(e) => onInputChange(e)}
-            />
-          </div>
+
           <div className="formbuilder-button form-group field-submitButton">
             <button
-              className="btn-dark btn form-control mt-4"
+              className="btn-dark btn form-control mt-5"
               type="submit"
               name="submitButton"
               id="submitButton"

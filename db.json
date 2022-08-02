@@ -3,67 +3,79 @@
     {
       "employeeName": "Muhammad Yasir Aziz",
       "department": "EE",
-      "designation": "TA",
+      "designation": "Visiting Faculty B",
       "managerialPosition": "CC",
       "id": 1
     },
     {
       "employeeName": "Saeed Ahmad Khan",
       "department": "MME",
-      "designation": "VF",
+      "designation": "Visiting Faculty D",
       "managerialPosition": "PC",
       "id": 5
     },
     {
       "employeeName": "Tanveer Ahmad Khan",
       "department": "PHY",
-      "designation": "RF",
+      "designation": "Visiting Faculty C",
       "managerialPosition": "HOD",
       "id": 6
     },
     {
       "employeeName": "Ahmad Kamal Baig",
       "department": "ME",
-      "designation": "RF",
+      "designation": "Visiting Faculty C",
       "managerialPosition": "HOD",
       "id": 7
     },
     {
       "employeeName": "Humair Abbas",
       "department": "EE",
-      "designation": "RF",
+      "designation": "TA/Lab Engineer B",
       "id": 8
     },
     {
       "employeeName": "Ahmad Abdullah",
       "department": "EE",
-      "designation": "RF",
+      "designation": "Visiting Faculty C",
       "id": 9
     },
     {
       "employeeName": "Saeed Khattak",
       "department": "MME",
-      "designation": "VF",
+      "designation": "Visiting Faculty B",
       "id": 10
     },
     {
       "employeeName": "Ahmad Dar",
       "department": "CHE",
-      "designation": "TA",
+      "designation": "TA/Lab Engineer B",
       "id": 11
     },
     {
       "employeeName": "Ali Haidar",
       "department": "CIS",
-      "designation": "VF",
+      "designation": "Visiting Faculty C",
       "id": 12
     },
     {
       "employeeName": "Zubair Nasir Khan",
       "department": "PHY",
-      "designation": "TA",
+      "designation": "TA/Lab Engineer B",
       "id": 13,
       "managerialPosition": "Select"
+    },
+    {
+      "employeeName": "Muhammad Zain Rehman",
+      "department": "CIS",
+      "designation": "Regular Faculty",
+      "id": 14
+    },
+    {
+      "employeeName": "Muhammad Uzair Khan",
+      "department": "CHE",
+      "designation": "Regular Faculty",
+      "id": 15
     }
   ],
   "courses": [
@@ -86,7 +98,7 @@
       "id": 2
     },
     {
-      "degree": "MS",
+      "degree": "BS",
       "courseNo": "CSA-568",
       "courseTitle": "OOP L",
       "program": "CIS",
@@ -113,7 +125,7 @@
       "id": 6
     },
     {
-      "degree": "MS",
+      "degree": "BS",
       "courseNo": "ABC-123",
       "courseTitle": "DSA L",
       "program": "CIS",
@@ -122,7 +134,7 @@
       "id": 7
     },
     {
-      "degree": "MS",
+      "degree": "BS",
       "courseNo": "ABC-123",
       "courseTitle": "DSA T",
       "program": "CIS",
@@ -169,139 +181,13 @@
   ],
   "workloads": [
     {
-      "semester": "Spring",
-      "year": "2018",
-      "employeeName": "Muhammad Yasir Aziz",
-      "courseTitle1": "Programming",
-      "courseTitle2": "Programming L",
-      "courseTitle3": "Islamiyat",
-      "managerialPosition": "HOD",
-      "noOfStudents": "50",
-      "projectSupervisions": "5",
-      "intJournal": "5",
-      "nationalJournal": "5",
-      "intConference": "5",
-      "nationalConference": "5",
-      "contactHours": "",
-      "workLoad": "7.84",
-      "bsContactHrs": 8,
-      "msContactHrs": 0,
-      "phdContactHrs": 0,
-      "id": 1
-    },
-    {
-      "semester": "Fall",
-      "year": "2019",
-      "employeeName": "Saeed Ahmad Khan",
-      "courseTitle1": "OOP",
-      "courseTitle2": "OOP L",
-      "courseTitle3": "Islamiyat",
-      "managerialPosition": "CC",
-      "noOfStudents": "50",
-      "projectSupervisions": "5",
-      "intJournal": "5",
-      "nationalJournal": "55",
-      "intConference": "5",
-      "nationalConference": "5",
-      "contactHours": "",
-      "workLoad": "12.8",
-      "bsContactHrs": 5,
-      "msContactHrs": 3,
-      "phdContactHrs": 0,
-      "id": 2
-    },
-    {
-      "semester": "Spring",
-      "year": "2017",
-      "employeeName": "Tanveer Ahmad Khan",
-      "courseTitle1": "DSA T",
-      "courseTitle2": "DSA L",
-      "courseTitle3": "IAD T",
-      "managerialPosition": "FP",
-      "noOfStudents": "50",
-      "projectSupervisions": "5",
-      "intJournal": "5",
-      "nationalJournal": "5",
-      "intConference": "5",
-      "nationalConference": "5",
-      "contactHours": "",
-      "workLoad": "7.81",
-      "bsContactHrs": 3,
-      "msContactHrs": 6,
-      "phdContactHrs": 0,
-      "id": 3
-    },
-    {
-      "semester": "Spring",
-      "year": "2019",
-      "employeeName": "Ahmad Kamal Baig",
-      "courseTitle1": "CFP T",
-      "courseTitle2": "",
-      "courseTitle3": "",
-      "managerialPosition": "DEAN",
-      "noOfStudents": "50",
-      "projectSupervisions": "5",
-      "intJournal": "5",
-      "nationalJournal": "5",
-      "intConference": "55",
-      "nationalConference": "5",
-      "contactHours": "",
-      "workLoad": "12.9",
-      "bsContactHrs": 3,
-      "msContactHrs": 0,
-      "phdContactHrs": 0,
-      "id": 4
-    },
-    {
-      "semester": "Fall",
-      "year": "2017",
-      "employeeName": "Humair Abbas",
-      "courseTitle1": "CFP T",
-      "courseTitle2": "CFP L",
-      "courseTitle3": "DSA T",
-      "managerialPosition": "DEAN",
-      "noOfStudents": "50",
-      "projectSupervisions": "55",
-      "intJournal": "5",
-      "nationalJournal": "55",
-      "intConference": "5",
-      "nationalConference": "55",
-      "contactHours": "",
-      "workLoad": "23.0",
-      "bsContactHrs": 6,
-      "msContactHrs": 3,
-      "phdContactHrs": 0,
-      "id": 5
-    },
-    {
-      "semester": "Fall",
-      "year": "2021",
-      "employeeName": "Ahmad Abdullah",
-      "courseTitle1": "DSA L",
-      "courseTitle2": "DSA T",
-      "courseTitle3": "CFP L",
-      "managerialPosition": "",
-      "noOfStudents": "",
-      "projectSupervisions": "",
-      "intJournal": "0",
-      "nationalJournal": "0",
-      "intConference": "0",
-      "nationalConference": "",
-      "contactHours": "",
-      "workLoad": "0.190",
-      "bsContactHrs": 3,
-      "msContactHrs": 6,
-      "phdContactHrs": 0,
-      "id": 6
-    },
-    {
       "semester": "",
       "year": "",
       "employeeName": "Muhammad Yasir Aziz",
       "courseTitle1": "Programming",
-      "courseTitle2": "",
-      "courseTitle3": "",
-      "managerialPosition": "",
+      "courseTitle2": "Programming L",
+      "courseTitle3": "Islamiyat",
+      "managerialPosition": "Dean / Director",
       "noOfStudents": "",
       "projectSupervisions": "",
       "intJournal": "",
@@ -309,35 +195,76 @@
       "intConference": "",
       "nationalConference": "",
       "contactHours": "",
-      "workLoad": "0.0600",
-      "bsContactHrs": 3,
+      "GCR": "",
+      "workLoad": "0.270",
+      "bsContactHrs": 8,
       "msContactHrs": 0,
       "phdContactHrs": 0,
-      "id": 7
+      "totalClasses": 96,
+      "id": 1
     }
   ],
   "parameters": {
     "degree": {
-      "wBS": "0.2",
-      "wMS": "0.3",
-      "wPhD": "0.4"
+      "wBS": "0.1",
+      "wMS": "0.2",
+      "wPhD": "0.3"
     },
     "wTheory": "0.1",
     "wLab": "0.2",
     "wManagerialPosition": {
       "": "0",
-      "HOD": "0.2",
-      "DEAN": "0.3",
-      "CC": "0.1",
-      "FP": "0.1",
-      "PC": "0.1"
+      "Rector / Pro-Rector": "0.2",
+      "Dean / Director": "0.2",
+      "Registrar / Controller": "0.2",
+      "Head of Department": "0.1",
+      "Head of Division": "0.1",
+      "Head / Incharge of Section": "0.1",
+      "Project Director": "0.1",
+      "Course / Project Coordinator": "0.1",
+      "Conference / Short Course Coordinator": "0.1",
+      "Conference / Short Course Team Member": "0.1",
+      "Visit Coordinator": "0.1",
+      "One Day Seminar Organisor": "0.1",
+      "Focal Person": "0.1"
     },
     "wNumberOfStudents": "0.1",
     "wProjectSupervisions": "0.1",
     "wInternationalJournal": "0.1",
     "wNationalJournal": "0.1",
     "wInternationalConference": "0.1",
-    "wNationalConference": "0.1"
+    "wNationalConference": "0.1",
+    "wGCR": "0.1",
+    "totalWeeksInSemester": 16
   },
-  "payments": []
+  "payments": [],
+  "designations": [
+    {
+      "name": "Regular Faculty"
+    },
+    {
+      "name": "Visiting Faculty A",
+      "payrate": 1500
+    },
+    {
+      "name": "Visiting Faculty B",
+      "payrate": 2000
+    },
+    {
+      "name": "Visiting Faculty C",
+      "payrate": 2500
+    },
+    {
+      "name": "Visiting Faculty D",
+      "payrate": 3000
+    },
+    {
+      "name": "TA/Lab Engineer A",
+      "payrate": 450
+    },
+    {
+      "name": "TA/Lab Engineer B",
+      "payrate": 750
+    }
+  ]
 }

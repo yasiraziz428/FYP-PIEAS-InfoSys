@@ -123,7 +123,7 @@ const AddCourse = () => {
             </label>
             <input
               type="number"
-              placeholder="Theory Credits"
+              placeholder="Credit Hours"
               className="form-control"
               name="theory"
               value={theory}
@@ -136,7 +136,7 @@ const AddCourse = () => {
             </label>
             <input
               type="number"
-              placeholder="Lab Credits"
+              placeholder="Credit Hours"
               className="form-control"
               name="lab"
               value={lab}

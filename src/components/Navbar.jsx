@@ -43,7 +43,7 @@ const Navbar = () => {
                   Payment
                 </NavLink>
               </li>
-              <li className="nav-item dropdown">
+              {/* <li className="nav-item dropdown">
                 <Link
                   className="nav-link dropdown-toggle"
                   to="#"
@@ -67,7 +67,7 @@ const Navbar = () => {
                     Something else here
                   </Link>
                 </div>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
