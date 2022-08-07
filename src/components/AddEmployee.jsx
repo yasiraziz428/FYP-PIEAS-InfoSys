@@ -81,8 +81,20 @@ const AddEmployee = () => {
               <option id="DeptartmentList-5" value="CHE">
                 Chemical Engineering
               </option>
-              <option id="DeptartmentList-6" value="MME">
+              <option id="DeptartmentList-6" value="NE">
+                Nuclear Engineering
+              </option>
+              <option id="DeptartmentList-7" value="MS">
+                Medical Sciences
+              </option>
+              <option id="DeptartmentList-8" value="MME">
                 Metallurgy &amp; Materials Engineering
+              </option>
+              <option id="DeptartmentList-9" value="CMS">
+                Communication and Management Sciences
+              </option>
+              <option id="DeptartmentList-10" value="Chemistry">
+                Chemistry
               </option>
             </select>
           </div>

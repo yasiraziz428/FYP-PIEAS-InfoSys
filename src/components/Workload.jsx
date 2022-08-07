@@ -60,6 +60,48 @@ const Workload = () => {
       >
         Add Workload
       </Link>
+      <br></br>
+      <select className="mt-5">
+        <option>All Years</option>
+        <option></option>
+      </select>
+      <select className="ms-2 mt-2">
+        <option>All Semesters</option>
+        <option></option>
+      </select>
+      <select className="mt-5 ms-2">
+        <option>All Depts</option>
+        <option id="DeptartmentList-1" value="ME">
+          ME
+        </option>
+        <option id="DeptartmentList-2" value="EE">
+          EE
+        </option>
+        <option id="DeptartmentList-3" value="CIS">
+          CIS
+        </option>
+        <option id="DeptartmentList-4" value="PHY">
+          PHY
+        </option>
+        <option id="DeptartmentList-5" value="CHE">
+          CHE
+        </option>
+        <option id="DeptartmentList-6" value="MME">
+          MME
+        </option>
+        <option id="DeptartmentList-7" value="NE">
+          NE
+        </option>
+        <option id="DeptartmentList-8" value="MS">
+          MS
+        </option>
+        <option id="DeptartmentList-9" value="CMS">
+          CMS
+        </option>
+        <option id="DeptartmentList-10" value="Chemistry">
+          Chemistry
+        </option>
+      </select>
       <table className="table caption-top border shadow mt-2">
         <thead>
           <tr>
@@ -78,6 +120,11 @@ const Workload = () => {
             <th>International Conference</th>
             <th>National Conference</th>
             <th>General / Conference Reviewer</th>
+            <th>Book</th>
+            <th>Technical Report</th>
+            <th>Chapter</th>
+            <th>Development of Product</th>
+            <th>Patent</th>
             <th>Workload</th>
             <th>Actions</th>
           </tr>
@@ -101,6 +148,11 @@ const Workload = () => {
                   <td>{workloads.intConference}</td>
                   <td>{workloads.nationalConference}</td>
                   <td>{workloads.GCR}</td>
+                  <td>{workloads.book}</td>
+                  <td>{workloads.technicalReport}</td>
+                  <td>{workloads.chapter}</td>
+                  <td>{workloads.devOfProd}</td>
+                  <td>{workloads.patent}</td>
                   <td>{workloads.workLoad}</td>
                   <td>
                     <Link

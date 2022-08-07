@@ -11,6 +11,9 @@ const AddWorkload = () => {
     courseTitle1: "",
     courseTitle2: "",
     courseTitle3: "",
+    courseContribution1: "100",
+    courseContribution2: "100",
+    courseContribution3: "100",
     managerialPosition: "",
     noOfStudents: "",
     projectSupervisions: "",
@@ -20,6 +23,11 @@ const AddWorkload = () => {
     nationalConference: "",
     contactHours: "",
     GCR: "",
+    book: "",
+    technicalReport: "",
+    chapter: "",
+    devOfProd: "",
+    patent: "",
   });
 
   const {
@@ -35,6 +43,11 @@ const AddWorkload = () => {
     intConference,
     nationalConference,
     GCR,
+    book,
+    technicalReport,
+    chapter,
+    devOfProd,
+    patent,
   } = workload;
 
   const [employee, setEmployee] = useState([]);
@@ -78,7 +91,9 @@ const AddWorkload = () => {
     const title1 = workload["courseTitle1"];
     const title2 = workload["courseTitle2"];
     const title3 = workload["courseTitle3"];
-
+    const courseContribution1 = workload["courseContribution1"];
+    const courseContribution2 = workload["courseContribution2"];
+    const courseContribution3 = workload["courseContribution3"];
     const selectedMP = workload["managerialPosition"];
     const wMP = parameters["wManagerialPosition"][selectedMP];
     const noS = workload["noOfStudents"];
@@ -89,9 +104,21 @@ const AddWorkload = () => {
     const wNC = workload["nationalConference"];
 
     const selectedCourses = [];
-    if (title1) selectedCourses.push(title1);
-    if (title2) selectedCourses.push(title2);
-    if (title3) selectedCourses.push(title3);
+    if (title1)
+      selectedCourses.push({
+        title: title1,
+        contribution: Number(courseContribution1),
+      });
+    if (title2)
+      selectedCourses.push({
+        title: title2,
+        contribution: Number(courseContribution2),
+      });
+    if (title3)
+      selectedCourses.push({
+        title: title3,
+        contribution: Number(courseContribution3),
+      });
 
     // const theories = [];
     // const labs = [];
@@ -102,7 +129,7 @@ const AddWorkload = () => {
     let msContactHrs = 0;
     let phdContactHrs = 0;
     selectedCourses.forEach((course) => {
-      const courseObject = courses.find((c) => c.courseTitle === course); //getting courseTitle from every selected course
+      const courseObject = courses.find((c) => c.courseTitle === course.title); //getting courseTitle from every selected course
       switch (courseObject.degree) {
         case "BS":
           sumTheories +=
@@ -115,7 +142,8 @@ const AddWorkload = () => {
             Number(parameters["degree"]["wBS"]);
 
           bsContactHrs +=
-            Number(courseObject.theory) + 3 * Number(courseObject.lab);
+            (Number(courseObject.theory) + 3 * Number(courseObject.lab)) *
+            (course.contribution / 100);
           break;
 
         case "MS":
@@ -129,7 +157,8 @@ const AddWorkload = () => {
             Number(parameters["degree"]["wMS"]);
 
           msContactHrs +=
-            Number(courseObject.theory) + 3 * Number(courseObject.lab);
+            (Number(courseObject.theory) + 3 * Number(courseObject.lab)) *
+            (course.contribution / 100);
           break;
         case "PhD":
           sumTheories +=
@@ -142,12 +171,15 @@ const AddWorkload = () => {
             Number(parameters["degree"]["wPhD"]);
 
           phdContactHrs +=
-            Number(courseObject.theory) + 3 * Number(courseObject.lab);
+            (Number(courseObject.theory) + 3 * Number(courseObject.lab)) *
+            (course.contribution / 100);
           break;
 
         default:
       }
-      sumCreditHrs += Number(courseObject.theory) + Number(courseObject.lab);
+      sumCreditHrs +=
+        (Number(courseObject.theory) + Number(courseObject.lab)) *
+        (course.contribution / 100);
       console.log("Course Object theory " + courseObject.theory);
       console.log("Course Object Lab " + courseObject.lab);
 
@@ -241,6 +273,9 @@ const AddWorkload = () => {
                   <option id="SemesterList-2" value="Fall">
                     Fall
                   </option>
+                  <option id="SemesterList-3" value="Summer">
+                    Summer
+                  </option>
                 </select>
               </div>
             </div>
@@ -295,49 +330,49 @@ const AddWorkload = () => {
                   <option id="MPList-0" value="">
                     -- Select --
                   </option>
-                  <option id="MPList-1" value="Rector / Pro-Rector">
+                  <option id="MPList-1" value="Rector_ProRector">
                     Rector / Pro-Rector
                   </option>
-                  <option id="MPList-2" value="Dean / Director">
+                  <option id="MPList-2" value="Dean_Director">
                     Dean / Director
                   </option>
-                  <option id="MPList-3" value="Registrar / Controller">
+                  <option id="MPList-3" value="Registrar_Controller">
                     Registrar / Controller
                   </option>
-                  <option id="MPList-4" value="Head of Department">
+                  <option id="MPList-4" value="Head_of_Department">
                     Head of Department
                   </option>
-                  <option id="MPList-5" value="Head of Division">
+                  <option id="MPList-5" value="Head_of_Division">
                     Head of Division
                   </option>
-                  <option id="MPList-6" value="Head / Incharge of Section">
+                  <option id="MPList-6" value="Head_or_Incharge_of_Section">
                     Head / Incharge of Section
                   </option>
-                  <option id="MPList-7" value="Project Director">
+                  <option id="MPList-7" value="Project_Director">
                     Project Director
                   </option>
-                  <option id="MPList-8" value="Course / Project Coordinator">
+                  <option id="MPList-8" value="Course_or_Project_Coordinator">
                     Course / Project Coordinator
                   </option>
                   <option
                     id="MPList-9"
-                    value="Conference / Short Course Coordinator"
+                    value="Conference-Short_Course_Coordinator"
                   >
                     Conference / Short Course Coordinator
                   </option>
                   <option
                     id="MPList-10"
-                    value="Conference / Short Course Team Member"
+                    value="Conference-Short_Course_Team_Member"
                   >
                     Conference / Short Course Team Member
                   </option>
-                  <option id="MPList-11" value="Visit Coordinator">
+                  <option id="MPList-11" value="Visit_Coordinator">
                     Visit Coordinator
                   </option>
-                  <option id="MPList-12" value="One Day Seminar Organisor">
+                  <option id="MPList-12" value="One_Day_Seminar_Organisor">
                     One Day Seminar Organisor
                   </option>
-                  <option id="MPList-13" value="Focal Person">
+                  <option id="MPList-13" value="Focal_Person">
                     Focal Person
                   </option>
                 </select>
@@ -345,59 +380,100 @@ const AddWorkload = () => {
             </div>
           </div>
 
-          <div className="formbuilder-select form-group field-CourseList col-6 mt-3">
-            <label for="CourseList" className="formbuilder-select-label">
-              Select Course 1
-            </label>
-            <select
-              className="form-control"
-              name="courseTitle1"
-              id="course1"
-              onChange={(e) => onInputChange(e)}
-            >
-              <option selected="true" id="DesignationList-0" value={0}>
-                -- Select --
-              </option>
-              {course.map((e) => (
-                <option id="">{(e.courseTitle1 = e.courseTitle)}</option>
-              ))}
-            </select>
+          <div className="row">
+            <div className="col-6 mt-3">
+              <label for="CourseList">Select Course 1</label>
+              <select
+                className="form-control"
+                name="courseTitle1"
+                id="course1"
+                onChange={(e) => onInputChange(e)}
+              >
+                <option selected="true" id="DesignationList-0" value={0}>
+                  -- Select --
+                </option>
+                {course.map((e) => (
+                  <option id="">{(e.courseTitle1 = e.courseTitle)}</option>
+                ))}
+              </select>
+            </div>
+            <div className="col-6  mt-3">
+              <label>Contribution Percentage</label>
+              <input
+                type="number"
+                placeholder="0 to 100%"
+                className="form-control"
+                name="courseContribution1"
+                defaultValue={100}
+                min={0}
+                max={100}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
           </div>
-          <div className="formbuilder-select form-group field-CourseList col-6">
-            <label for="CourseList" className="formbuilder-select-label">
-              Select Course 2
-            </label>
-            <select
-              className="form-control"
-              name="courseTitle2"
-              id="course2"
-              onChange={(e) => onInputChange(e)}
-            >
-              <option selected="true" value={0}>
-                -- Select --
-              </option>
-              {course.map((e) => (
-                <option id="">{(e.courseTitle2 = e.courseTitle)}</option>
-              ))}
-            </select>
+
+          <div className="row">
+            <div className="col-6">
+              <label for="CourseList">Select Course 2</label>
+              <select
+                className="form-control"
+                name="courseTitle2"
+                id="course2"
+                onChange={(e) => onInputChange(e)}
+              >
+                <option selected="true" value={0}>
+                  -- Select --
+                </option>
+                {course.map((e) => (
+                  <option id="">{(e.courseTitle2 = e.courseTitle)}</option>
+                ))}
+              </select>
+            </div>
+            <div className="col-6">
+              <label>Contribution Percentage</label>
+              <input
+                type="number"
+                placeholder="0 to 100%"
+                className="form-control"
+                name="courseContribution2"
+                defaultValue={100}
+                min={0}
+                max={100}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
           </div>
-          <div className="formbuilder-select form-group field-CourseList col-6">
-            <label for="CourseList" className="formbuilder-select-label">
-              Select Course 3
-            </label>
-            <select
-              className="form-control"
-              name="courseTitle3"
-              id="course3"
-              onChange={(e) => onInputChange(e)}
-            >
-              <option selected="true" value={0}>
-                -- Select --
-              </option>
-              {course.map((e) => (
-                <option id="">{(e.courseTitle3 = e.courseTitle)}</option>
-              ))}
-            </select>
+
+          <div className="row">
+            <div className="col-6">
+              <label for="CourseList">Select Course 3</label>
+              <select
+                className="form-control"
+                name="courseTitle3"
+                id="course3"
+                onChange={(e) => onInputChange(e)}
+              >
+                <option selected="true" value={0}>
+                  -- Select --
+                </option>
+                {course.map((e) => (
+                  <option id="">{(e.courseTitle3 = e.courseTitle)}</option>
+                ))}
+              </select>
+            </div>
+            <div className="col-6">
+              <label>Contribution Percentage</label>
+              <input
+                type="number"
+                placeholder="0 to 100%"
+                className="form-control"
+                name="courseContribution3"
+                defaultValue={100}
+                min={0}
+                max={100}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
           </div>
 
           <div className="row">
@@ -429,19 +505,7 @@ const AddWorkload = () => {
                 onChange={(e) => onInputChange(e)}
               />
             </div>
-            <div className="col-3">
-              <div>
-                <label>General / Conference Reviewer</label>
-                <input
-                  type="number"
-                  placeholder="General / Conference Reviewer"
-                  className="form-control"
-                  name="GCR"
-                  value={GCR}
-                  onChange={(e) => onInputChange(e)}
-                />
-              </div>
-            </div>
+            <div className="col-3"></div>
           </div>
 
           <div className="row mt-3">
@@ -499,16 +563,85 @@ const AddWorkload = () => {
             </div>
           </div>
 
-          <div className="formbuilder-button form-group field-submitButton">
-            <button
-              className="btn-dark btn form-control mt-5"
-              type="submit"
-              name="submitButton"
-              id="submitButton"
-            >
-              Add Workload
-            </button>
+          <div className="row">
+            <div className="col-2">
+              <label>General / Conference Reviewer</label>
+              <input
+                type="number"
+                placeholder="General / Conference Reviewer"
+                className="form-control"
+                name="GCR"
+                value={GCR}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
+            <div className="col-2">
+              <label>Book</label>
+              <input
+                type="number"
+                placeholder="Book"
+                className="form-control"
+                name="book"
+                value={book}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
+            <div className="col-2">
+              <label>Technical Report</label>
+              <input
+                type="number"
+                placeholder="Technical Report"
+                className="form-control"
+                name="technicalReport"
+                value={technicalReport}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
+            <div className="col-2">
+              <label>Book Chapter</label>
+              <input
+                type="number"
+                placeholder="Book Chapter"
+                className="form-control"
+                name="chapter"
+                value={chapter}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
+            <div className="col-2">
+              <label>Development of Product</label>
+              <input
+                type="number"
+                placeholder="Development of Product"
+                className="form-control"
+                name="devOfProd"
+                value={devOfProd}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
+            <div className="col-2">
+              <label>Patent</label>
+              <input
+                type="number"
+                placeholder="Patent"
+                className="form-control"
+                name="patent"
+                value={patent}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
           </div>
+        </div>
+
+        <div className="formbuilder-button form-group field-submitButton">
+          <button
+            className="btn-dark btn form-control mt-5"
+            type="submit"
+            name="submitButton"
+            id="submitButton"
+          >
+            Add Workload
+          </button>
         </div>
       </form>
     </div>

@@ -28,6 +28,51 @@ const Course = () => {
       >
         Add Course
       </Link>
+      <br></br>
+      <select>
+        <option>All Degrees</option>
+        <option>BS</option>
+        <option>MS</option>
+        <option>PhD</option>
+      </select>
+      <select className="mt-5 ms-2">
+        <option>All Depts</option>
+        <option id="DeptartmentList-1" value="ME">
+          ME
+        </option>
+        <option id="DeptartmentList-2" value="EE">
+          EE
+        </option>
+        <option id="DeptartmentList-3" value="CIS">
+          CIS
+        </option>
+        <option id="DeptartmentList-4" value="PHY">
+          PHY
+        </option>
+        <option id="DeptartmentList-5" value="CHE">
+          CHE
+        </option>
+        <option id="DeptartmentList-6" value="MME">
+          MME
+        </option>
+        <option id="DeptartmentList-7" value="NE">
+          NE
+        </option>
+        <option id="DeptartmentList-8" value="MS">
+          MS
+        </option>
+        <option id="DeptartmentList-9" value="CMS">
+          CMS
+        </option>
+        <option id="DeptartmentList-10" value="Chemistry">
+          Chemistry
+        </option>
+      </select>
+      <select className="ms-2">
+        <option>All Courses</option>
+        <option>Theory</option>
+        <option>Lab</option>
+      </select>
       <table className="table caption-top border shadow mt-2">
         <thead>
           <tr>
@@ -35,7 +80,7 @@ const Course = () => {
             <th>Degree</th>
             <th>Course No</th>
             <th>Title</th>
-            <th>Program</th>
+            <th>Program/Deptartment</th>
             <th>Theory</th>
             <th>Lab</th>
             <th>Actions</th>

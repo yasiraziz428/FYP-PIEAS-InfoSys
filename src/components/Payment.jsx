@@ -30,6 +30,7 @@ const Payment = () => {
     const _workloads = await axios.get("http://localhost:3003/workloads");
     const _designations = await axios.get("http://localhost:3003/designations");
     const _parameters = await axios.get("http://localhost:3003/parameters");
+    const _courses = await axios.get("http://localhost:3003/courses");
     const employees_data = _employees.data;
     const workloads_data = _workloads.data;
 
@@ -54,7 +55,8 @@ const Payment = () => {
       filtered_employees,
       _workloads.data,
       _designations.data,
-      _parameters.data
+      _parameters.data,
+      _courses.data
     );
     setEmployee(modified_result);
   };
@@ -63,13 +65,15 @@ const Payment = () => {
     employees,
     workloads,
     designations,
-    parameters
+    parameters,
+    all_courses
   ) => {
     const modified_employees = employees.map((e) => {
       let bs_contact_hours = 0;
       let ms_contact_hours = 0;
       let phd_contact_hours = 0;
       let total_classes = 0;
+      let courses = [];
 
       //summing all contact hours separated by BS, MS and PHD for all workloads of that particular employee e
       workloads
@@ -92,6 +96,45 @@ const Payment = () => {
             phd_contact_hours += w.phdContactHrs;
           }
           total_classes += w.totalClasses;
+          //Adding courses details
+          if (w.courseTitle1 !== "") {
+            const courseObject = all_courses.find(
+              (c) => c.courseTitle === w.courseTitle1
+            );
+            courses.push({
+              title: w.courseTitle1,
+              contribution: w.courseContribution1,
+              program: courseObject.program,
+              credit_hours:
+                Number(courseObject.theory) + Number(courseObject.lab),
+            });
+          }
+
+          if (w.courseTitle2 !== "") {
+            const courseObject = all_courses.find(
+              (c) => c.courseTitle === w.courseTitle2
+            );
+            courses.push({
+              title: w.courseTitle2,
+              contribution: w.courseContribution2,
+              program: courseObject.program,
+              credit_hours:
+                Number(courseObject.theory) + Number(courseObject.lab),
+            });
+          }
+
+          if (w.courseTitle3 !== "") {
+            const courseObject = all_courses.find(
+              (c) => c.courseTitle === w.courseTitle3
+            );
+            courses.push({
+              title: w.courseTitle3,
+              contribution: w.courseContribution3,
+              program: courseObject.program,
+              credit_hours:
+                Number(courseObject.theory) + Number(courseObject.lab),
+            });
+          }
         });
 
       let total_contact_hours =
@@ -115,6 +158,7 @@ const Payment = () => {
         financial_impact,
         payment_due,
         total_classes,
+        courses,
       };
     });
     return modified_employees;
@@ -162,14 +206,51 @@ const Payment = () => {
         <option value={allSemesters}>All Semesters</option>
         <option value={"Spring"}>Spring</option>
         <option value={"Fall"}>Fall</option>
+        <option value={"Summer"}>Summer</option>
+      </select>
+      <select className="ms-2 mt-2">
+        <option>All Depts</option>
+        <option id="DeptartmentList-1" value="ME">
+          ME
+        </option>
+        <option id="DeptartmentList-2" value="EE">
+          EE
+        </option>
+        <option id="DeptartmentList-3" value="CIS">
+          CIS
+        </option>
+        <option id="DeptartmentList-4" value="PHY">
+          PHY
+        </option>
+        <option id="DeptartmentList-5" value="CHE">
+          CHE
+        </option>
+        <option id="DeptartmentList-6" value="MME">
+          MME
+        </option>
+        <option id="DeptartmentList-7" value="NE">
+          NE
+        </option>
+        <option id="DeptartmentList-8" value="MS">
+          MS
+        </option>
+        <option id="DeptartmentList-9" value="CMS">
+          CMS
+        </option>
+        <option id="DeptartmentList-10" value="Chemistry">
+          Chemistry
+        </option>
       </select>
       <table className="table caption-top border shadow mt-1">
         <thead>
           <tr>
             <th>#</th>
+            <th>Department</th>
             <th>Employee</th>
             <th>Designation</th>
-            <th>Department</th>
+            <th>Course Titles & Depts</th>
+            <th>Course Contributions</th>
+            <th>Course CreditHrs (Theory+Lab)</th>
             <th>Total Contact Hours</th>
             <th>Pay Rate</th>
             <th>Financial Impact in Rs</th>
@@ -183,9 +264,35 @@ const Payment = () => {
                 .map((employee, index) => (
                   <tr>
                     <th scope="row">{index + 1}</th>
+                    <td>{employee.department}</td>
                     <td>{employee.employeeName}</td>
                     <td>{employee.designation}</td>
-                    <td>{employee.department}</td>
+                    <td>
+                      {employee.courses.map((course) => (
+                        <>
+                          <span>
+                            {course.title} ({course.program})
+                          </span>
+                          <br />
+                        </>
+                      ))}
+                    </td>
+                    <td>
+                      {employee.courses.map((course) => (
+                        <>
+                          <span>{course.contribution}%</span>
+                          <br />
+                        </>
+                      ))}
+                    </td>
+                    <td>
+                      {employee.courses.map((course) => (
+                        <>
+                          <span>{course.credit_hours}</span>
+                          <br />
+                        </>
+                      ))}
+                    </td>
                     <td>
                       {employee.total_contact_hours !== 0
                         ? employee.total_contact_hours

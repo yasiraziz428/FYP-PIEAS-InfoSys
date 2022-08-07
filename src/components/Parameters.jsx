@@ -10,6 +10,7 @@ const Parameters = () => {
     wTheory: "",
     wLab: "",
     wManagerialPosition: "",
+    Dean_Director: "",
     wNumberOfStudents: "",
     wProjectSupervisions: "",
     wInternationalJournal: "",
@@ -17,6 +18,11 @@ const Parameters = () => {
     wInternationalConference: "",
     wNationalConference: "",
     wGCR: "",
+    book: "",
+    technicalReport: "",
+    chapter: "",
+    devOfProd: "",
+    patent: "",
   });
 
   const {
@@ -24,6 +30,7 @@ const Parameters = () => {
     wTheory,
     wLab,
     wManagerialPosition,
+    Dean_Director,
     wNumberOfStudents,
     wProjectSupervisions,
     wInternationalJournal,
@@ -31,6 +38,11 @@ const Parameters = () => {
     wInternationalConference,
     wNationalConference,
     wGCR,
+    book,
+    technicalReport,
+    chapter,
+    devOfProd,
+    patent,
   } = parameter;
 
   useEffect(() => {
@@ -168,6 +180,7 @@ const Parameters = () => {
                 <div className="col">
                   <input
                     className="form-control"
+                    name="Dean-Director"
                     onChange={(e) => onInputChange(e)}
                   />
                 </div>
@@ -428,9 +441,9 @@ const Parameters = () => {
           </div>
           <button
             type="sumbit"
-            className="mt-5 ms-5 px-5 btn btn-dark text-center"
+            className="mt-5 px-5 btn btn-dark text-center form-control"
           >
-            Save
+            Update Parameters
           </button>
         </div>
       </form>

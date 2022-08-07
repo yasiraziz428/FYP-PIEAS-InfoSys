@@ -105,26 +105,38 @@ const EditCourse = () => {
               value={program}
               onChange={(e) => onInputChange(e)}
             >
-              <option selected="true" id="programList-0">
+              <option selected="true" id="DeptartmentList-0">
                 Select
               </option>
-              <option id="programList-1" value="ME">
+              <option id="DeptartmentList-1" value="ME">
                 Mechanical Engineering
               </option>
-              <option id="programList-2" value="EE">
+              <option id="DeptartmentList-2" value="EE">
                 Electrical Engineering
               </option>
-              <option id="programList-3" value="CIS">
+              <option id="DeptartmentList-3" value="CIS">
                 Computer and Information Sciences
               </option>
-              <option id="programList-4" value="PHY">
+              <option id="DeptartmentList-4" value="PHY">
                 Physics
               </option>
-              <option id="programList-5" value="CHE">
+              <option id="DeptartmentList-5" value="CHE">
                 Chemical Engineering
               </option>
-              <option id="programList-6" value="MME">
+              <option id="DeptartmentList-6" value="NE">
+                Nuclear Engineering
+              </option>
+              <option id="DeptartmentList-7" value="MS">
+                Medical Sciences
+              </option>
+              <option id="DeptartmentList-8" value="MME">
                 Metallurgy &amp; Materials Engineering
+              </option>
+              <option id="DeptartmentList-9" value="CMS">
+                Communication and Management Sciences
+              </option>
+              <option id="DeptartmentList-10" value="Chemistry">
+                Chemistry
               </option>
             </select>
           </div>
