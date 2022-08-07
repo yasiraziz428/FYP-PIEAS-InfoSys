@@ -43,6 +43,16 @@ const Navbar = () => {
                   Payment
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" exact to="./report">
+                  Report
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" exact to="./parameters">
+                  Parameters
+                </NavLink>
+              </li>
               {/* <li className="nav-item dropdown">
                 <Link
                   className="nav-link dropdown-toggle"

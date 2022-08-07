@@ -14,6 +14,8 @@ import Workload from "./components/Workload";
 import AddWorkload from "./components/AddWorkload";
 import Payment from "./components/Payment";
 import EditWorkload from "./components/EditWorkload";
+import Parameters from "./components/Parameters";
+import Report from "./components/Report";
 
 const App = () => {
   return (
@@ -33,6 +35,8 @@ const App = () => {
           <Route exact path="/workload/add" element={<AddWorkload />} />
           <Route exact path="/workload/edit/:id" element={<EditWorkload />} />
           <Route exact path="/payment" element={<Payment />} />
+          <Route exact path="/report" element={<Report />} />
+          <Route exact path="/parameters" element={<Parameters />} />
         </Routes>
       </BrowserRouter>
     </div>

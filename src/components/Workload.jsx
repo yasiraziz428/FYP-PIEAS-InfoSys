@@ -77,6 +77,7 @@ const Workload = () => {
             <th>National Journal</th>
             <th>International Conference</th>
             <th>National Conference</th>
+            <th>General / Conference Reviewer</th>
             <th>Workload</th>
             <th>Actions</th>
           </tr>
@@ -99,6 +100,7 @@ const Workload = () => {
                   <td>{workloads.nationalJournal}</td>
                   <td>{workloads.intConference}</td>
                   <td>{workloads.nationalConference}</td>
+                  <td>{workloads.GCR}</td>
                   <td>{workloads.workLoad}</td>
                   <td>
                     <Link

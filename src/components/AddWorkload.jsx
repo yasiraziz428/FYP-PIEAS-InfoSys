@@ -415,10 +415,10 @@ const AddWorkload = () => {
               </div>
             </div>
           </div>
+          <h1 className="mt-5 mb-4">R & D</h1>
 
-          <h1 className="mt-5">R & D</h1>
-          <div className="col-3">
-            <div className="formbuilder-text form-group mt-2 field-text-1654851224189 mt-5 ">
+          <div className="row">
+            <div className="formbuilder-text form-group  field-text-1654851224189 col-3 ">
               <label>Project Supervisions</label>
               <input
                 type="number"
@@ -430,7 +430,7 @@ const AddWorkload = () => {
               />
             </div>
             <div className="col-3">
-              <div className="formbuilder-text form-group mt-2 field-text-1654851224189 mt-5 ">
+              <div>
                 <label>General / Conference Reviewer</label>
                 <input
                   type="number"
@@ -444,7 +444,7 @@ const AddWorkload = () => {
             </div>
           </div>
 
-          <div className="row">
+          <div className="row mt-3">
             <div className="col-3">
               <div className="formbuilder-text form-group mt-2 field-text-1654851224189">
                 <label>International Journal</label>
