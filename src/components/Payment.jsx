@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 const Payment = () => {
   const allYears = "All Years";
   const allSemesters = "All Semesters";
 
-  const [payment, setPayment] = useState([]);
   const [years, setYears] = useState([]);
   const [selectedYear, setSelectedYear] = useState(allYears);
   const [selectedSemester, setSelectedSemester] = useState(allSemesters);
@@ -248,10 +246,11 @@ const Payment = () => {
             <th>Department</th>
             <th>Employee</th>
             <th>Designation</th>
-            <th>Course Titles & Depts</th>
+            <th>Courses & Programs</th>
             <th>Course Contributions</th>
-            <th>Course CreditHrs (Theory+Lab)</th>
+            <th>Credit Hours (Theory+Lab)</th>
             <th>Total Contact Hours</th>
+            <th>Expected Classes</th>
             <th>Pay Rate</th>
             <th>Financial Impact in Rs</th>
             <th>Payment Due in Rs</th>
@@ -298,6 +297,7 @@ const Payment = () => {
                         ? employee.total_contact_hours
                         : "Not Available"}
                     </td>
+                    <td>{employee.total_contact_hours * 16}</td>
                     <td>Rs. {employee.pay_rate}</td>
                     <td>Rs. {employee.financial_impact}</td>
                     <td>

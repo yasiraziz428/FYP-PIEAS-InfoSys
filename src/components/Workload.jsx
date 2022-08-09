@@ -53,7 +53,7 @@ const Workload = () => {
   // }
 
   return (
-    <div className="container">
+    <div className="container-fluid ">
       <Link
         to="/workload/add"
         className="btn btn-outline-dark position-relative mt-3 end-0"
@@ -115,6 +115,7 @@ const Workload = () => {
             <th>Managerial Position</th>
             <th>Number of Students</th>
             <th>Project Supervisions</th>
+            <th>Research Project (Million)</th>
             <th>International Journal</th>
             <th>National Journal</th>
             <th>International Conference</th>
@@ -143,6 +144,7 @@ const Workload = () => {
                   <td>{workloads.managerialPosition}</td>
                   <td>{workloads.noOfStudents}</td>
                   <td>{workloads.projectSupervisions}</td>
+                  <td>{workloads.researchProject}</td>
                   <td>{workloads.intJournal}</td>
                   <td>{workloads.nationalJournal}</td>
                   <td>{workloads.intConference}</td>
