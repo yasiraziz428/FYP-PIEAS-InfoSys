@@ -101,116 +101,160 @@
       "degree": "BS",
       "courseNo": "MSA-653",
       "courseTitle": "Programming",
-      "program": "CHE",
+      "program": "BS_CIS",
       "theory": "3",
       "lab": "0",
-      "id": 1
+      "id": 1,
+      "dept": "CIS"
     },
     {
       "degree": "BS",
       "courseNo": "XXX-123",
       "courseTitle": "OOP",
-      "program": "CIS",
+      "program": "BS_CIS",
       "theory": "3",
       "lab": "0",
-      "id": 2
+      "id": 2,
+      "dept": "CIS"
     },
     {
       "degree": "BS",
       "courseNo": "CSA-568",
       "courseTitle": "OOP L",
-      "program": "CIS",
+      "program": "BS_CIS",
       "theory": "0",
       "lab": "1",
-      "id": 4
+      "id": 4,
+      "dept": "CIS"
     },
     {
       "degree": "BS",
       "courseNo": "XXX-123",
       "courseTitle": "Programming L",
-      "program": "CIS",
+      "program": "BS_CIS",
       "theory": "0",
       "lab": "1",
-      "id": 5
+      "id": 5,
+      "dept": "CIS"
     },
     {
       "degree": "BS",
       "courseNo": "ABC-123",
       "courseTitle": "Islamiyat",
-      "program": "CIS",
+      "program": "BS_CIS",
       "theory": "2",
       "lab": "0",
-      "id": 6
+      "id": 6,
+      "dept": "CIS"
     },
     {
       "degree": "BS",
       "courseNo": "ABC-123",
       "courseTitle": "DSA L",
-      "program": "CIS",
+      "program": "BS_CIS",
       "theory": "0",
       "lab": "1",
-      "id": 7
+      "id": 7,
+      "dept": "CIS"
     },
     {
       "degree": "BS",
       "courseNo": "ABC-123",
       "courseTitle": "DSA T",
-      "program": "CIS",
+      "program": "BS_CIS",
       "theory": "3",
       "lab": "0",
-      "id": 8
+      "id": 8,
+      "dept": "CIS"
     },
     {
       "degree": "BS",
       "courseNo": "ABC-123",
       "courseTitle": "IAD T",
-      "program": "CIS",
+      "program": "BS_CIS",
       "theory": "3",
       "lab": "0",
-      "id": 9
+      "id": 9,
+      "dept": "CIS"
     },
     {
       "degree": "BS",
       "courseNo": "ABC-123",
       "courseTitle": "IAD L",
-      "program": "CIS",
+      "program": "BS_CIS",
       "theory": "0",
       "lab": "1",
-      "id": 10
+      "id": 10,
+      "dept": "CIS"
     },
     {
       "degree": "BS",
       "courseNo": "ABC-123",
       "courseTitle": "CFP T",
-      "program": "ME",
+      "program": "BS_ME",
       "theory": "3",
       "lab": "0",
-      "id": 11
+      "id": 11,
+      "dept": "ME"
     },
     {
       "degree": "BS",
       "courseNo": "ABC-123",
       "courseTitle": "CFP L",
-      "program": "ME",
+      "program": "BS_CIS",
       "theory": "0",
       "lab": "1",
-      "id": 12
+      "id": 12,
+      "dept": "CIS"
     }
   ],
   "workloads": [
+    {
+      "semester": "Spring",
+      "year": "2022",
+      "employeeName": "Muhammad Yasir Aziz",
+      "courseTitle1": "Programming",
+      "courseTitle2": "Programming L",
+      "courseTitle3": "Islamiyat",
+      "courseContribution1": "100",
+      "courseContribution2": "100",
+      "courseContribution3": "100",
+      "managerialPosition": "",
+      "noOfStudents": "",
+      "projectSupervisions": "",
+      "researchProject": "",
+      "intJournal": "",
+      "nationalJournal": "",
+      "intConference": "",
+      "nationalConference": "",
+      "contactHours": "",
+      "GCR": "",
+      "book": "",
+      "technicalReport": "",
+      "chapter": "",
+      "devOfProd": "",
+      "patent": "",
+      "workLoad": "0.620",
+      "bsContactHrs": 8,
+      "msContactHrs": 0,
+      "phdContactHrs": 0,
+      "totalClasses": 96,
+      "id": 1
+    },
     {
       "semester": "Fall",
       "year": "2022",
       "employeeName": "Ahmad Kamal Baig",
       "courseTitle1": "OOP",
-      "courseTitle2": "",
-      "courseTitle3": "",
-      "courseContribution1": "50",
+      "courseTitle2": "OOP L",
+      "courseTitle3": "IAD T",
+      "courseContribution1": "100",
       "courseContribution2": "100",
       "courseContribution3": "100",
       "managerialPosition": "",
       "noOfStudents": "",
       "projectSupervisions": "",
+      "researchProject": "",
       "intJournal": "",
       "nationalJournal": "",
       "intConference": "",
@@ -222,26 +266,27 @@
       "chapter": "",
       "devOfProd": "",
       "patent": "",
-      "workLoad": "0.300",
-      "bsContactHrs": 1.5,
+      "workLoad": "0.720",
+      "bsContactHrs": 9,
       "msContactHrs": 0,
       "phdContactHrs": 0,
-      "totalClasses": 24,
+      "totalClasses": 112,
       "id": 2
     },
     {
       "semester": "Fall",
-      "year": "2022",
+      "year": "2018",
       "employeeName": "Muhammad Yasir Aziz",
-      "courseTitle1": "OOP",
-      "courseTitle2": "",
-      "courseTitle3": "",
-      "courseContribution1": "50",
+      "courseTitle1": "Programming",
+      "courseTitle2": "OOP",
+      "courseTitle3": "CFP L",
+      "courseContribution1": "100",
       "courseContribution2": "100",
       "courseContribution3": "100",
       "managerialPosition": "",
       "noOfStudents": "",
       "projectSupervisions": "",
+      "researchProject": "",
       "intJournal": "",
       "nationalJournal": "",
       "intConference": "",
@@ -253,11 +298,11 @@
       "chapter": "",
       "devOfProd": "",
       "patent": "",
-      "workLoad": "0.300",
-      "bsContactHrs": 1.5,
+      "workLoad": "0.720",
+      "bsContactHrs": 9,
       "msContactHrs": 0,
       "phdContactHrs": 0,
-      "totalClasses": 24,
+      "totalClasses": 112,
       "id": 3
     }
   ],
@@ -307,7 +352,113 @@
     "wPatent": "0.1",
     "totalWeeksInSemester": 16
   },
-  "payments": [],
+  "payments": [
+    {
+      "employee_id": 1,
+      "year": "2022",
+      "semester": "Spring",
+      "total_contact_hours": 8,
+      "bs_contact_hours": 8,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "pay_rate": 2000,
+      "financial_impact": 256000,
+      "payment_due": 250666.66666666666,
+      "total_classes": 96,
+      "compensated_classes": -2,
+      "courses": [
+        {
+          "title": "Programming",
+          "contribution": "100",
+          "program": "BS_CIS",
+          "credit_hours": 3
+        },
+        {
+          "title": "Programming L",
+          "contribution": "100",
+          "program": "BS_CIS",
+          "credit_hours": 1
+        },
+        {
+          "title": "Islamiyat",
+          "contribution": "100",
+          "program": "BS_CIS",
+          "credit_hours": 2
+        }
+      ],
+      "id": 1
+    },
+    {
+      "employee_id": 7,
+      "year": "2022",
+      "semester": "Fall",
+      "total_contact_hours": 9,
+      "bs_contact_hours": 9,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "pay_rate": 2500,
+      "financial_impact": 360000,
+      "payment_due": 353571.4285714286,
+      "total_classes": 112,
+      "compensated_classes": -2,
+      "courses": [
+        {
+          "title": "OOP",
+          "contribution": "100",
+          "program": "BS_CIS",
+          "credit_hours": 3
+        },
+        {
+          "title": "OOP L",
+          "contribution": "100",
+          "program": "BS_CIS",
+          "credit_hours": 1
+        },
+        {
+          "title": "IAD T",
+          "contribution": "100",
+          "program": "BS_CIS",
+          "credit_hours": 3
+        }
+      ],
+      "id": 2
+    },
+    {
+      "employee_id": 1,
+      "year": "2018",
+      "semester": "Fall",
+      "total_contact_hours": 9,
+      "bs_contact_hours": 9,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "pay_rate": 2000,
+      "financial_impact": 288000,
+      "payment_due": 285428.5714285714,
+      "total_classes": 112,
+      "compensated_classes": -1,
+      "courses": [
+        {
+          "title": "Programming",
+          "contribution": "100",
+          "program": "BS_CIS",
+          "credit_hours": 3
+        },
+        {
+          "title": "OOP",
+          "contribution": "100",
+          "program": "BS_CIS",
+          "credit_hours": 3
+        },
+        {
+          "title": "CFP L",
+          "contribution": "100",
+          "program": "BS_CIS",
+          "credit_hours": 1
+        }
+      ],
+      "id": 3
+    }
+  ],
   "designations": [
     {
       "name": "Regular Faculty"
@@ -335,6 +486,29 @@
     {
       "name": "TA/Lab Engineer B",
       "payrate": 750
+    }
+  ],
+  "programs": [
+    {
+      "name": "BS_Physics"
+    },
+    {
+      "name": "BS_CIS"
+    },
+    {
+      "name": "BS_MME"
+    },
+    {
+      "name": "BS_EE"
+    },
+    {
+      "name": "BS_CHE"
+    },
+    {
+      "name": "BS_ME"
+    },
+    {
+      "name": "MSc"
     }
   ]
 }

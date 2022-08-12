@@ -70,7 +70,7 @@ const Workload = () => {
         <option></option>
       </select>
       <select className="mt-5 ms-2">
-        <option>All Depts</option>
+        <option>All Deptartments</option>
         <option id="DeptartmentList-1" value="ME">
           ME
         </option>

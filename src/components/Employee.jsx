@@ -45,7 +45,7 @@ const Employee = () => {
           </option>
         </select>
         <select className="ms-2 mt-5">
-          <option>All Depts</option>
+          <option>All Deptartments</option>
           <option id="DeptartmentList-1" value="ME">
             ME
           </option>

@@ -85,9 +85,17 @@ const AddWorkload = () => {
     const parameters_response = await axios.get(
       "http://localhost:3003/parameters"
     );
+    const designation_response = await axios.get(
+      "http://localhost:3003/designations"
+    );
 
     const courses = courses_response.data;
     const parameters = parameters_response.data;
+    const designations = designation_response.data;
+    const employeeName = workload["employeeName"];
+    const employeeObject = employee.find(
+      (e) => e.employeeName === employeeName
+    );
     const title1 = workload["courseTitle1"];
     const title2 = workload["courseTitle2"];
     const title3 = workload["courseTitle3"];
@@ -184,30 +192,9 @@ const AddWorkload = () => {
         (course.contribution / 100);
       console.log("Course Object theory " + courseObject.theory);
       console.log("Course Object Lab " + courseObject.lab);
-
-      // theories.push(Number(courseObject.theory));
-      // labs.push(Number(courseObject.lab));
     });
-    console.log("Total Credit Hours: ", sumCreditHrs);
-    // const sumTheories = theories.reduce((prev, curr) => prev + curr, 0);
-    // console.log("theories " + sumTheories);
-    // const sumLabs = labs.reduce((prev, curr) => prev + curr, 2);
-    // console.log("Labs " + sumLabs);
-    // console.log(Number(parameters["wNumberOfStudents"]));
-    // console.log(Number(parameters["wProjectSupervisions"]));
-    // console.log(Number(parameters["wInternationalJournal"]));
-    // console.log(Number(parameters["wNationalJournal"]));
-    // console.log(Number(parameters["wInternationalConference"]));
-    // console.log(Number(parameters["wNationalConference"]));
-
-    //console.log(sumTheories, sumLabs);
-    // console.log(parameters);
-    //console.log(parameters["wTheory"], parameters["wLab"]);
-    //console.log(parameters.wTheory, parameters.wLab);
 
     const final_score =
-      // Number(parameters["wTheory"]) * sumTheories +
-      // Number(parameters["wLab"]) * sumLabs +
       Number(sumTheories) +
       Number(sumLabs) +
       Number(wMP) +
@@ -225,8 +212,6 @@ const AddWorkload = () => {
       Number(devOfProd) * Number(parameters["wDevOfProd"]) +
       Number(patent) * Number(parameters["wPatent"]);
 
-    //console.log(final_score);
-
     //Fetch all courses from json server
     //Get credit hours of three courses from fetched courses details + add them afterwards
     //Fetch parameters from json server
@@ -243,9 +228,20 @@ const AddWorkload = () => {
       phdContactHrs,
       totalClasses: sumCreditHrs * parameters.totalWeeksInSemester,
     });
-    // await axios.post("http://localhost:3003/employees", {
-    //   ...employee,
-    // });
+
+    const pay_rate = designations.find(
+      (d) => d.name === employeeObject.designation
+    ).payrate;
+    if (pay_rate) {
+      updatePayment(
+        { ...employeeObject, pay_rate },
+        workload.year,
+        workload.semester,
+        courses,
+        parameters
+      );
+    }
+
     setWorkload({
       ...workload,
       workLoad: final_score,
@@ -254,6 +250,135 @@ const AddWorkload = () => {
       phdContactHrs,
     });
     navigate("/workload");
+  };
+
+  const updatePayment = async (
+    employeeObject,
+    year,
+    semester,
+    all_courses,
+    parameters
+  ) => {
+    console.log("Updating");
+    //checking if there is any existing payment
+    const existing_payment = await axios.get(
+      `http://localhost:3003/payments/?employee_id=${employeeObject.id}&year=${year}&semester=${semester}`
+    );
+    let replace_id = undefined;
+    if (existing_payment.data.length !== 0) {
+      replace_id = existing_payment.data[0].id;
+    }
+
+    //declarations
+    let bs_contact_hours = 0;
+    let ms_contact_hours = 0;
+    let phd_contact_hours = 0;
+    let total_classes = 0;
+    let courses = [];
+
+    //getting all workloads
+    const workload_response = await axios.get(
+      "http://localhost:3003/workloads"
+    );
+
+    workload_response.data
+      .filter(
+        (w) =>
+          w.employeeName === employeeObject.employeeName &&
+          w.year === year &&
+          w.semester === semester
+      )
+      .forEach((w) => {
+        if (w.bsContactHrs) {
+          bs_contact_hours += w.bsContactHrs;
+        }
+        if (w.msContactHrs) {
+          ms_contact_hours += w.msContactHrs;
+        }
+        if (w.phdContactHrs) {
+          phd_contact_hours += w.phdContactHrs;
+        }
+        total_classes += w.totalClasses;
+        //Adding courses details
+        if (w.courseTitle1 !== "") {
+          const courseObject = all_courses.find(
+            (c) => c.courseTitle === w.courseTitle1
+          );
+          courses.push({
+            title: w.courseTitle1,
+            contribution: w.courseContribution1,
+            program: courseObject.program,
+            credit_hours:
+              Number(courseObject.theory) + Number(courseObject.lab),
+          });
+        }
+
+        if (w.courseTitle2 !== "") {
+          const courseObject = all_courses.find(
+            (c) => c.courseTitle === w.courseTitle2
+          );
+          courses.push({
+            title: w.courseTitle2,
+            contribution: w.courseContribution2,
+            program: courseObject.program,
+            credit_hours:
+              Number(courseObject.theory) + Number(courseObject.lab),
+          });
+        }
+
+        if (w.courseTitle3 !== "") {
+          const courseObject = all_courses.find(
+            (c) => c.courseTitle === w.courseTitle3
+          );
+          courses.push({
+            title: w.courseTitle3,
+            contribution: w.courseContribution3,
+            program: courseObject.program,
+            credit_hours:
+              Number(courseObject.theory) + Number(courseObject.lab),
+          });
+        }
+      });
+
+    const total_contact_hours =
+      bs_contact_hours + ms_contact_hours + phd_contact_hours;
+
+    const financial_impact =
+      Number(total_contact_hours) *
+      Number(employeeObject.pay_rate) *
+      Number(parameters.totalWeeksInSemester);
+
+    const compensated_classes = replace_id
+      ? existing_payment.data[0].compensated_classes
+      : 0;
+    const impact_per_class = financial_impact / total_classes;
+    const payment_due =
+      financial_impact + compensated_classes * impact_per_class;
+
+    const final_payment_obj = {
+      employee_id: employeeObject.id,
+      year,
+      semester,
+      total_contact_hours,
+      bs_contact_hours,
+      ms_contact_hours,
+      phd_contact_hours,
+      pay_rate: employeeObject.pay_rate,
+      financial_impact,
+      payment_due,
+      total_classes,
+      compensated_classes,
+      courses,
+    };
+
+    if (replace_id) {
+      await axios.put(
+        `http://localhost:3003/payments/${replace_id}`,
+        final_payment_obj
+      );
+    } else {
+      await axios.post("http://localhost:3003/payments", final_payment_obj);
+    }
   };
 
   return (

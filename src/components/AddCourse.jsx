@@ -1,23 +1,35 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AddCourse = () => {
   let navigate = useNavigate();
   const [course, setCourse] = useState({
     degree: "",
+    dept: "",
+    program: "",
     courseNo: "",
     courseTitle: "",
-    program: "",
     theory: "",
     lab: "",
   });
 
-  const { degree, courseNo, courseTitle, program, theory, lab } = course;
+  const [programs, setPrograms] = useState([]);
+
+  const { degree, courseNo, courseTitle, program, theory, lab, dept } = course;
 
   const onInputChange = (e) => {
     setCourse({ ...course, [e.target.name]: e.target.value });
   };
+
+  const loadPrograms = async () => {
+    const result = await axios.get("http://localhost:3003/programs");
+    setPrograms(result.data);
+  };
+
+  useEffect(() => {
+    loadPrograms();
+  }, []);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -57,41 +69,15 @@ const AddCourse = () => {
               </option>
             </select>
           </div>
-          <div className="formbuilder-text form-group mt-5 field-text-1654851224189">
-            <label for="text-1654851224189" className="formbuilder-text-label">
-              Course No
-            </label>
-            <input
-              type="text"
-              placeholder=""
-              className="form-control"
-              name="courseNo"
-              value={courseNo}
-              onChange={(e) => onInputChange(e)}
-            />
-          </div>
-          <div className="formbuilder-text form-group field-text-1654851224189">
-            <label for="text-1654851224189" className="formbuilder-text-label">
-              Course Title
-            </label>
-            <input
-              type="text"
-              placeholder="Course Title"
-              className="form-control"
-              name="courseTitle"
-              value={courseTitle}
-              onChange={(e) => onInputChange(e)}
-            />
-          </div>
           <div className="formbuilder-select form-group field-DeptartmentList">
             <label for="DeptartmentList" className="formbuilder-select-label">
               Department
             </label>
             <select
               className="form-control"
-              name="program"
+              name="dept"
               id="programList"
-              value={program}
+              value={dept}
               onChange={(e) => onInputChange(e)}
             >
               <option selected="true" id="DeptartmentList-0">
@@ -129,6 +115,49 @@ const AddCourse = () => {
               </option>
             </select>
           </div>
+          <div className="formbuilder-select form-group field-degreeList">
+            <label for="degreeList" className="formbuilder-select-label">
+              Program
+            </label>
+            <select
+              className="form-control"
+              name="program"
+              value={program}
+              onChange={(e) => onInputChange(e)}
+            >
+              <option selected="true">Select</option>
+              {programs.map((d) => (
+                <option value={d.name}>{d.name}</option>
+              ))}
+            </select>
+          </div>
+          <div className="formbuilder-text form-group mt-5 field-text-1654851224189">
+            <label for="text-1654851224189" className="formbuilder-text-label">
+              Course No
+            </label>
+            <input
+              type="text"
+              placeholder=""
+              className="form-control"
+              name="courseNo"
+              value={courseNo}
+              onChange={(e) => onInputChange(e)}
+            />
+          </div>
+          <div className="formbuilder-text form-group field-text-1654851224189">
+            <label for="text-1654851224189" className="formbuilder-text-label">
+              Course Title
+            </label>
+            <input
+              type="text"
+              placeholder="Course Title"
+              className="form-control"
+              name="courseTitle"
+              value={courseTitle}
+              onChange={(e) => onInputChange(e)}
+            />
+          </div>
+
           <div className="formbuilder-text form-group mt-5 field-text-1654851224189">
             <label for="text-1654851224189" className="formbuilder-text-label">
               Theory Credit Hours
