@@ -22,10 +22,7 @@ const Course = () => {
 
   return (
     <div className="container">
-      <Link
-        to="/course/add"
-        className="btn btn-outline-dark position-relative mt-3 end-0"
-      >
+      <Link to="/course/add" className="btn btn-outline-dark float-end mt-5">
         Add Course
       </Link>
       <br></br>

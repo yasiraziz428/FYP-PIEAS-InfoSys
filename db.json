@@ -2,7 +2,7 @@
   "employees": [
     {
       "employeeName": "Muhammad Yasir Aziz",
-      "department": "EE",
+      "department": "CIS",
       "designation": "Visiting Faculty B",
       "managerialPosition": "CC",
       "id": 1
@@ -23,7 +23,7 @@
     },
     {
       "employeeName": "Ahmad Kamal Baig",
-      "department": "ME",
+      "department": "CIS",
       "designation": "Visiting Faculty C",
       "managerialPosition": "HOD",
       "id": 7
@@ -206,6 +206,16 @@
       "lab": "1",
       "id": 12,
       "dept": "CIS"
+    },
+    {
+      "degree": "MS",
+      "dept": "PHY",
+      "program": "BS_CHE",
+      "courseNo": "ABC-123",
+      "courseTitle": "ABC",
+      "theory": "3",
+      "lab": "0",
+      "id": 13
     }
   ],
   "workloads": [
@@ -272,38 +282,6 @@
       "phdContactHrs": 0,
       "totalClasses": 112,
       "id": 2
-    },
-    {
-      "semester": "Fall",
-      "year": "2018",
-      "employeeName": "Muhammad Yasir Aziz",
-      "courseTitle1": "Programming",
-      "courseTitle2": "OOP",
-      "courseTitle3": "CFP L",
-      "courseContribution1": "100",
-      "courseContribution2": "100",
-      "courseContribution3": "100",
-      "managerialPosition": "",
-      "noOfStudents": "",
-      "projectSupervisions": "",
-      "researchProject": "",
-      "intJournal": "",
-      "nationalJournal": "",
-      "intConference": "",
-      "nationalConference": "",
-      "contactHours": "",
-      "GCR": "",
-      "book": "",
-      "technicalReport": "",
-      "chapter": "",
-      "devOfProd": "",
-      "patent": "",
-      "workLoad": "0.720",
-      "bsContactHrs": 9,
-      "msContactHrs": 0,
-      "phdContactHrs": 0,
-      "totalClasses": 112,
-      "id": 3
     }
   ],
   "parameters": {
@@ -350,7 +328,11 @@
     "wChapter": "0.1",
     "wDevOfProd": "0.1",
     "wPatent": "0.1",
-    "totalWeeksInSemester": 16
+    "totalWeeksInSemester": {
+      "fall": 16,
+      "spring": 16,
+      "summer": 8
+    }
   },
   "payments": [
     {
@@ -363,7 +345,7 @@
       "phd_contact_hours": 0,
       "pay_rate": 2000,
       "financial_impact": 256000,
-      "payment_due": 250666.66666666666,
+      "payment_due": 250666,
       "total_classes": 96,
       "compensated_classes": -2,
       "courses": [
@@ -398,9 +380,9 @@
       "phd_contact_hours": 0,
       "pay_rate": 2500,
       "financial_impact": 360000,
-      "payment_due": 353571.4285714286,
+      "payment_due": 350358,
       "total_classes": 112,
-      "compensated_classes": -2,
+      "compensated_classes": -3,
       "courses": [
         {
           "title": "OOP",
@@ -427,36 +409,46 @@
       "employee_id": 1,
       "year": "2018",
       "semester": "Fall",
-      "total_contact_hours": 9,
-      "bs_contact_hours": 9,
+      "total_contact_hours": 0,
+      "bs_contact_hours": 0,
       "ms_contact_hours": 0,
       "phd_contact_hours": 0,
-      "pay_rate": 2000,
-      "financial_impact": 288000,
-      "payment_due": 285428.5714285714,
-      "total_classes": 112,
-      "compensated_classes": -1,
-      "courses": [
-        {
-          "title": "Programming",
-          "contribution": "100",
-          "program": "BS_CIS",
-          "credit_hours": 3
-        },
-        {
-          "title": "OOP",
-          "contribution": "100",
-          "program": "BS_CIS",
-          "credit_hours": 3
-        },
-        {
-          "title": "CFP L",
-          "contribution": "100",
-          "program": "BS_CIS",
-          "credit_hours": 1
-        }
-      ],
+      "financial_impact": null,
+      "payment_due": null,
+      "total_classes": 0,
+      "compensated_classes": -5,
+      "courses": [],
       "id": 3
+    },
+    {
+      "employee_id": 1,
+      "year": "",
+      "semester": "",
+      "total_contact_hours": 0,
+      "bs_contact_hours": 0,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "financial_impact": null,
+      "payment_due": null,
+      "total_classes": 0,
+      "compensated_classes": 0,
+      "courses": [],
+      "id": 4
+    },
+    {
+      "employee_id": 12,
+      "year": "",
+      "semester": "Summer",
+      "total_contact_hours": 0,
+      "bs_contact_hours": 0,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "financial_impact": null,
+      "payment_due": null,
+      "total_classes": 0,
+      "compensated_classes": 0,
+      "courses": [],
+      "id": 5
     }
   ],
   "designations": [
@@ -490,25 +482,70 @@
   ],
   "programs": [
     {
-      "name": "BS_Physics"
+      "name": "BS_ME",
+      "id": 5
     },
     {
-      "name": "BS_CIS"
+      "name": "BS_CIS",
+      "id": 6
     },
     {
-      "name": "BS_MME"
+      "name": "BS_EE",
+      "id": 7
     },
     {
-      "name": "BS_EE"
+      "name": "BS_PHY",
+      "id": 8
     },
     {
-      "name": "BS_CHE"
+      "name": "BS_MME",
+      "id": 9
+    }
+  ],
+  "departments": [
+    {
+      "name": "ME",
+      "full_name": "Mechanical Engineering"
     },
     {
-      "name": "BS_ME"
+      "name": "EE",
+      "full_name": "Electrical Engineering"
     },
     {
-      "name": "MSc"
+      "name": "CIS",
+      "full_name": "Computer and Information Sciences"
+    },
+    {
+      "name": "PHY",
+      "full_name": "Physics"
+    },
+    {
+      "name": "CHE",
+      "full_name": "Chemical Engineering"
+    },
+    {
+      "name": "Chem",
+      "full_name": "Chemistry"
+    },
+    {
+      "name": "CMS",
+      "full_name": "Communication & Management Sciences"
+    },
+    {
+      "name": "NE",
+      "full_name": "Nuclear Engineering"
+    },
+    {
+      "name": "MS",
+      "full_name": "Medical Sciences"
+    },
+    {
+      "name": "PAM",
+      "full_name": "Physics & Applied Mathematics"
+    },
+    {
+      "name": "MME",
+      "full_name": "Metallurgy & Materials Engineering"
     }
   ]
 }

@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 const Parameters = () => {
   let navigate = useNavigate();
+  const [newProgram, setNewProgram] = useState("");
+  const [programs, setPrograms] = useState([]);
   const [parameter, setParameter] = useState({
     degree: { wBS: "", wMS: "", wPhD: "" },
     wTheory: "",
@@ -87,6 +89,7 @@ const Parameters = () => {
 
   useEffect(() => {
     loadParameters();
+    loadPrograms();
   }, []);
 
   const onInputChange = (e) => {
@@ -281,11 +284,34 @@ const Parameters = () => {
     setParameter(result.data);
   };
 
+  const loadPrograms = async () => {
+    const result = await axios.get(`http://localhost:3003/programs`);
+    setPrograms(result.data);
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.put("http://localhost:3003/parameters", parameter);
     navigate("/parameters");
     console.log("Submitted!");
+  };
+
+  const onChangeNewProgram = (e) => {
+    setNewProgram(e.target.value);
+  };
+
+  const onDeleteProgram = async (program) => {
+    await axios.delete(`http://localhost:3003/programs/${program.id}`);
+    await loadPrograms();
+  };
+
+  const addNewProgram = async () => {
+    if (newProgram && newProgram !== "") {
+      await axios.post("http://localhost:3003/programs", {
+        name: newProgram,
+      });
+      await loadPrograms();
+    }
   };
 
   return (
@@ -294,7 +320,6 @@ const Parameters = () => {
         <div className="container w-50 shadow px-5 pb-5">
           <div className="row">
             <h1 className="text-center py-5">Parameters</h1>
-
             {/* Workload Section */}
             <div className="col-lg-5 col-md-12 col-sm-12">
               <h3 className="text-center mb-5">Workload</h3>
@@ -632,7 +657,8 @@ const Parameters = () => {
                   />
                 </div>
               </div>
-              <div className="row">
+              <div className="row mt-5">
+                <h5 className="mb-3">Publications</h5>
                 <div className="col">
                   <label>International Journal</label>
                 </div>
@@ -685,6 +711,7 @@ const Parameters = () => {
                 </div>
               </div>
               <div className="row mt-5">
+                <h5 className="mb-3">Others</h5>
                 <div className="col">
                   <label>General / Conference Reviewer</label>
                 </div>
@@ -779,9 +806,7 @@ const Parameters = () => {
                 <div className="col"></div>
               </div>
             </div>
-
             {/* Payment Section */}
-
             <div className="container col-lg-5 col-md-12 col-sm-12">
               <h3 className="text-center mb-5">Payment</h3>
 
@@ -850,6 +875,40 @@ const Parameters = () => {
                     className="form-control"
                     onChange={(e) => onInputChange(e)}
                   />
+                </div>
+              </div>
+
+              {/* Program Section */}
+              <h3 className="text-center my-5">Programs</h3>
+              {programs.map((program) => (
+                <div className="row">
+                  <div className="col">{program.name}</div>
+                  <div className="col">
+                    <button
+                      className="btn btn-outline-danger"
+                      onClick={() => onDeleteProgram(program)}
+                    >
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              ))}
+              <hr />
+              <div className="row">
+                <div className="col">
+                  <input
+                    placeholder="Program Name"
+                    className="form-control"
+                    onChange={(e) => onChangeNewProgram(e)}
+                  />
+                </div>
+                <div className="col">
+                  <button
+                    className={"btn btn-outline-primary me-2"}
+                    onClick={() => addNewProgram()}
+                  >
+                    Add
+                  </button>
                 </div>
               </div>
             </div>

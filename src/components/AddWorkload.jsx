@@ -226,7 +226,9 @@ const AddWorkload = () => {
       bsContactHrs,
       msContactHrs,
       phdContactHrs,
-      totalClasses: sumCreditHrs * parameters.totalWeeksInSemester,
+      totalClasses:
+        sumCreditHrs *
+        parameters.totalWeeksInSemester[workload.semester.toLowerCase()],
     });
 
     const pay_rate = designations.find(
@@ -346,7 +348,7 @@ const AddWorkload = () => {
     const financial_impact =
       Number(total_contact_hours) *
       Number(employeeObject.pay_rate) *
-      Number(parameters.totalWeeksInSemester);
+      Number(parameters.totalWeeksInSemester[semester.toLowerCase()]);
 
     const compensated_classes = replace_id
       ? existing_payment.data[0].compensated_classes

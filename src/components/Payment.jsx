@@ -196,7 +196,9 @@ const Payment = () => {
 
   const onChangeClasses = async (event, payment) => {
     let classes = Number(event.target.value);
-    let impact_per_class = payment.financial_impact / payment.total_classes;
+    let impact_per_class = Math.round(
+      payment.financial_impact / payment.total_classes
+    );
     if (isNaN(classes)) {
       classes = 0;
     }
@@ -274,6 +276,8 @@ const Payment = () => {
         <thead>
           <tr>
             <th>#</th>
+            <th>Year</th>
+            <th>Semester</th>
             <th>Employee</th>
             <th>Designation</th>
             <th>Courses & Programs</th>
@@ -285,7 +289,7 @@ const Payment = () => {
             <th>Pay Rate</th>
             <th>Financial Impact in Rs</th>
             <th>Payment Due in Rs</th>
-            <th>± Classes</th>
+            <th className="px-3">± Classes</th>
           </tr>
         </thead>
         <tbody>
@@ -304,6 +308,8 @@ const Payment = () => {
                 .map((payment, index) => (
                   <tr>
                     <th scope="row">{index + 1}</th>
+                    <td>{payment.year}</td>
+                    <td>{payment.semester}</td>
                     <td>
                       {payment.employee_data.employeeName} (
                       {payment.employee_data.department})
@@ -364,22 +370,6 @@ const Payment = () => {
                   </tr>
                 ))
             : null}
-
-          {/* Sub-Total */}
-          <tr>
-            <td></td>
-            <th>Total Amount</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th>SubTotal</th>
-            <th>SubTotal</th>
-          </tr>
         </tbody>
       </table>
     </div>

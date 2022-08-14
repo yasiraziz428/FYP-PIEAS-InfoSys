@@ -22,13 +22,9 @@ const Employee = () => {
 
   return (
     <div className="container">
-      <Link
-        to="/employee/add"
-        className="btn btn-outline-dark position-relative mt-3 end-0"
-      >
+      <Link to="/employee/add" className="btn btn-outline-dark float-end mt-4">
         Add Employee
       </Link>
-      <br></br>
       <div>
         <select>
           <option selected="true" id="degreeList-0">
