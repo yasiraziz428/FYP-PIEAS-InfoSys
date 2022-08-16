@@ -191,9 +191,9 @@ const Report = () => {
                 <th>Semester</th>
                 <th>Name of Visiting Faculty Member (Dept)</th>
                 <th>Program</th>
+                <th>Name of Course / Lab</th>
                 <th>Credit Hours (Theory+Lab)</th>
                 <th>Course Contributions</th>
-                <th>Name of Course / Lab</th>
                 <th>Total Contact Hours</th>
                 <th>Expected Classes</th>
                 <th>Pay Rate</th>
@@ -236,6 +236,14 @@ const Report = () => {
                         <td>
                           {payment.courses.map((course) => (
                             <>
+                              <span>{course.title}</span>
+                              <br />
+                            </>
+                          ))}
+                        </td>
+                        <td>
+                          {payment.courses.map((course) => (
+                            <>
                               <span>{course.credit_hours}</span>
                               <br />
                             </>
@@ -249,14 +257,7 @@ const Report = () => {
                             </>
                           ))}
                         </td>
-                        <td>
-                          {payment.courses.map((course) => (
-                            <>
-                              <span>{course.title}</span>
-                              <br />
-                            </>
-                          ))}
-                        </td>
+
                         <td>
                           {payment.total_contact_hours !== 0
                             ? payment.total_contact_hours
@@ -283,7 +284,7 @@ const Report = () => {
                 <td></td>
                 <td></td>
                 <th>SubTotal</th>
-                <td>
+                <th>
                   Rs.{" "}
                   {payments
                     ? payments
@@ -305,7 +306,7 @@ const Report = () => {
                           0
                         )
                     : 0}
-                </td>
+                </th>
               </tr>
             </tbody>
           </table>
@@ -313,12 +314,14 @@ const Report = () => {
 
         {/* Financial Impact Table For TA / Lab Engr */}
 
-        <h3>Financial Impact Table For TA / Lab Engineer</h3>
+        <h3 className="mt-5">Financial Impact Table For TA / Lab Engineer</h3>
         <div>
           <table className="table caption-top border shadow mt-1">
             <thead>
               <tr>
                 <th>#</th>
+                <th>Year</th>
+                <th>Semester</th>
                 <th>Name of TA / Lab Engineer (Dept)</th>
                 <th>Program</th>
                 <th>Name of Course / Lab</th>
@@ -331,18 +334,74 @@ const Report = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+              {payments
+                ? payments
+                    .filter(
+                      (p) =>
+                        p.total_contact_hours !== 0 &&
+                        (selectedYear !== allYears
+                          ? p.year === selectedYear
+                          : true) &&
+                        (selectedSemester !== allSemesters
+                          ? p.semester === selectedSemester
+                          : true) &&
+                        p.employee_data.designation
+                          .toLowerCase()
+                          .includes("ta/lab engineer")
+                    )
+                    .map((payment, index) => (
+                      <tr>
+                        <th>{index + 1}</th>
+                        <td>{payment.year}</td>
+                        <td>{payment.semester}</td>
+                        <td>
+                          {payment.employee_data.employeeName} (
+                          {payment.employee_data.department})
+                        </td>
+                        <td>
+                          {payment.courses.map((course) => (
+                            <>
+                              <span>{course.program}</span>
+                              <br />
+                            </>
+                          ))}
+                        </td>
+                        <td>
+                          {payment.courses.map((course) => (
+                            <>
+                              <span>{course.title}</span>
+                              <br />
+                            </>
+                          ))}
+                        </td>
+                        <td>
+                          {payment.courses.map((course) => (
+                            <>
+                              <span>{course.credit_hours}</span>
+                              <br />
+                            </>
+                          ))}
+                        </td>
+                        <td>
+                          {payment.courses.map((course) => (
+                            <>
+                              <span>{course.contribution}%</span>
+                              <br />
+                            </>
+                          ))}
+                        </td>
+
+                        <td>
+                          {payment.total_contact_hours !== 0
+                            ? payment.total_contact_hours
+                            : "Not Available"}
+                        </td>
+                        <td>{payment.total_classes}</td>
+                        <td>Rs. {payment.pay_rate}</td>
+                        <td>Rs. {payment.financial_impact}</td>
+                      </tr>
+                    ))
+                : null}
 
               {/* Sub-Total */}
 
@@ -356,7 +415,31 @@ const Report = () => {
                 <td></td>
                 <td></td>
                 <td></td>
+                <td></td>
                 <th>SubTotal</th>
+                <th>
+                  Rs.{" "}
+                  {payments
+                    ? payments
+                        .filter(
+                          (p) =>
+                            p.total_contact_hours !== 0 &&
+                            (selectedYear !== allYears
+                              ? p.year === selectedYear
+                              : true) &&
+                            (selectedSemester !== allSemesters
+                              ? p.semester === selectedSemester
+                              : true) &&
+                            p.employee_data.designation
+                              .toLowerCase()
+                              .includes("ta/lab engineer")
+                        )
+                        .reduce(
+                          (total, current) => total + current.financial_impact,
+                          0
+                        )
+                    : 0}
+                </th>
               </tr>
             </tbody>
           </table>
@@ -364,12 +447,14 @@ const Report = () => {
 
         {/* Payment Due Table for Visiting Faculty */}
 
-        <h3>Payment Due Table for Visiting Faculty</h3>
+        <h3 className="mt-5">Payment Due Table for Visiting Faculty</h3>
         <div>
           <table className="table caption-top border shadow mt-1">
             <thead>
               <tr>
                 <th>#</th>
+                <th>Year</th>
+                <th>Semester</th>
                 <th>Name of Visiting Faculty Member (Dept)</th>
                 <th>Program</th>
                 <th>Name of Course / Lab</th>
@@ -382,18 +467,77 @@ const Report = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+              {payments
+                ? payments
+                    .filter(
+                      (p) =>
+                        p.total_contact_hours !== 0 &&
+                        (selectedYear !== allYears
+                          ? p.year === selectedYear
+                          : true) &&
+                        (selectedSemester !== allSemesters
+                          ? p.semester === selectedSemester
+                          : true) &&
+                        p.employee_data.designation
+                          .toLowerCase()
+                          .includes("visiting faculty")
+                    )
+                    .map((payment, index) => (
+                      <tr>
+                        <th>{index + 1}</th>
+                        <td>{payment.year}</td>
+                        <td>{payment.semester}</td>
+                        <td>
+                          {payment.employee_data.employeeName} (
+                          {payment.employee_data.department})
+                        </td>
+                        <td>
+                          {payment.courses.map((course) => (
+                            <>
+                              <span>{course.program}</span>
+                              <br />
+                            </>
+                          ))}
+                        </td>
+                        <td>
+                          {payment.courses.map((course) => (
+                            <>
+                              <span>{course.title}</span>
+                              <br />
+                            </>
+                          ))}
+                        </td>
+                        <td>
+                          {payment.courses.map((course) => (
+                            <>
+                              <span>{course.credit_hours}</span>
+                              <br />
+                            </>
+                          ))}
+                        </td>
+                        <td>
+                          {payment.courses.map((course) => (
+                            <>
+                              <span>{course.contribution}%</span>
+                              <br />
+                            </>
+                          ))}
+                        </td>
+
+                        <td>
+                          {payment.total_contact_hours !== 0
+                            ? payment.total_contact_hours
+                            : "Not Available"}
+                        </td>
+                        <td>
+                          {payment.total_classes +
+                            Number(payment.compensated_classes)}
+                        </td>
+                        <td>Rs. {payment.pay_rate}</td>
+                        <td>Rs. {payment.payment_due}</td>
+                      </tr>
+                    ))
+                : null}
 
               {/* Sub-Total */}
 
@@ -407,7 +551,31 @@ const Report = () => {
                 <td></td>
                 <td></td>
                 <td></td>
+                <td></td>
                 <th>SubTotal</th>
+                <th>
+                  Rs.{" "}
+                  {payments
+                    ? payments
+                        .filter(
+                          (p) =>
+                            p.total_contact_hours !== 0 &&
+                            (selectedYear !== allYears
+                              ? p.year === selectedYear
+                              : true) &&
+                            (selectedSemester !== allSemesters
+                              ? p.semester === selectedSemester
+                              : true) &&
+                            p.employee_data.designation
+                              .toLowerCase()
+                              .includes("visiting faculty")
+                        )
+                        .reduce(
+                          (total, current) => total + current.payment_due,
+                          0
+                        )
+                    : 0}
+                </th>
               </tr>
             </tbody>
           </table>
@@ -415,12 +583,14 @@ const Report = () => {
 
         {/* Payment Due Table for TA / Lab Engr */}
 
-        <h3>Payment Due Table for TA / Lab Engineer</h3>
+        <h3 className="mt-5">Payment Due Table for TA / Lab Engineer</h3>
         <div>
           <table className="table caption-top border shadow mt-1">
             <thead>
               <tr>
                 <th>#</th>
+                <th>Year</th>
+                <th>Semester</th>
                 <th>Name of TA / Lab Engineer (Dept)</th>
                 <th>Program</th>
                 <th>Name of Course / Lab</th>
@@ -433,18 +603,77 @@ const Report = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+              {payments
+                ? payments
+                    .filter(
+                      (p) =>
+                        p.total_contact_hours !== 0 &&
+                        (selectedYear !== allYears
+                          ? p.year === selectedYear
+                          : true) &&
+                        (selectedSemester !== allSemesters
+                          ? p.semester === selectedSemester
+                          : true) &&
+                        p.employee_data.designation
+                          .toLowerCase()
+                          .includes("ta/lab engineer")
+                    )
+                    .map((payment, index) => (
+                      <tr>
+                        <th>{index + 1}</th>
+                        <td>{payment.year}</td>
+                        <td>{payment.semester}</td>
+                        <td>
+                          {payment.employee_data.employeeName} (
+                          {payment.employee_data.department})
+                        </td>
+                        <td>
+                          {payment.courses.map((course) => (
+                            <>
+                              <span>{course.program}</span>
+                              <br />
+                            </>
+                          ))}
+                        </td>
+                        <td>
+                          {payment.courses.map((course) => (
+                            <>
+                              <span>{course.title}</span>
+                              <br />
+                            </>
+                          ))}
+                        </td>
+                        <td>
+                          {payment.courses.map((course) => (
+                            <>
+                              <span>{course.credit_hours}</span>
+                              <br />
+                            </>
+                          ))}
+                        </td>
+                        <td>
+                          {payment.courses.map((course) => (
+                            <>
+                              <span>{course.contribution}%</span>
+                              <br />
+                            </>
+                          ))}
+                        </td>
+
+                        <td>
+                          {payment.total_contact_hours !== 0
+                            ? payment.total_contact_hours
+                            : "Not Available"}
+                        </td>
+                        <td>
+                          {payment.total_classes +
+                            Number(payment.compensated_classes)}
+                        </td>
+                        <td>Rs. {payment.pay_rate}</td>
+                        <td>Rs. {payment.payment_due}</td>
+                      </tr>
+                    ))
+                : null}
 
               {/* Sub-Total */}
 
@@ -458,7 +687,31 @@ const Report = () => {
                 <td></td>
                 <td></td>
                 <td></td>
+                <td></td>
                 <th>SubTotal</th>
+                <th>
+                  Rs.{" "}
+                  {payments
+                    ? payments
+                        .filter(
+                          (p) =>
+                            p.total_contact_hours !== 0 &&
+                            (selectedYear !== allYears
+                              ? p.year === selectedYear
+                              : true) &&
+                            (selectedSemester !== allSemesters
+                              ? p.semester === selectedSemester
+                              : true) &&
+                            p.employee_data.designation
+                              .toLowerCase()
+                              .includes("ta/lab engineer")
+                        )
+                        .reduce(
+                          (total, current) => total + current.payment_due,
+                          0
+                        )
+                    : 0}
+                </th>
               </tr>
             </tbody>
           </table>
@@ -466,7 +719,7 @@ const Report = () => {
 
         {/* Dept Wise Financial Impact Summary */}
 
-        <h3> Department Wise Financial Impact Summary</h3>
+        <h3 className="mt-5"> Department Wise Financial Impact Summary</h3>
         <div>
           <table className="table caption-top border shadow mt-1">
             <thead>
@@ -564,9 +817,9 @@ const Report = () => {
 
         {/* Dept Wise Payment Due Summary */}
 
-        <h3> Department Wise Payment Due Summary</h3>
+        <h3 className="mt-5"> Department Wise Payment Due Summary</h3>
         <div>
-          <table className="table caption-top border shadow mt-1">
+          <table className="table caption-top border shadow mt-1 mb-5">
             <thead>
               <tr>
                 <th>#</th>

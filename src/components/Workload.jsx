@@ -212,7 +212,10 @@ const Workload = () => {
           Chemistry
         </option>
       </select>
-      <table className="table caption-top border shadow mt-2">
+      <table
+        className="table caption-top border shadow mt-2"
+        // style={{ fontSize: "12px" }}
+      >
         <thead>
           <tr>
             <th>#</th>
@@ -223,19 +226,23 @@ const Workload = () => {
             <th>Course 2</th>
             <th>Course 3</th>
             <th>Managerial Position</th>
-            <th>Number of Students</th>
-            <th>Project Supervisions</th>
+            <th>Number of BS Students</th>
+            <th>Number of MS Students</th>
+            <th>BS Project Supervisions</th>
+            <th>MS/PhD Project Supervisions</th>
             <th>Research Project (Million)</th>
             <th>International Journal</th>
             <th>National Journal</th>
             <th>International Conference</th>
             <th>National Conference</th>
-            <th>General / Conference Reviewer</th>
-            <th>Book</th>
+            <th>Book (int)</th>
+            <th>Book (nat)</th>
+            <th>Book Chapter</th>
+            <th>Patent (int)</th>
+            <th>Patent (nat)</th>
+            <th>Journal / Conference Reviewer</th>
             <th>Technical Report</th>
-            <th>Chapter</th>
             <th>Development of Product</th>
-            <th>Patent</th>
             <th>Workload</th>
             <th>Actions</th>
           </tr>
@@ -253,18 +260,22 @@ const Workload = () => {
                   <td>{workloads.courseTitle3}</td>
                   <td>{workloads.managerialPosition}</td>
                   <td>{workloads.noOfStudents}</td>
+                  <td>{workloads.noOfMsStudents}</td>
                   <td>{workloads.projectSupervisions}</td>
+                  <td>{workloads.projectSupervisionsMS}</td>
                   <td>{workloads.researchProject}</td>
                   <td>{workloads.intJournal}</td>
                   <td>{workloads.nationalJournal}</td>
                   <td>{workloads.intConference}</td>
                   <td>{workloads.nationalConference}</td>
-                  <td>{workloads.GCR}</td>
                   <td>{workloads.book}</td>
-                  <td>{workloads.technicalReport}</td>
+                  <td>{workloads.NBook}</td>
                   <td>{workloads.chapter}</td>
-                  <td>{workloads.devOfProd}</td>
                   <td>{workloads.patent}</td>
+                  <td>{workloads.NPatent}</td>
+                  <td>{workloads.GCR}</td>
+                  <td>{workloads.technicalReport}</td>
+                  <td>{workloads.devOfProd}</td>
                   <td>{workloads.workLoad}</td>
                   <td>
                     <Link

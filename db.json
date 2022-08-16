@@ -220,13 +220,13 @@
   ],
   "workloads": [
     {
-      "semester": "Spring",
-      "year": "2022",
+      "semester": "Fall",
+      "year": "2021",
       "employeeName": "Muhammad Yasir Aziz",
       "courseTitle1": "Programming",
-      "courseTitle2": "Programming L",
-      "courseTitle3": "Islamiyat",
-      "courseContribution1": "100",
+      "courseTitle2": "",
+      "courseTitle3": "",
+      "courseContribution1": "50",
       "courseContribution2": "100",
       "courseContribution3": "100",
       "managerialPosition": "",
@@ -244,20 +244,52 @@
       "chapter": "",
       "devOfProd": "",
       "patent": "",
-      "workLoad": "0.620",
-      "bsContactHrs": 8,
+      "workLoad": "0.300",
+      "bsContactHrs": 1.5,
       "msContactHrs": 0,
       "phdContactHrs": 0,
-      "totalClasses": 96,
+      "totalClasses": 24,
       "id": 1
     },
     {
-      "semester": "Fall",
-      "year": "2022",
+      "semester": "Spring",
+      "year": "2021",
       "employeeName": "Ahmad Kamal Baig",
+      "courseTitle1": "Programming",
+      "courseTitle2": "",
+      "courseTitle3": "",
+      "courseContribution1": "50",
+      "courseContribution2": "100",
+      "courseContribution3": "100",
+      "managerialPosition": "",
+      "noOfStudents": "",
+      "projectSupervisions": "",
+      "researchProject": "",
+      "intJournal": "",
+      "nationalJournal": "",
+      "intConference": "",
+      "nationalConference": "",
+      "contactHours": "",
+      "GCR": "",
+      "book": "",
+      "technicalReport": "",
+      "chapter": "",
+      "devOfProd": "",
+      "patent": "",
+      "workLoad": "0.300",
+      "bsContactHrs": 1.5,
+      "msContactHrs": 0,
+      "phdContactHrs": 0,
+      "totalClasses": 24,
+      "id": 2
+    },
+    {
+      "semester": "Summer",
+      "year": "2022",
+      "employeeName": "Muhammad Yasir Aziz",
       "courseTitle1": "OOP",
-      "courseTitle2": "OOP L",
-      "courseTitle3": "IAD T",
+      "courseTitle2": "",
+      "courseTitle3": "",
       "courseContribution1": "100",
       "courseContribution2": "100",
       "courseContribution3": "100",
@@ -276,12 +308,140 @@
       "chapter": "",
       "devOfProd": "",
       "patent": "",
-      "workLoad": "0.720",
+      "workLoad": "0.300",
+      "bsContactHrs": 3,
+      "msContactHrs": 0,
+      "phdContactHrs": 0,
+      "totalClasses": 24,
+      "id": 3
+    },
+    {
+      "semester": "Spring",
+      "year": "2022",
+      "employeeName": "Tanveer Ahmad Khan",
+      "courseTitle1": "Programming",
+      "courseTitle2": "DSA T",
+      "courseTitle3": "CFP",
+      "courseContribution1": "100",
+      "courseContribution2": "100",
+      "courseContribution3": "100",
+      "managerialPosition": "",
+      "noOfStudents": "",
+      "projectSupervisions": "",
+      "researchProject": "",
+      "intJournal": "",
+      "nationalJournal": "",
+      "intConference": "",
+      "nationalConference": "",
+      "contactHours": "",
+      "GCR": "",
+      "book": "",
+      "technicalReport": "",
+      "chapter": "",
+      "devOfProd": "",
+      "patent": "",
+      "workLoad": "0.900",
       "bsContactHrs": 9,
       "msContactHrs": 0,
       "phdContactHrs": 0,
-      "totalClasses": 112,
-      "id": 2
+      "totalClasses": 144,
+      "id": 4
+    },
+    {
+      "semester": "Spring",
+      "year": "2019",
+      "employeeName": "Muhammad Yasir Aziz",
+      "courseTitle1": "Programming",
+      "courseTitle2": "",
+      "courseTitle3": "",
+      "courseContribution1": "100",
+      "courseContribution2": "100",
+      "courseContribution3": "100",
+      "managerialPosition": "",
+      "noOfStudents": "",
+      "projectSupervisions": "",
+      "researchProject": "",
+      "intJournal": "",
+      "nationalJournal": "",
+      "intConference": "",
+      "nationalConference": "",
+      "contactHours": "",
+      "GCR": "",
+      "book": "",
+      "technicalReport": "",
+      "chapter": "",
+      "devOfProd": "",
+      "patent": "",
+      "workLoad": "0.300",
+      "bsContactHrs": 3,
+      "msContactHrs": 0,
+      "phdContactHrs": 0,
+      "totalClasses": 48,
+      "id": 5
+    },
+    {
+      "semester": "Spring",
+      "year": "2022",
+      "employeeName": "Ahmad Dar",
+      "courseTitle1": "Programming",
+      "courseTitle2": "",
+      "courseTitle3": "",
+      "courseContribution1": "100",
+      "courseContribution2": "100",
+      "courseContribution3": "100",
+      "managerialPosition": "",
+      "noOfStudents": "",
+      "projectSupervisions": "",
+      "researchProject": "",
+      "intJournal": "",
+      "nationalJournal": "",
+      "intConference": "",
+      "nationalConference": "",
+      "contactHours": "",
+      "GCR": "",
+      "book": "",
+      "technicalReport": "",
+      "chapter": "",
+      "devOfProd": "",
+      "patent": "",
+      "workLoad": "0.300",
+      "bsContactHrs": 3,
+      "msContactHrs": 0,
+      "phdContactHrs": 0,
+      "totalClasses": 48,
+      "id": 6
+    },
+    {
+      "semester": "Summer",
+      "year": "2018",
+      "employeeName": "Zubair Nasir Khan",
+      "courseTitle1": "IAD L",
+      "courseTitle2": "",
+      "courseTitle3": "",
+      "courseContribution1": "100",
+      "courseContribution2": "100",
+      "courseContribution3": "100",
+      "managerialPosition": "",
+      "noOfStudents": "",
+      "projectSupervisions": "",
+      "researchProject": "",
+      "intJournal": "",
+      "nationalJournal": "",
+      "intConference": "",
+      "nationalConference": "",
+      "contactHours": "",
+      "GCR": "",
+      "book": "",
+      "technicalReport": "",
+      "chapter": "",
+      "devOfProd": "",
+      "patent": "",
+      "workLoad": "0.120",
+      "bsContactHrs": 3,
+      "msContactHrs": 0,
+      "phdContactHrs": 0,
+      "totalClasses": 8,
+      "id": 7
     }
   ],
   "parameters": {
@@ -309,7 +469,9 @@
       "Focal_Person": "0.1"
     },
     "wNumberOfStudents": "0.1",
+    "wNumberOfMsStudents": "0.2",
     "wProjectSupervisions": "0.1",
+    "wProjectSupervisionsMS": "0.2",
     "wResearchProject": {
       "": "0",
       "Zero_to_One": "0.2",
@@ -324,14 +486,16 @@
     "wNationalConference": "0.1",
     "wGCR": "0.1",
     "wBook": "0.1",
+    "wNBook": "0.2",
     "wTechnicalReport": "0.1",
     "wChapter": "0.1",
     "wDevOfProd": "0.1",
     "wPatent": "0.1",
+    "wNPatent": "0.2",
     "totalWeeksInSemester": {
       "fall": 16,
       "spring": 16,
-      "summer": 8
+      "summer": 16
     }
   },
   "payments": [
@@ -339,70 +503,30 @@
       "employee_id": 1,
       "year": "2022",
       "semester": "Spring",
-      "total_contact_hours": 8,
-      "bs_contact_hours": 8,
+      "total_contact_hours": 0,
+      "bs_contact_hours": 0,
       "ms_contact_hours": 0,
       "phd_contact_hours": 0,
-      "pay_rate": 2000,
-      "financial_impact": 256000,
-      "payment_due": 250666,
-      "total_classes": 96,
+      "financial_impact": null,
+      "payment_due": null,
+      "total_classes": 0,
       "compensated_classes": -2,
-      "courses": [
-        {
-          "title": "Programming",
-          "contribution": "100",
-          "program": "BS_CIS",
-          "credit_hours": 3
-        },
-        {
-          "title": "Programming L",
-          "contribution": "100",
-          "program": "BS_CIS",
-          "credit_hours": 1
-        },
-        {
-          "title": "Islamiyat",
-          "contribution": "100",
-          "program": "BS_CIS",
-          "credit_hours": 2
-        }
-      ],
+      "courses": [],
       "id": 1
     },
     {
       "employee_id": 7,
       "year": "2022",
       "semester": "Fall",
-      "total_contact_hours": 9,
-      "bs_contact_hours": 9,
+      "total_contact_hours": 0,
+      "bs_contact_hours": 0,
       "ms_contact_hours": 0,
       "phd_contact_hours": 0,
-      "pay_rate": 2500,
-      "financial_impact": 360000,
-      "payment_due": 350358,
-      "total_classes": 112,
+      "financial_impact": null,
+      "payment_due": null,
+      "total_classes": 0,
       "compensated_classes": -3,
-      "courses": [
-        {
-          "title": "OOP",
-          "contribution": "100",
-          "program": "BS_CIS",
-          "credit_hours": 3
-        },
-        {
-          "title": "OOP L",
-          "contribution": "100",
-          "program": "BS_CIS",
-          "credit_hours": 1
-        },
-        {
-          "title": "IAD T",
-          "contribution": "100",
-          "program": "BS_CIS",
-          "credit_hours": 3
-        }
-      ],
+      "courses": [],
       "id": 2
     },
     {
@@ -449,6 +573,269 @@
       "compensated_classes": 0,
       "courses": [],
       "id": 5
+    },
+    {
+      "employee_id": 1,
+      "year": "2021",
+      "semester": "Fall",
+      "total_contact_hours": 1.5,
+      "bs_contact_hours": 1.5,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "pay_rate": 2000,
+      "financial_impact": 48000,
+      "payment_due": 50000,
+      "total_classes": 24,
+      "compensated_classes": 1,
+      "courses": [
+        {
+          "title": "Programming",
+          "contribution": "50",
+          "program": "BS_CIS",
+          "credit_hours": 3
+        }
+      ],
+      "id": 6
+    },
+    {
+      "employee_id": 7,
+      "year": "2021",
+      "semester": "Spring",
+      "total_contact_hours": 1.5,
+      "bs_contact_hours": 1.5,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "pay_rate": 2500,
+      "financial_impact": 60000,
+      "payment_due": 57500,
+      "total_classes": 24,
+      "compensated_classes": -1,
+      "courses": [
+        {
+          "title": "Programming",
+          "contribution": "50",
+          "program": "BS_CIS",
+          "credit_hours": 3
+        }
+      ],
+      "id": 7
+    },
+    {
+      "employee_id": 8,
+      "year": "2021",
+      "semester": "Spring",
+      "total_contact_hours": 0,
+      "bs_contact_hours": 0,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "financial_impact": null,
+      "payment_due": null,
+      "total_classes": 0,
+      "compensated_classes": 0,
+      "courses": [],
+      "id": 8
+    },
+    {
+      "employee_id": 1,
+      "year": "2022",
+      "semester": "Summer",
+      "total_contact_hours": 3,
+      "bs_contact_hours": 3,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "pay_rate": 2000,
+      "financial_impact": 48000,
+      "payment_due": 44000,
+      "total_classes": 24,
+      "compensated_classes": -2,
+      "courses": [
+        {
+          "title": "OOP",
+          "contribution": "100",
+          "program": "BS_CIS",
+          "credit_hours": 3
+        }
+      ],
+      "id": 9
+    },
+    {
+      "employee_id": 9,
+      "year": "2022",
+      "semester": "Spring",
+      "total_contact_hours": 0,
+      "bs_contact_hours": 0,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "financial_impact": null,
+      "payment_due": null,
+      "total_classes": 0,
+      "compensated_classes": 0,
+      "courses": [],
+      "id": 10
+    },
+    {
+      "employee_id": 6,
+      "year": "2022",
+      "semester": "Spring",
+      "total_contact_hours": 9,
+      "bs_contact_hours": 9,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "pay_rate": 2500,
+      "financial_impact": 360000,
+      "payment_due": 360000,
+      "total_classes": 144,
+      "compensated_classes": 0,
+      "courses": [
+        {
+          "title": "Programming",
+          "contribution": "100",
+          "program": "BS_CIS",
+          "credit_hours": 3
+        },
+        {
+          "title": "DSA T",
+          "contribution": "100",
+          "program": "BS_CIS",
+          "credit_hours": 3
+        },
+        {
+          "title": "CFP",
+          "contribution": "100",
+          "program": "BS_ME",
+          "credit_hours": 3
+        }
+      ],
+      "id": 11
+    },
+    {
+      "employee_id": 1,
+      "year": "2019",
+      "semester": "Fall",
+      "total_contact_hours": 0,
+      "bs_contact_hours": 0,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "financial_impact": null,
+      "payment_due": null,
+      "total_classes": 0,
+      "compensated_classes": 0,
+      "courses": [],
+      "id": 12
+    },
+    {
+      "employee_id": 1,
+      "year": "2019",
+      "semester": "Spring",
+      "total_contact_hours": 3,
+      "bs_contact_hours": 3,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "pay_rate": 2000,
+      "financial_impact": 96000,
+      "payment_due": 96000,
+      "total_classes": 48,
+      "compensated_classes": 0,
+      "courses": [
+        {
+          "title": "Programming",
+          "contribution": "100",
+          "program": "BS_CIS",
+          "credit_hours": 3
+        }
+      ],
+      "id": 13
+    },
+    {
+      "employee_id": 11,
+      "year": "2022",
+      "semester": "Spring",
+      "total_contact_hours": 3,
+      "bs_contact_hours": 3,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "pay_rate": 750,
+      "financial_impact": 36000,
+      "payment_due": 39750,
+      "total_classes": 48,
+      "compensated_classes": 5,
+      "courses": [
+        {
+          "title": "Programming",
+          "contribution": "100",
+          "program": "BS_CIS",
+          "credit_hours": 3
+        }
+      ],
+      "id": 14
+    },
+    {
+      "employee_id": 13,
+      "year": "2018",
+      "semester": "Summer",
+      "total_contact_hours": 3,
+      "bs_contact_hours": 3,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "pay_rate": 750,
+      "financial_impact": 18000,
+      "payment_due": 13500,
+      "total_classes": 8,
+      "compensated_classes": -2,
+      "courses": [
+        {
+          "title": "IAD L",
+          "contribution": "100",
+          "program": "BS_CIS",
+          "credit_hours": 1
+        }
+      ],
+      "id": 15
+    },
+    {
+      "employee_id": 5,
+      "year": "",
+      "semester": "",
+      "total_contact_hours": 0,
+      "bs_contact_hours": 0,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "financial_impact": null,
+      "payment_due": null,
+      "total_classes": 0,
+      "compensated_classes": 0,
+      "courses": [],
+      "id": 16
+    },
+    {
+      "employee_id": 8,
+      "year": "",
+      "semester": "",
+      "total_contact_hours": 0,
+      "bs_contact_hours": 0,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "financial_impact": null,
+      "payment_due": null,
+      "total_classes": 0,
+      "compensated_classes": 0,
+      "courses": [],
+      "id": 17
+    },
+    {
+      "employee_id": 18,
+      "year": "2018",
+      "semester": "Fall",
+      "total_contact_hours": 0,
+      "bs_contact_hours": 0,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "financial_impact": null,
+      "payment_due": null,
+      "total_classes": 0,
+      "compensated_classes": 0,
+      "courses": [],
+      "id": 18
     }
   ],
   "designations": [
@@ -500,6 +887,70 @@
     {
       "name": "BS_MME",
       "id": 9
+    },
+    {
+      "name": "BS_CHE",
+      "id": 10
+    },
+    {
+      "name": "MS_NE",
+      "id": 11
+    },
+    {
+      "name": "MS_SE",
+      "id": 12
+    },
+    {
+      "name": "MS_EE",
+      "id": 13
+    },
+    {
+      "name": "MS_ME",
+      "id": 14
+    },
+    {
+      "name": "MS_PE",
+      "id": 15
+    },
+    {
+      "name": "MS_MSE",
+      "id": 16
+    },
+    {
+      "name": "MS_CS",
+      "id": 17
+    },
+    {
+      "name": "MS_CYS",
+      "id": 18
+    },
+    {
+      "name": "MS_CHY",
+      "id": 19
+    },
+    {
+      "name": "MS_PHY",
+      "id": 20
+    },
+    {
+      "name": "MS_MP",
+      "id": 21
+    },
+    {
+      "name": "MS_RP",
+      "id": 22
+    },
+    {
+      "name": "MS_NM",
+      "id": 23
+    },
+    {
+      "name": "MS_RMO",
+      "id": 24
+    },
+    {
+      "name": "MS_MRE",
+      "id": 25
     }
   ],
   "departments": [

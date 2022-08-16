@@ -16,7 +16,9 @@ const AddWorkload = () => {
     courseContribution3: "100",
     managerialPosition: "",
     noOfStudents: "",
+    noOfMsStudents: "",
     projectSupervisions: "",
+    projectSupervisionsMS: "",
     researchProject: "",
     intJournal: "",
     nationalJournal: "",
@@ -25,10 +27,12 @@ const AddWorkload = () => {
     contactHours: "",
     GCR: "",
     book: "",
+    NBook: "",
     technicalReport: "",
     chapter: "",
     devOfProd: "",
     patent: "",
+    NPatent: "",
   });
 
   const {
@@ -36,7 +40,9 @@ const AddWorkload = () => {
     year,
     managerialPosition,
     noOfStudents,
+    noOfMsStudents,
     projectSupervisions,
+    projectSupervisionsMS,
     researchProject,
     intJournal,
     nationalJournal,
@@ -44,10 +50,12 @@ const AddWorkload = () => {
     nationalConference,
     GCR,
     book,
+    NBook,
     technicalReport,
     chapter,
     devOfProd,
     patent,
+    NPatent,
   } = workload;
 
   const [employee, setEmployee] = useState([]);
@@ -107,7 +115,9 @@ const AddWorkload = () => {
     const wMP = parameters["wManagerialPosition"][selectedMP];
     const wRP = parameters["wResearchProject"][selectedRP];
     const noS = workload["noOfStudents"];
+    const noMS = workload["noOfMsStudents"];
     const wPS = workload["projectSupervisions"];
+    const wPSMS = workload["projectSupervisionsMS"];
     const wIJ = workload["intJournal"];
     const wNJ = workload["nationalJournal"];
     const wIC = workload["intConference"];
@@ -199,7 +209,9 @@ const AddWorkload = () => {
       Number(sumLabs) +
       Number(wMP) +
       Number(noS) * Number(parameters["wNumberOfStudents"]) +
+      Number(noMS) * Number(parameters["wNumberOfMsStudents"]) +
       Number(wPS) * Number(parameters["wProjectSupervisions"]) +
+      Number(wPSMS) * Number(parameters["wProjectSupervisionsMS"]) +
       Number(wRP) +
       Number(wIJ) * Number(parameters["wInternationalJournal"]) +
       Number(wNJ) * Number(parameters["wNationalJournal"]) +
@@ -207,10 +219,12 @@ const AddWorkload = () => {
       Number(wNC) * Number(parameters["wNationalConference"]) +
       Number(GCR) * Number(parameters["wGCR"]) +
       Number(book) * Number(parameters["wBook"]) +
+      Number(NBook) * Number(parameters["wNBook"]) +
       Number(technicalReport) * Number(parameters["wTechnicalReport"]) +
       Number(chapter) * Number(parameters["wChapter"]) +
       Number(devOfProd) * Number(parameters["wDevOfProd"]) +
-      Number(patent) * Number(parameters["wPatent"]);
+      Number(patent) * Number(parameters["wPatent"]) +
+      Number(NPatent) * Number(parameters["wNPatent"]);
 
     //Fetch all courses from json server
     //Get credit hours of three courses from fetched courses details + add them afterwards
@@ -616,9 +630,9 @@ const AddWorkload = () => {
               </div>
 
               <div className="row">
-                <div className="col-sm-10 col-md-6 col-lg-4">
-                  <div className="formbuilder-text form-group field-text-1654851224189 mt-5 ">
-                    <label>Number of Students</label>
+                <div className="col-sm-10 col-md-6 col-lg-6">
+                  <div className="formbuilder-text form-group field-text-1654851224189 mt-4 ">
+                    <label>Number of BS Students</label>
                     <input
                       type="number"
                       placeholder="No of Students"
@@ -629,14 +643,27 @@ const AddWorkload = () => {
                     />
                   </div>
                 </div>
+                <div className="col-sm-10 col-md-6 col-lg-6">
+                  <div className="formbuilder-text form-group field-text-1654851224189 mt-4 ">
+                    <label>Number of MS/PhD Students</label>
+                    <input
+                      type="number"
+                      placeholder="No of Students"
+                      className="form-control"
+                      name="noOfMsStudents"
+                      value={noOfMsStudents}
+                      onChange={(e) => onInputChange(e)}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
             <div className="col-sm-12 col-md-12 col-lg-7">
               <h1 className="mt-5 mb-5">R & D</h1>
 
               <div className="row">
-                <div className="col-sm-10 col-md-6 col-lg-3">
-                  <label>Project Supervisions</label>
+                <div className="col-sm-10 col-md-6 col-lg-4">
+                  <label>BS Project Supervisions</label>
                   <input
                     type="number"
                     placeholder="Project Supervisions"
@@ -646,7 +673,18 @@ const AddWorkload = () => {
                     onChange={(e) => onInputChange(e)}
                   />
                 </div>
-                <div className="col-sm-10 col-md-6 col-lg-3">
+                <div className="col-sm-10 col-md-6 col-lg-4">
+                  <label>MS/PhD Project Supervisions</label>
+                  <input
+                    type="number"
+                    placeholder="Project Supervisions"
+                    className="form-control"
+                    name="projectSupervisionsMS"
+                    value={projectSupervisionsMS}
+                    onChange={(e) => onInputChange(e)}
+                  />
+                </div>
+                <div className="col-sm-10 col-md-6 col-lg-4">
                   <label>Research Project</label>
                   <select
                     className="form-control"
@@ -734,24 +772,70 @@ const AddWorkload = () => {
 
               <div className="row mt-3">
                 <div className="col-sm-10 col-md-6 col-lg-4 mt-4">
-                  <label>Gen/Conf Reviewer</label>
-                  <input
-                    type="number"
-                    placeholder="Gen/Conf Reviewer"
-                    className="form-control"
-                    name="GCR"
-                    value={GCR}
-                    onChange={(e) => onInputChange(e)}
-                  />
-                </div>
-                <div className="col-sm-10 col-md-6 col-lg-4 mt-4">
-                  <label>Book</label>
+                  <label>Book (International)</label>
                   <input
                     type="number"
                     placeholder="Book"
                     className="form-control"
                     name="book"
                     value={book}
+                    onChange={(e) => onInputChange(e)}
+                  />
+                </div>
+                <div className="col-sm-10 col-md-6 col-lg-4 mt-4">
+                  <label>Book (National)</label>
+                  <input
+                    type="number"
+                    placeholder="Book"
+                    className="form-control"
+                    name="NBook"
+                    value={NBook}
+                    onChange={(e) => onInputChange(e)}
+                  />
+                </div>
+                <div className="col-sm-10 col-md-6 col-lg-4 mt-4">
+                  <label>Book Chapter</label>
+                  <input
+                    type="number"
+                    placeholder="Book Chapter"
+                    className="form-control"
+                    name="chapter"
+                    value={chapter}
+                    onChange={(e) => onInputChange(e)}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-sm-10 col-md-6 col-lg-4 mt-4">
+                  <label>Patent (International)</label>
+                  <input
+                    type="number"
+                    placeholder="Patent"
+                    className="form-control"
+                    name="patent"
+                    value={patent}
+                    onChange={(e) => onInputChange(e)}
+                  />
+                </div>
+                <div className="col-sm-10 col-md-6 col-lg-4 mt-4">
+                  <label>Patent (National)</label>
+                  <input
+                    type="number"
+                    placeholder="Patent"
+                    className="form-control"
+                    name="NPatent"
+                    value={NPatent}
+                    onChange={(e) => onInputChange(e)}
+                  />
+                </div>
+                <div className="col-sm-10 col-md-6 col-lg-4 mt-4">
+                  <label>Journal/Conf Reviewer</label>
+                  <input
+                    type="number"
+                    placeholder="Journal/Conf Reviewer"
+                    className="form-control"
+                    name="GCR"
+                    value={GCR}
                     onChange={(e) => onInputChange(e)}
                   />
                 </div>
@@ -766,19 +850,6 @@ const AddWorkload = () => {
                     onChange={(e) => onInputChange(e)}
                   />
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-sm-10 col-md-6 col-lg-4 mt-4">
-                  <label>Book Chapter</label>
-                  <input
-                    type="number"
-                    placeholder="Book Chapter"
-                    className="form-control"
-                    name="chapter"
-                    value={chapter}
-                    onChange={(e) => onInputChange(e)}
-                  />
-                </div>
                 <div className="col-sm-10 col-md-6 col-lg-4 mt-4">
                   <label>Dev of Product</label>
                   <input
@@ -787,17 +858,6 @@ const AddWorkload = () => {
                     className="form-control"
                     name="devOfProd"
                     value={devOfProd}
-                    onChange={(e) => onInputChange(e)}
-                  />
-                </div>
-                <div className="col-sm-10 col-md-6 col-lg-4 mt-4">
-                  <label>Patent</label>
-                  <input
-                    type="number"
-                    placeholder="Patent"
-                    className="form-control"
-                    name="patent"
-                    value={patent}
                     onChange={(e) => onInputChange(e)}
                   />
                 </div>

@@ -27,7 +27,9 @@ const Parameters = () => {
       Focal_Person: "",
     },
     wNumberOfStudents: "",
+    wNumberOfMsStudents: "",
     wProjectSupervisions: "",
+    wProjectSupervisionsMS: "",
     wResearchProject: {
       Zero_to_One: "",
       One_to_Two: "",
@@ -40,11 +42,13 @@ const Parameters = () => {
     wInternationalConference: "",
     wNationalConference: "",
     wGCR: "",
-    wbook: "",
+    wBook: "",
+    wNBook: "",
     wTechnicalReport: "",
     wChapter: "",
     wDevOfProd: "",
     wPatent: "",
+    wnPatent: "",
   });
 
   const {
@@ -67,7 +71,9 @@ const Parameters = () => {
       Focal_Person,
     },
     wNumberOfStudents,
+    wNumberOfMsStudents,
     wProjectSupervisions,
+    wProjectSupervisionsMS,
     wResearchProject: {
       Zero_to_One,
       One_to_Two,
@@ -81,10 +87,12 @@ const Parameters = () => {
     wNationalConference,
     wGCR,
     wBook,
+    wNBook,
     wTechnicalReport,
     wChapter,
     wDevOfProd,
     wPatent,
+    wNPatent,
   } = parameter;
 
   useEffect(() => {
@@ -561,9 +569,10 @@ const Parameters = () => {
                   />
                 </div>
               </div>
-              <div className="row mt-5 mb-5">
+              <h5 className="mt-5">Number of Students</h5>
+              <div className="row mt-3">
                 <div className="col">
-                  <label>Number of Students</label>
+                  <label>BS</label>
                 </div>
                 <div className="col">
                   <input
@@ -574,19 +583,46 @@ const Parameters = () => {
                   />
                 </div>
               </div>
+              <div className="row mb-5">
+                <div className="col">
+                  <label>MS/PhD</label>
+                </div>
+                <div className="col">
+                  <input
+                    className="form-control"
+                    name="wNumberOfMsStudents"
+                    value={wNumberOfMsStudents}
+                    onChange={(e) => onInputChange(e)}
+                  />
+                </div>
+              </div>
 
               {/*                                          R & D Section                                                    */}
 
               <h2 className="mt-5 mb-5 text-center">R & D</h2>
-              <div className="row">
+              <h5>Project Supervisions</h5>
+              <div className="row mt-3">
                 <div className="col">
-                  <label>Project Supervisions</label>
+                  <label>BS</label>
                 </div>
                 <div className="col">
                   <input
                     className="form-control"
                     name="wProjectSupervisions"
                     value={wProjectSupervisions}
+                    onChange={(e) => onInputChange(e)}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col">
+                  <label>MS/PhD</label>
+                </div>
+                <div className="col">
+                  <input
+                    className="form-control"
+                    name="wProjectSupervisionsMS"
+                    value={wProjectSupervisionsMS}
                     onChange={(e) => onInputChange(e)}
                   />
                 </div>
@@ -713,7 +749,7 @@ const Parameters = () => {
               <div className="row mt-5">
                 <h5 className="mb-3">Others</h5>
                 <div className="col">
-                  <label>General / Conference Reviewer</label>
+                  <label>Journal / Conference Reviewer</label>
                 </div>
                 <div className="col">
                   <input
@@ -726,13 +762,65 @@ const Parameters = () => {
               </div>
               <div className="row">
                 <div className="col">
-                  <label>Book</label>
+                  <label>Book (International)</label>
                 </div>
                 <div className="col">
                   <input
                     className="form-control"
                     name="wBook"
                     value={wBook}
+                    onChange={(e) => onInputChange(e)}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col">
+                  <label>Book (National)</label>
+                </div>
+                <div className="col">
+                  <input
+                    className="form-control"
+                    name="wNBook"
+                    value={wNBook}
+                    onChange={(e) => onInputChange(e)}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col">
+                  <label>Book Chapter</label>
+                </div>
+                <div className="col">
+                  <input
+                    className="form-control"
+                    name="wChapter"
+                    value={wChapter}
+                    onChange={(e) => onInputChange(e)}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col">
+                  <label>Patent (International)</label>
+                </div>
+                <div className="col">
+                  <input
+                    className="form-control"
+                    name="wPatent"
+                    value={wPatent}
+                    onChange={(e) => onInputChange(e)}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col">
+                  <label>Patent (National)</label>
+                </div>
+                <div className="col">
+                  <input
+                    className="form-control"
+                    name="wNPatent"
+                    value={wNPatent}
                     onChange={(e) => onInputChange(e)}
                   />
                 </div>
@@ -750,19 +838,7 @@ const Parameters = () => {
                   />
                 </div>
               </div>
-              <div className="row">
-                <div className="col">
-                  <label>Chapter</label>
-                </div>
-                <div className="col">
-                  <input
-                    className="form-control"
-                    name="wChapter"
-                    value={wChapter}
-                    onChange={(e) => onInputChange(e)}
-                  />
-                </div>
-              </div>
+
               <div className="row">
                 <div className="col">
                   <label>Development of Product</label>
@@ -776,19 +852,7 @@ const Parameters = () => {
                   />
                 </div>
               </div>
-              <div className="row">
-                <div className="col">
-                  <label>Patent</label>
-                </div>
-                <div className="col">
-                  <input
-                    className="form-control"
-                    name="wPatent"
-                    value={wPatent}
-                    onChange={(e) => onInputChange(e)}
-                  />
-                </div>
-              </div>
+
               <div className="row">
                 <div className="col"></div>
                 <div className="col"></div>
