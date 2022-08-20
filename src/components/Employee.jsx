@@ -26,50 +26,36 @@ const Employee = () => {
         Add Employee
       </Link>
       <div>
-        <select>
-          <option selected="true" id="degreeList-0">
-            All Degrees
-          </option>
-          <option id="degreeList-1" value="BS">
-            BS
-          </option>
-          <option id="degreeList-2" value="MS">
-            MS
-          </option>
-          <option id="degreeList-3" value="PhD">
-            PhD
-          </option>
-        </select>
-        <select className="ms-2 mt-5">
-          <option>All Deptartments</option>
-          <option id="DeptartmentList-1" value="ME">
+        <select className="mt-5">
+          <option>All Departments</option>
+          <option id="DepartmentList-1" value="ME">
             ME
           </option>
-          <option id="DeptartmentList-2" value="EE">
+          <option id="DepartmentList-2" value="EE">
             EE
           </option>
-          <option id="DeptartmentList-3" value="CIS">
+          <option id="DepartmentList-3" value="CIS">
             CIS
           </option>
-          <option id="DeptartmentList-4" value="PHY">
+          <option id="DepartmentList-4" value="PHY">
             PHY
           </option>
-          <option id="DeptartmentList-5" value="CHE">
+          <option id="DepartmentList-5" value="CHE">
             CHE
           </option>
-          <option id="DeptartmentList-6" value="MME">
+          <option id="DepartmentList-6" value="MME">
             MME
           </option>
-          <option id="DeptartmentList-7" value="NE">
+          <option id="DepartmentList-7" value="NE">
             NE
           </option>
-          <option id="DeptartmentList-8" value="MS">
+          <option id="DepartmentList-8" value="MS">
             MS
           </option>
-          <option id="DeptartmentList-9" value="CMS">
+          <option id="DepartmentList-9" value="CMS">
             CMS
           </option>
-          <option id="DeptartmentList-10" value="Chemistry">
+          <option id="DepartmentList-10" value="Chemistry">
             Chemistry
           </option>
         </select>
@@ -89,7 +75,7 @@ const Employee = () => {
           <tr>
             <th>#</th>
             <th>Name</th>
-            <th>Deptartment</th>
+            <th>Department</th>
             <th>Designation</th>
             <th>Actions</th>
           </tr>

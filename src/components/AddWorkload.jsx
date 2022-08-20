@@ -200,8 +200,6 @@ const AddWorkload = () => {
       sumCreditHrs +=
         (Number(courseObject.theory) + Number(courseObject.lab)) *
         (course.contribution / 100);
-      console.log("Course Object theory " + courseObject.theory);
-      console.log("Course Object Lab " + courseObject.lab);
     });
 
     const final_score =
@@ -316,43 +314,38 @@ const AddWorkload = () => {
         }
         total_classes += w.totalClasses;
         //Adding courses details
-        if (w.courseTitle1 !== "") {
-          const courseObject = all_courses.find(
-            (c) => c.courseTitle === w.courseTitle1
-          );
-          courses.push({
-            title: w.courseTitle1,
-            contribution: w.courseContribution1,
-            program: courseObject.program,
-            credit_hours:
-              Number(courseObject.theory) + Number(courseObject.lab),
-          });
-        }
-
-        if (w.courseTitle2 !== "") {
-          const courseObject = all_courses.find(
-            (c) => c.courseTitle === w.courseTitle2
-          );
-          courses.push({
-            title: w.courseTitle2,
-            contribution: w.courseContribution2,
-            program: courseObject.program,
-            credit_hours:
-              Number(courseObject.theory) + Number(courseObject.lab),
-          });
-        }
-
-        if (w.courseTitle3 !== "") {
-          const courseObject = all_courses.find(
-            (c) => c.courseTitle === w.courseTitle3
-          );
-          courses.push({
-            title: w.courseTitle3,
-            contribution: w.courseContribution3,
-            program: courseObject.program,
-            credit_hours:
-              Number(courseObject.theory) + Number(courseObject.lab),
-          });
+        for (let i = 1; i <= 3; i++) {
+          if (w[`courseTitle${i}`] !== "") {
+            const courseObject = all_courses.find(
+              (c) => c.courseTitle === w[`courseTitle${i}`]
+            );
+            const course_contribution = w[`courseContribution${i}`];
+            const credit_hours =
+              Number(courseObject.theory) + Number(courseObject.lab);
+            const contact_hours =
+              (Number(courseObject.theory) + 3 * Number(courseObject.lab)) *
+              (course_contribution / 100);
+            const total_weeks = Number(
+              parameters.totalWeeksInSemester[semester.toLowerCase()]
+            );
+            courses.push({
+              id: courseObject.id,
+              code: courseObject.courseNo,
+              title: courseObject.courseTitle,
+              contribution: course_contribution,
+              program: courseObject.program,
+              dept: courseObject.dept,
+              contact_hours: contact_hours,
+              credit_hours: credit_hours,
+              financial_impact:
+                contact_hours * Number(employeeObject.pay_rate) * total_weeks,
+              payment_due:
+                contact_hours * Number(employeeObject.pay_rate) * total_weeks,
+              total_classes:
+                credit_hours * (course_contribution / 100) * total_weeks,
+              compensated_classes: 0,
+            });
+          }
         }
       });
 
@@ -405,6 +398,7 @@ const AddWorkload = () => {
             <div className="col-sm-12 col-md-12 col-lg-5">
               <h1 className="pt-5 text-center">Add Workload</h1>
               <div className="row mt-5">
+                <h5>Semester Information</h5>
                 <div className="col-sm-10 col-md-6 col-lg-6">
                   <label>Semester</label>
                   <select
@@ -441,9 +435,10 @@ const AddWorkload = () => {
                 </div>
               </div>
 
-              <div className="row">
+              <div className="row mt-4">
+                <h5>Employee Details</h5>
                 <div className="col-sm-10 col-md-6 col-lg-6">
-                  <div className="formbuilder-select  mt-5 form-group field-EmployeeList">
+                  <div className="formbuilder-select   form-group field-EmployeeList">
                     <label
                       for="EmployeeList"
                       className="formbuilder-select-label"
@@ -466,7 +461,7 @@ const AddWorkload = () => {
                   </div>
                 </div>
                 <div className="col-sm-10 col-md-6 col-lg-6">
-                  <div className="formbuilder-select form-group  mt-5 field-MPList">
+                  <div className="formbuilder-select form-group   field-MPList">
                     <label for="MPList" className="formbuilder-select-label">
                       Managerial Position
                     </label>
@@ -533,8 +528,9 @@ const AddWorkload = () => {
                 </div>
               </div>
 
-              <div className="row">
-                <div className="col-sm-10 col-md-6 col-lg-6 mt-3">
+              <div className="row mt-3">
+                <h5>Course Details</h5>
+                <div className="col-sm-10 col-md-6 col-lg-6 ">
                   <label for="CourseList">Select Course 1</label>
                   <select
                     className="form-control"
@@ -546,11 +542,14 @@ const AddWorkload = () => {
                       -- Select --
                     </option>
                     {course.map((e) => (
-                      <option id="">{(e.courseTitle1 = e.courseTitle)}</option>
+                      <option
+                        id=""
+                        value={e.courseTitle}
+                      >{`${e.courseTitle} (${e.program})`}</option>
                     ))}
                   </select>
                 </div>
-                <div className="col-sm-10 col-md-6 col-lg-6 mt-3">
+                <div className="col-sm-10 col-md-6 col-lg-6">
                   <label>Contribution Percentage 1</label>
                   <input
                     type="number"
@@ -578,7 +577,10 @@ const AddWorkload = () => {
                       -- Select --
                     </option>
                     {course.map((e) => (
-                      <option id="">{(e.courseTitle2 = e.courseTitle)}</option>
+                      <option
+                        id=""
+                        value={e.courseTitle}
+                      >{`${e.courseTitle} (${e.program})`}</option>
                     ))}
                   </select>
                 </div>
@@ -610,7 +612,10 @@ const AddWorkload = () => {
                       -- Select --
                     </option>
                     {course.map((e) => (
-                      <option id="">{(e.courseTitle3 = e.courseTitle)}</option>
+                      <option
+                        id=""
+                        value={e.courseTitle}
+                      >{`${e.courseTitle} (${e.program})`}</option>
                     ))}
                   </select>
                 </div>
@@ -629,10 +634,11 @@ const AddWorkload = () => {
                 </div>
               </div>
 
-              <div className="row">
+              <div className="row mt-4">
+                <h5>Number of Students</h5>
                 <div className="col-sm-10 col-md-6 col-lg-6">
-                  <div className="formbuilder-text form-group field-text-1654851224189 mt-4 ">
-                    <label>Number of BS Students</label>
+                  <div>
+                    <label>BS</label>
                     <input
                       type="number"
                       placeholder="No of Students"
@@ -644,8 +650,8 @@ const AddWorkload = () => {
                   </div>
                 </div>
                 <div className="col-sm-10 col-md-6 col-lg-6">
-                  <div className="formbuilder-text form-group field-text-1654851224189 mt-4 ">
-                    <label>Number of MS/PhD Students</label>
+                  <div>
+                    <label>MS/PhD</label>
                     <input
                       type="number"
                       placeholder="No of Students"
@@ -658,12 +664,27 @@ const AddWorkload = () => {
                 </div>
               </div>
             </div>
-            <div className="col-sm-12 col-md-12 col-lg-7">
-              <h1 className="mt-5 mb-5">R & D</h1>
+            <div className="col-sm-12 col-md-12 col-lg-1">
+              <div
+                style={{
+                  borderStyle: "none none none solid",
+                  opacity: "0.1",
+                  margin: "10px",
+                  padding: "10px",
+                  right: "88%",
+                  height: "100%",
+                }}
+              ></div>
+            </div>
+            <div className="col-sm-12 col-md-12 col-lg-6">
+              <h1 className="mt-5 mb-5" style={{ opacity: "0.7" }}>
+                R&D Section
+              </h1>
 
               <div className="row">
+                <h5>Project Details</h5>
                 <div className="col-sm-10 col-md-6 col-lg-4">
-                  <label>BS Project Supervisions</label>
+                  <label>BS</label>
                   <input
                     type="number"
                     placeholder="Project Supervisions"
@@ -674,7 +695,7 @@ const AddWorkload = () => {
                   />
                 </div>
                 <div className="col-sm-10 col-md-6 col-lg-4">
-                  <label>MS/PhD Project Supervisions</label>
+                  <label>MS/PhD</label>
                   <input
                     type="number"
                     placeholder="Project Supervisions"
@@ -712,12 +733,12 @@ const AddWorkload = () => {
                     </option>
                   </select>
                 </div>
-                <div className="col-sm-10 col-md-6 col-lg-3"></div>
               </div>
 
-              <div className="row mt-5">
+              <div className="row mt-3">
+                <h5>Publications</h5>
                 <div className="col-sm-10 col-md-6 col-lg-3">
-                  <div className="formbuilder-text form-group mt-2 field-text-1654851224189">
+                  <div>
                     <label>Int. Journal</label>
                     <input
                       type="number"
@@ -730,7 +751,7 @@ const AddWorkload = () => {
                   </div>
                 </div>
                 <div className="col-sm-10 col-md-6 col-lg-3">
-                  <div className="formbuilder-text form-group mt-2 field-text-1654851224189">
+                  <div>
                     <label>National Journal</label>
                     <input
                       type="number"
@@ -743,11 +764,11 @@ const AddWorkload = () => {
                   </div>
                 </div>
                 <div className="col-sm-10 col-md-6 col-lg-3">
-                  <div className="formbuilder-text form-group mt-2 field-text-1654851224189">
+                  <div>
                     <label>Int. Conference</label>
                     <input
                       type="number"
-                      placeholder="Int. Conference"
+                      placeholder="Int. Conf"
                       className="form-control"
                       name="intConference"
                       value={intConference}
@@ -756,11 +777,11 @@ const AddWorkload = () => {
                   </div>
                 </div>
                 <div className="col-sm-10 col-md-6 col-lg-3">
-                  <div className="formbuilder-text form-group mt-2 field-text-1654851224189">
-                    <label>National Conference</label>
+                  <div>
+                    <label>National Conf</label>
                     <input
                       type="number"
-                      placeholder="National Conference"
+                      placeholder="National Conf"
                       className="form-control"
                       name="nationalConference"
                       value={nationalConference}
@@ -770,8 +791,9 @@ const AddWorkload = () => {
                 </div>
               </div>
 
-              <div className="row mt-3">
-                <div className="col-sm-10 col-md-6 col-lg-4 mt-4">
+              <div className="row mt-2">
+                <h5>Book Details</h5>
+                <div className="col-sm-10 col-md-6 col-lg-4">
                   <label>Book (International)</label>
                   <input
                     type="number"
@@ -782,7 +804,7 @@ const AddWorkload = () => {
                     onChange={(e) => onInputChange(e)}
                   />
                 </div>
-                <div className="col-sm-10 col-md-6 col-lg-4 mt-4">
+                <div className="col-sm-10 col-md-6 col-lg-4">
                   <label>Book (National)</label>
                   <input
                     type="number"
@@ -793,7 +815,7 @@ const AddWorkload = () => {
                     onChange={(e) => onInputChange(e)}
                   />
                 </div>
-                <div className="col-sm-10 col-md-6 col-lg-4 mt-4">
+                <div className="col-sm-10 col-md-6 col-lg-4">
                   <label>Book Chapter</label>
                   <input
                     type="number"
@@ -805,8 +827,9 @@ const AddWorkload = () => {
                   />
                 </div>
               </div>
-              <div className="row">
-                <div className="col-sm-10 col-md-6 col-lg-4 mt-4">
+              <div className="row mt-3">
+                <h5>Patent</h5>
+                <div className="col-sm-10 col-md-6 col-lg-4">
                   <label>Patent (International)</label>
                   <input
                     type="number"
@@ -817,7 +840,7 @@ const AddWorkload = () => {
                     onChange={(e) => onInputChange(e)}
                   />
                 </div>
-                <div className="col-sm-10 col-md-6 col-lg-4 mt-4">
+                <div className="col-sm-10 col-md-6 col-lg-4">
                   <label>Patent (National)</label>
                   <input
                     type="number"
@@ -828,7 +851,10 @@ const AddWorkload = () => {
                     onChange={(e) => onInputChange(e)}
                   />
                 </div>
-                <div className="col-sm-10 col-md-6 col-lg-4 mt-4">
+              </div>
+              <div className="row mt-3">
+                <h5>Other</h5>
+                <div className="col-sm-10 col-md-6 col-lg-4">
                   <label>Journal/Conf Reviewer</label>
                   <input
                     type="number"
@@ -839,7 +865,7 @@ const AddWorkload = () => {
                     onChange={(e) => onInputChange(e)}
                   />
                 </div>
-                <div className="col-sm-10 col-md-6 col-lg-4 mt-4">
+                <div className="col-sm-10 col-md-6 col-lg-4">
                   <label>Technical Report</label>
                   <input
                     type="number"
@@ -850,7 +876,7 @@ const AddWorkload = () => {
                     onChange={(e) => onInputChange(e)}
                   />
                 </div>
-                <div className="col-sm-10 col-md-6 col-lg-4 mt-4">
+                <div className="col-sm-10 col-md-6 col-lg-4">
                   <label>Dev of Product</label>
                   <input
                     type="number"

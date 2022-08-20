@@ -84,43 +84,38 @@ const Workload = () => {
         }
         total_classes += w.totalClasses;
         //Adding courses details
-        if (w.courseTitle1 !== "") {
-          const courseObject = all_courses.find(
-            (c) => c.courseTitle === w.courseTitle1
-          );
-          courses.push({
-            title: w.courseTitle1,
-            contribution: w.courseContribution1,
-            program: courseObject.program,
-            credit_hours:
-              Number(courseObject.theory) + Number(courseObject.lab),
-          });
-        }
-
-        if (w.courseTitle2 !== "") {
-          const courseObject = all_courses.find(
-            (c) => c.courseTitle === w.courseTitle2
-          );
-          courses.push({
-            title: w.courseTitle2,
-            contribution: w.courseContribution2,
-            program: courseObject.program,
-            credit_hours:
-              Number(courseObject.theory) + Number(courseObject.lab),
-          });
-        }
-
-        if (w.courseTitle3 !== "") {
-          const courseObject = all_courses.find(
-            (c) => c.courseTitle === w.courseTitle3
-          );
-          courses.push({
-            title: w.courseTitle3,
-            contribution: w.courseContribution3,
-            program: courseObject.program,
-            credit_hours:
-              Number(courseObject.theory) + Number(courseObject.lab),
-          });
+        for (let i = 1; i <= 3; i++) {
+          if (w[`courseTitle${i}`] !== "") {
+            const courseObject = all_courses.find(
+              (c) => c.courseTitle === w[`courseTitle${i}`]
+            );
+            const course_contribution = w[`courseContribution${i}`];
+            const credit_hours =
+              Number(courseObject.theory) + Number(courseObject.lab);
+            const contact_hours =
+              (Number(courseObject.theory) + 3 * Number(courseObject.lab)) *
+              (course_contribution / 100);
+            const total_weeks = Number(
+              parameters.totalWeeksInSemester[semester.toLowerCase()]
+            );
+            courses.push({
+              id: courseObject.id,
+              code: courseObject.courseNo,
+              title: courseObject.courseTitle,
+              contribution: course_contribution,
+              program: courseObject.program,
+              dept: courseObject.dept,
+              contact_hours: contact_hours,
+              credit_hours: credit_hours,
+              financial_impact:
+                contact_hours * Number(employeeObject.pay_rate) * total_weeks,
+              payment_due:
+                contact_hours * Number(employeeObject.pay_rate) * total_weeks,
+              total_classes:
+                credit_hours * (course_contribution / 100) * total_weeks,
+              compensated_classes: 0,
+            });
+          }
         }
       });
 
@@ -180,35 +175,35 @@ const Workload = () => {
         <option></option>
       </select>
       <select className="mt-5 ms-2">
-        <option>All Deptartments</option>
-        <option id="DeptartmentList-1" value="ME">
+        <option>All Departments</option>
+        <option id="DepartmentList-1" value="ME">
           ME
         </option>
-        <option id="DeptartmentList-2" value="EE">
+        <option id="DepartmentList-2" value="EE">
           EE
         </option>
-        <option id="DeptartmentList-3" value="CIS">
+        <option id="DepartmentList-3" value="CIS">
           CIS
         </option>
-        <option id="DeptartmentList-4" value="PHY">
+        <option id="DepartmentList-4" value="PHY">
           PHY
         </option>
-        <option id="DeptartmentList-5" value="CHE">
+        <option id="DepartmentList-5" value="CHE">
           CHE
         </option>
-        <option id="DeptartmentList-6" value="MME">
+        <option id="DepartmentList-6" value="MME">
           MME
         </option>
-        <option id="DeptartmentList-7" value="NE">
+        <option id="DepartmentList-7" value="NE">
           NE
         </option>
-        <option id="DeptartmentList-8" value="MS">
+        <option id="DepartmentList-8" value="MS">
           MS
         </option>
-        <option id="DeptartmentList-9" value="CMS">
+        <option id="DepartmentList-9" value="CMS">
           CMS
         </option>
-        <option id="DeptartmentList-10" value="Chemistry">
+        <option id="DepartmentList-10" value="Chemistry">
           Chemistry
         </option>
       </select>

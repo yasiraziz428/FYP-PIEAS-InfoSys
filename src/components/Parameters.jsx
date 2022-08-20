@@ -7,6 +7,7 @@ const Parameters = () => {
   let navigate = useNavigate();
   const [newProgram, setNewProgram] = useState("");
   const [programs, setPrograms] = useState([]);
+  const [designations, setDesignations] = useState([]);
   const [parameter, setParameter] = useState({
     degree: { wBS: "", wMS: "", wPhD: "" },
     wTheory: "",
@@ -98,6 +99,7 @@ const Parameters = () => {
   useEffect(() => {
     loadParameters();
     loadPrograms();
+    loadDesignations();
   }, []);
 
   const onInputChange = (e) => {
@@ -287,6 +289,22 @@ const Parameters = () => {
     }
   };
 
+  const onChangePayrate = (event, id) => {
+    const modified_designation_id = designations.findIndex((d) => d.id === id);
+    const payrate = isNaN(Number(event.target.value))
+      ? 0
+      : Number(event.target.value);
+    const modified_designations = [...designations];
+    if (modified_designation_id !== -1) {
+      modified_designations.splice(modified_designation_id, 1, {
+        ...designations[modified_designation_id],
+        payrate,
+      });
+    }
+    console.log(modified_designations);
+    setDesignations(modified_designations);
+  };
+
   const loadParameters = async () => {
     const result = await axios.get(`http://localhost:3003/parameters`);
     setParameter(result.data);
@@ -297,9 +315,17 @@ const Parameters = () => {
     setPrograms(result.data);
   };
 
+  const loadDesignations = async () => {
+    const result = await axios.get(`http://localhost:3003/designations`);
+    setDesignations(result.data);
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.put("http://localhost:3003/parameters", parameter);
+    designations.forEach(async (d) => {
+      await axios.put(`http://localhost:3003/designations/${d.id}`, d);
+    });
     navigate("/parameters");
     console.log("Submitted!");
   };
@@ -873,74 +899,27 @@ const Parameters = () => {
             {/* Payment Section */}
             <div className="container col-lg-5 col-md-12 col-sm-12">
               <h3 className="text-center mb-5">Payment</h3>
-
-              <div className="row">
-                <h5 className="mb-3">Pay Per Hour (Rs)</h5>
-                <div className="col">
-                  <label>Visiting Faculty A</label>
-                </div>
-                <div className="col">
-                  <input
-                    className="form-control"
-                    onChange={(e) => onInputChange(e)}
-                  />
-                </div>
-              </div>
-              <div className="row">
-                <div className="col">
-                  <label>Visiting Faculty B</label>
-                </div>
-                <div className="col">
-                  <input
-                    className="form-control"
-                    onChange={(e) => onInputChange(e)}
-                  />
-                </div>
-              </div>
-              <div className="row">
-                <div className="col">
-                  <label>Visiting Faculty C</label>
-                </div>
-                <div className="col">
-                  <input
-                    className="form-control"
-                    onChange={(e) => onInputChange(e)}
-                  />
-                </div>
-              </div>
-              <div className="row">
-                <div className="col">
-                  <label>Visiting Faculty D</label>
-                </div>
-                <div className="col">
-                  <input
-                    className="form-control"
-                    onChange={(e) => onInputChange(e)}
-                  />
-                </div>
-              </div>
-              <div className="row mt-4">
-                <div className="col">
-                  <label>TA/Lab Engineer A</label>
-                </div>
-                <div className="col">
-                  <input
-                    className="form-control"
-                    onChange={(e) => onInputChange(e)}
-                  />
-                </div>
-              </div>
-              <div className="row">
-                <div className="col">
-                  <label>TA/Lab Engineer B</label>
-                </div>
-                <div className="col">
-                  <input
-                    className="form-control"
-                    onChange={(e) => onInputChange(e)}
-                  />
-                </div>
-              </div>
+              <h5 className="mb-3">Pay Per Hour (Rs)</h5>
+              {designations
+                .filter(
+                  (d) =>
+                    d.name.toLowerCase().includes("visiting faculty") ||
+                    d.name.toLowerCase().includes("ta/lab engineer")
+                )
+                .map((d) => (
+                  <div className="row">
+                    <div className="col">
+                      <label>{d.name}</label>
+                    </div>
+                    <div className="col">
+                      <input
+                        className="form-control"
+                        defaultValue={d.payrate}
+                        onChange={(e) => onChangePayrate(e, d.id)}
+                      />
+                    </div>
+                  </div>
+                ))}
 
               {/* Program Section */}
               <h3 className="text-center my-5">Programs</h3>

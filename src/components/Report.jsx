@@ -18,6 +18,7 @@ const Report = () => {
   }, []);
 
   useEffect(() => {
+    console.log(payments);
     const department_payment_obj = {};
     payments
       .filter((p) => {
@@ -34,24 +35,23 @@ const Report = () => {
         );
       })
       .forEach((payment) => {
-        const department = departments[payment.employee_data.department];
         const designation = payment.employee_data.designation.toLowerCase();
-        //initializing department entry
-        if (!department_payment_obj[department]) {
-          department_payment_obj[department] = {
-            programs: [],
-            financial_impact: {
-              "visiting faculty": 0,
-              "ta/lab engineer": 0,
-            },
-            payment_due: {
-              "visiting faculty": 0,
-              "ta/lab engineer": 0,
-            },
-          };
-        }
-        //adding programs
         payment.courses.forEach((course) => {
+          const department = departments[course.dept];
+          //initializing department entry
+          if (!department_payment_obj[department]) {
+            department_payment_obj[department] = {
+              programs: [],
+              financial_impact: {
+                "visiting faculty": 0,
+                "ta/lab engineer": 0,
+              },
+              payment_due: {
+                "visiting faculty": 0,
+                "ta/lab engineer": 0,
+              },
+            };
+          }
           if (
             !department_payment_obj[department]["programs"].includes(
               course.program
@@ -59,53 +59,26 @@ const Report = () => {
           ) {
             department_payment_obj[department]["programs"].push(course.program);
           }
+          //adding financial impact and payment due
+          if (designation.includes("visiting faculty")) {
+            department_payment_obj[department]["financial_impact"][
+              "visiting faculty"
+            ] += Number(course.financial_impact);
+            department_payment_obj[department]["payment_due"][
+              "visiting faculty"
+            ] += Number(course.payment_due);
+          } else if (
+            designation.includes("ta") ||
+            designation.includes("lab engineer")
+          ) {
+            department_payment_obj[department]["financial_impact"][
+              "ta/lab engineer"
+            ] += Number(course.financial_impact);
+            department_payment_obj[department]["payment_due"][
+              "ta/lab engineer"
+            ] += Number(course.payment_due);
+          }
         });
-        //adding financial impact and payment due
-        if (designation.includes("visiting faculty")) {
-          department_payment_obj[department]["financial_impact"][
-            "visiting faculty"
-          ] += Number(payment.financial_impact);
-          department_payment_obj[department]["payment_due"][
-            "visiting faculty"
-          ] += Number(payment.payment_due);
-        } else if (
-          designation.includes("ta") ||
-          designation.includes("lab engineer")
-        ) {
-          department_payment_obj[department]["financial_impact"][
-            "ta/lab engineer"
-          ] += Number(payment.financial_impact);
-          department_payment_obj[department]["payment_due"][
-            "ta/lab engineer"
-          ] += Number(payment.payment_due);
-        }
-
-        // payment.courses.forEach((course) => {
-        //   if (!departmentPayments[department][course.program]) {
-        //     departmentPayments[department][course.program] = {
-        //       "visiting faculty": { financial_impact: 0, payment_due: 0 },
-        //       "ta/lab engineer": { financial_impact: 0, payment_due: 0 },
-        //     };
-        //   }
-        //   if (designation.includes("visiting faculty")) {
-        //     departmentPayments[department][course.program][
-        //       "visiting faculty"
-        //     ].financial_impact += Number(payment.financial_impact);
-        //     departmentPayments[department][course.program][
-        //       "visiting faculty"
-        //     ].payment_due += Number(payment.financial_impact);
-        //   } else if (
-        //     designation.includes("ta") ||
-        //     designation.includes("lab engineer")
-        //   ) {
-        //     departmentPayments[department][course.program][
-        //       "ta/lab engineer"
-        //     ].financial_impact += Number(payment.financial_impact);
-        //     departmentPayments[department][course.program][
-        //       "ta/lab engineer"
-        //     ].payment_due += Number(payment.financial_impact);
-        //   }
-        // });
       });
     setDepartmentPayments(department_payment_obj);
   }, [payments, selectedYear, selectedSemester]);
