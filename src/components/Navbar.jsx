@@ -50,7 +50,7 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" exact to="./parameters">
-                  Parameters
+                  <i class="fa fa-gear"></i>
                 </NavLink>
               </li>
               {/* <li className="nav-item dropdown">

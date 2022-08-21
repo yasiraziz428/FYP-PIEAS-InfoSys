@@ -45,7 +45,7 @@ const Course = () => {
   return (
     <div className="container">
       <Link to="/course/add" className="btn btn-outline-dark float-end mt-5">
-        Add Course
+        Add Course <i class="fa fa-plus"></i>
       </Link>
       <br></br>
       <select onChange={onSelectDegree} value={selectedDegree}>

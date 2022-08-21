@@ -114,39 +114,7 @@ const Payment = () => {
         <option value={"Fall"}>Fall</option>
         <option value={"Summer"}>Summer</option>
       </select>
-      <select className="ms-2 mt-2">
-        <option>All Departments</option>
-        <option id="DepartmentList-1" value="ME">
-          ME
-        </option>
-        <option id="DepartmentList-2" value="EE">
-          EE
-        </option>
-        <option id="DepartmentList-3" value="CIS">
-          CIS
-        </option>
-        <option id="DepartmentList-4" value="PHY">
-          PHY
-        </option>
-        <option id="DepartmentList-5" value="CHE">
-          CHE
-        </option>
-        <option id="DepartmentList-6" value="MME">
-          MME
-        </option>
-        <option id="DepartmentList-7" value="NE">
-          NE
-        </option>
-        <option id="DepartmentList-8" value="MS">
-          MS
-        </option>
-        <option id="DepartmentList-9" value="CMS">
-          CMS
-        </option>
-        <option id="DepartmentList-10" value="Chemistry">
-          Chemistry
-        </option>
-      </select>
+
       <table className="table caption-top border shadow mt-1">
         <thead>
           <tr>

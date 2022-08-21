@@ -353,7 +353,7 @@ const Parameters = () => {
       <form onSubmit={(e) => onSubmit(e)}>
         <div className="container w-50 shadow px-5 pb-5">
           <div className="row">
-            <h1 className="text-center py-5">Parameters</h1>
+            <h1 className="text-center py-5">Configuration</h1>
             {/* Workload Section */}
             <div className="col-lg-5 col-md-12 col-sm-12">
               <h3 className="text-center mb-5">Workload</h3>

@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 
 const Workload = () => {
   const [workload, setWorkload] = useState([]);
+  const allYears = "All Years";
+  const allSemesters = "All Semesters";
+
+  const [years, setYears] = useState([]);
+  const [selectedYear, setSelectedYear] = useState(allYears);
+  const [selectedSemester, setSelectedSemester] = useState(allSemesters);
 
   useEffect(() => {
     loadWorkload();
@@ -11,6 +17,12 @@ const Workload = () => {
 
   const loadWorkload = async () => {
     const result = await axios.get("http://localhost:3003/workloads");
+    //Populating Years
+    const yearsSet = new Set(
+      workload.filter((p) => p.year && p.year !== "").map((w) => w.year)
+    );
+    const yearsArray = [...yearsSet].sort();
+    setYears(yearsArray);
     setWorkload(result.data.reverse());
   };
 
@@ -35,7 +47,13 @@ const Workload = () => {
       );
     }
   };
+  const onSelectYear = (e) => {
+    setSelectedYear(e.target.value);
+  };
 
+  const onSelectSemester = (e) => {
+    setSelectedSemester(e.target.value);
+  };
   const updatePayment = async (
     employeeObject,
     year,
@@ -163,50 +181,30 @@ const Workload = () => {
   return (
     <div className="container-fluid ">
       <Link to="/workload/add" className="btn btn-outline-dark float-end mt-5">
-        Add Workload
+        Add Workload <i class="fa fa-plus"></i>
       </Link>
+      <button
+        className="btn btn-outline-dark mt-5 px-5 me-3 float-end"
+        onClick={() => {
+          window.print();
+        }}
+      >
+        Print <i class="fa fa-print"></i>
+      </button>
       <br></br>
-      <select className="mt-5">
-        <option>All Years</option>
-        <option></option>
+      <select className="mt-5" onChange={onSelectYear} value={selectedYear}>
+        <option value={allYears}>All Years</option>
+        {years.map((year) => (
+          <option value={year}>{year}</option>
+        ))}
       </select>
-      <select className="ms-2 mt-2">
-        <option>All Semesters</option>
-        <option></option>
+      <select className="ms-2 mt-2" onChange={onSelectSemester}>
+        <option value={allSemesters}>All Semesters</option>
+        <option value={"Spring"}>Spring</option>
+        <option value={"Fall"}>Fall</option>
+        <option value={"Summer"}>Summer</option>
       </select>
-      <select className="mt-5 ms-2">
-        <option>All Departments</option>
-        <option id="DepartmentList-1" value="ME">
-          ME
-        </option>
-        <option id="DepartmentList-2" value="EE">
-          EE
-        </option>
-        <option id="DepartmentList-3" value="CIS">
-          CIS
-        </option>
-        <option id="DepartmentList-4" value="PHY">
-          PHY
-        </option>
-        <option id="DepartmentList-5" value="CHE">
-          CHE
-        </option>
-        <option id="DepartmentList-6" value="MME">
-          MME
-        </option>
-        <option id="DepartmentList-7" value="NE">
-          NE
-        </option>
-        <option id="DepartmentList-8" value="MS">
-          MS
-        </option>
-        <option id="DepartmentList-9" value="CMS">
-          CMS
-        </option>
-        <option id="DepartmentList-10" value="Chemistry">
-          Chemistry
-        </option>
-      </select>
+
       <table
         className="table caption-top border shadow mt-2"
         // style={{ fontSize: "12px" }}
@@ -244,51 +242,62 @@ const Workload = () => {
         </thead>
         <tbody>
           {workload
-            ? workload.map((workloads, index) => (
-                <tr>
-                  <th scope="row">{index + 1}</th>
-                  <td>{workloads.semester}</td>
-                  <td>{workloads.year}</td>
-                  <td>{workloads.employeeName}</td>
-                  <td>{workloads.courseTitle1}</td>
-                  <td>{workloads.courseTitle2}</td>
-                  <td>{workloads.courseTitle3}</td>
-                  <td>{workloads.managerialPosition}</td>
-                  <td>{workloads.noOfStudents}</td>
-                  <td>{workloads.noOfMsStudents}</td>
-                  <td>{workloads.projectSupervisions}</td>
-                  <td>{workloads.projectSupervisionsMS}</td>
-                  <td>{workloads.researchProject}</td>
-                  <td>{workloads.intJournal}</td>
-                  <td>{workloads.nationalJournal}</td>
-                  <td>{workloads.intConference}</td>
-                  <td>{workloads.nationalConference}</td>
-                  <td>{workloads.book}</td>
-                  <td>{workloads.NBook}</td>
-                  <td>{workloads.chapter}</td>
-                  <td>{workloads.patent}</td>
-                  <td>{workloads.NPatent}</td>
-                  <td>{workloads.GCR}</td>
-                  <td>{workloads.technicalReport}</td>
-                  <td>{workloads.devOfProd}</td>
-                  <td>{workloads.workLoad}</td>
-                  <td>
-                    <Link
-                      className="btn btn-outline-primary me-2"
-                      to={`/workload/edit/${workloads.id}`}
-                    >
-                      <i class="fa fa-pen"></i>
-                    </Link>
-                    <Link
-                      className="btn btn-outline-danger"
-                      to="#"
-                      onClick={() => deleteWorkload(workloads)}
-                    >
-                      <i class="fa fa-trash"></i>
-                    </Link>
-                  </td>
-                </tr>
-              ))
+            ? workload
+                .filter(
+                  (p) =>
+                    p.total_contact_hours !== 0 &&
+                    (selectedYear !== allYears
+                      ? p.year === selectedYear
+                      : true) &&
+                    (selectedSemester !== allSemesters
+                      ? p.semester === selectedSemester
+                      : true)
+                )
+                .map((workloads, index) => (
+                  <tr>
+                    <th scope="row">{index + 1}</th>
+                    <td>{workloads.semester}</td>
+                    <td>{workloads.year}</td>
+                    <td>{workloads.employeeName}</td>
+                    <td>{workloads.courseTitle1}</td>
+                    <td>{workloads.courseTitle2}</td>
+                    <td>{workloads.courseTitle3}</td>
+                    <td>{workloads.managerialPosition}</td>
+                    <td>{workloads.noOfStudents}</td>
+                    <td>{workloads.noOfMsStudents}</td>
+                    <td>{workloads.projectSupervisions}</td>
+                    <td>{workloads.projectSupervisionsMS}</td>
+                    <td>{workloads.researchProject}</td>
+                    <td>{workloads.intJournal}</td>
+                    <td>{workloads.nationalJournal}</td>
+                    <td>{workloads.intConference}</td>
+                    <td>{workloads.nationalConference}</td>
+                    <td>{workloads.book}</td>
+                    <td>{workloads.NBook}</td>
+                    <td>{workloads.chapter}</td>
+                    <td>{workloads.patent}</td>
+                    <td>{workloads.NPatent}</td>
+                    <td>{workloads.GCR}</td>
+                    <td>{workloads.technicalReport}</td>
+                    <td>{workloads.devOfProd}</td>
+                    <td>{workloads.workLoad}</td>
+                    <td>
+                      <Link
+                        className="btn btn-outline-primary me-2"
+                        to={`/workload/edit/${workloads.id}`}
+                      >
+                        <i class="fa fa-pen"></i>
+                      </Link>
+                      <Link
+                        className="btn btn-outline-danger"
+                        to="#"
+                        onClick={() => deleteWorkload(workloads)}
+                      >
+                        <i class="fa fa-trash"></i>
+                      </Link>
+                    </td>
+                  </tr>
+                ))
             : null}
         </tbody>
       </table>
