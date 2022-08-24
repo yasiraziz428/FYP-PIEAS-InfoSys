@@ -314,7 +314,7 @@
     {
       "semester": "Spring",
       "year": "2022",
-      "employeeName": "Muhammad Yasir Aziz (CIS)",
+      "employeeName": "Muhammad Yasir Aziz",
       "courseTitle1": "Programming",
       "courseTitle2": "",
       "courseTitle3": "",
@@ -350,7 +350,7 @@
     {
       "semester": "Spring",
       "year": "2022",
-      "employeeName": "Saeed Ahmad Khan (MME)",
+      "employeeName": "Saeed Ahmad Khan",
       "courseTitle1": "Programming Lab",
       "courseTitle2": "",
       "courseTitle3": "",
@@ -386,7 +386,7 @@
     {
       "semester": "Spring",
       "year": "2022",
-      "employeeName": "Tanveer Ahmad Khan (PHY)",
+      "employeeName": "Tanveer Ahmad Khan",
       "courseTitle1": "Calculus",
       "courseTitle2": "Metallurgy",
       "courseTitle3": "",
@@ -422,7 +422,7 @@
     {
       "semester": "Spring",
       "year": "2022",
-      "employeeName": "Ahmad Kamal Baig (CIS)",
+      "employeeName": "Ahmad Kamal Baig",
       "courseTitle1": "Chemistry",
       "courseTitle2": "",
       "courseTitle3": "",
@@ -458,7 +458,7 @@
     {
       "semester": "Spring",
       "year": "2022",
-      "employeeName": "Humair Abbas (EE)",
+      "employeeName": "Humair Abbas",
       "courseTitle1": "Calculus",
       "courseTitle2": "",
       "courseTitle3": "",
@@ -494,7 +494,7 @@
     {
       "semester": "Spring",
       "year": "2022",
-      "employeeName": "Ahmad Abdullah (EE)",
+      "employeeName": "Ahmad Abdullah",
       "courseTitle1": "Fundamentals of Physics",
       "courseTitle2": "",
       "courseTitle3": "",
@@ -530,7 +530,7 @@
     {
       "semester": "Spring",
       "year": "2022",
-      "employeeName": "Ahmad Dar (CHE)",
+      "employeeName": "Ahmad Dar",
       "courseTitle1": "Nuclear Reactor Physics.",
       "courseTitle2": "",
       "courseTitle3": "",
@@ -566,7 +566,7 @@
     {
       "semester": "Spring",
       "year": "2022",
-      "employeeName": "Naveed (MS)",
+      "employeeName": "Naveed",
       "courseTitle1": "Chemistry",
       "courseTitle2": "",
       "courseTitle3": "",
@@ -602,7 +602,7 @@
     {
       "semester": "Spring",
       "year": "2022",
-      "employeeName": "Ashar Aziz (CHE)",
+      "employeeName": "Ashar Aziz",
       "courseTitle1": "Algebra",
       "courseTitle2": "",
       "courseTitle3": "",
@@ -638,7 +638,7 @@
     {
       "semester": "Spring",
       "year": "2022",
-      "employeeName": "Muhammad Uzair Khan (CHE)",
+      "employeeName": "Muhammad Uzair Khan",
       "courseTitle1": "Kinetics",
       "courseTitle2": "",
       "courseTitle3": "",
@@ -674,7 +674,7 @@
     {
       "semester": "Spring",
       "year": "2022",
-      "employeeName": "Ahmad Hassan (NE)",
+      "employeeName": "Ahmad Hassan",
       "courseTitle1": "Radiation Physic",
       "courseTitle2": "",
       "courseTitle3": "",
@@ -710,7 +710,7 @@
     {
       "semester": "Spring",
       "year": "2022",
-      "employeeName": "Saeed Khattak (MME)",
+      "employeeName": "Saeed Khattak",
       "courseTitle1": "Physiology",
       "courseTitle2": "",
       "courseTitle3": "",
@@ -746,7 +746,7 @@
     {
       "semester": "Spring",
       "year": "2022",
-      "employeeName": "Hamza Khan (Chemistry)",
+      "employeeName": "Hamza Khan",
       "courseTitle1": "Fundamentals of Chemistry",
       "courseTitle2": "",
       "courseTitle3": "",
@@ -1340,6 +1340,21 @@
         }
       ],
       "id": 38
+    },
+    {
+      "employee_id": 21,
+      "year": "2018",
+      "semester": "Summer",
+      "total_contact_hours": 0,
+      "bs_contact_hours": 0,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "financial_impact": null,
+      "payment_due": null,
+      "total_classes": 0,
+      "compensated_classes": 0,
+      "courses": [],
+      "id": 39
     }
   ],
   "designations": [
