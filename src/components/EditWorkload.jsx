@@ -39,6 +39,7 @@ const EditWorkload = () => {
   });
 
   const {
+    employeeName,
     semester,
     year,
     managerialPosition,
@@ -59,6 +60,12 @@ const EditWorkload = () => {
     devOfProd,
     patent,
     NPatent,
+    courseTitle1,
+    courseTitle2,
+    courseTitle3,
+    courseContribution1,
+    courseContribution2,
+    courseContribution3,
   } = workload;
 
   const [employee, setEmployee] = useState([]);
@@ -458,13 +465,19 @@ const EditWorkload = () => {
                       className="form-control"
                       name="employeeName"
                       id="employeeName"
+                      value={employeeName}
                       onChange={(e) => onInputChange(e)}
                     >
-                      <option selected="true" id="DesignationList-0">
-                        -- Select --
-                      </option>
-                      {employee.map((e) => (
-                        <option id="">{e.employeeName}</option>
+                      <option id="DesignationList-0">-- Select --</option>
+                      {employee.map((e, index) => (
+                        <option
+                          key={index}
+                          // selected={(
+                          //   workload.employeeName === e.employeeName
+                          // ).toString()}
+                        >
+                          {e.employeeName}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -545,6 +558,7 @@ const EditWorkload = () => {
                     className="form-control"
                     name="courseTitle1"
                     id="course1"
+                    value={courseTitle1}
                     onChange={(e) => onInputChange(e)}
                   >
                     <option selected="true" id="DesignationList-0" value={0}>
@@ -565,7 +579,7 @@ const EditWorkload = () => {
                     placeholder="0 to 100%"
                     className="form-control"
                     name="courseContribution1"
-                    defaultValue={100}
+                    value={courseContribution1}
                     min={0}
                     max={100}
                     onChange={(e) => onInputChange(e)}
@@ -580,6 +594,7 @@ const EditWorkload = () => {
                     className="form-control"
                     name="courseTitle2"
                     id="course2"
+                    value={courseTitle2}
                     onChange={(e) => onInputChange(e)}
                   >
                     <option selected="true" value={0}>
@@ -600,7 +615,7 @@ const EditWorkload = () => {
                     placeholder="0 to 100%"
                     className="form-control"
                     name="courseContribution2"
-                    defaultValue={100}
+                    value={courseContribution2}
                     min={0}
                     max={100}
                     onChange={(e) => onInputChange(e)}
@@ -615,6 +630,7 @@ const EditWorkload = () => {
                     className="form-control"
                     name="courseTitle3"
                     id="course3"
+                    value={courseTitle3}
                     onChange={(e) => onInputChange(e)}
                   >
                     <option selected="true" value={0}>
@@ -635,7 +651,7 @@ const EditWorkload = () => {
                     placeholder="0 to 100%"
                     className="form-control"
                     name="courseContribution3"
-                    defaultValue={100}
+                    value={courseContribution3}
                     min={0}
                     max={100}
                     onChange={(e) => onInputChange(e)}
