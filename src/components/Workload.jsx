@@ -215,7 +215,7 @@ const Workload = () => {
             <th>#</th>
             {/* <th>Semester</th>
             <th>Year</th> */}
-            <th style={{ fontSize: "13px" }}>Employee</th>
+            <th style={{ fontSize: "14px" }}>Employee</th>
             <th>Course 1</th>
             <th>Course 2</th>
             <th>Course 3</th>

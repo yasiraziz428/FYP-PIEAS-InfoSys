@@ -106,6 +106,24 @@
       "department": "Chemistry",
       "designation": "Visiting Faculty C",
       "id": 20
+    },
+    {
+      "employeeName": "Employee1",
+      "department": "CIS",
+      "designation": "Visiting Faculty B",
+      "id": 21
+    },
+    {
+      "employeeName": "Employee2",
+      "department": "CIS",
+      "designation": "Visiting Faculty A",
+      "id": 22
+    },
+    {
+      "employeeName": "Employee One",
+      "department": "CIS",
+      "designation": "Visiting Faculty C",
+      "id": 23
     }
   ],
   "courses": [
@@ -308,6 +326,16 @@
       "theory": "3",
       "lab": "0",
       "id": 22
+    },
+    {
+      "degree": "BS",
+      "dept": "CIS",
+      "program": "BS_CIS",
+      "courseNo": "123",
+      "courseTitle": "Software Engineering",
+      "theory": "3",
+      "lab": "0",
+      "id": 23
     }
   ],
   "workloads": [
@@ -1340,6 +1368,21 @@
         }
       ],
       "id": 38
+    },
+    {
+      "employee_id": 23,
+      "year": "2022",
+      "semester": "Summer",
+      "total_contact_hours": 0,
+      "bs_contact_hours": 0,
+      "ms_contact_hours": 0,
+      "phd_contact_hours": 0,
+      "financial_impact": null,
+      "payment_due": null,
+      "total_classes": 0,
+      "compensated_classes": 0,
+      "courses": [],
+      "id": 39
     }
   ],
   "designations": [

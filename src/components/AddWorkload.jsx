@@ -456,9 +456,7 @@ const AddWorkload = () => {
                         -- Select --
                       </option>
                       {employee.map((e) => (
-                        <option id="">
-                          {`${e.employeeName} (${e.department})`}
-                        </option>
+                        <option id="">{e.employeeName}</option>
                       ))}
                     </select>
                   </div>
