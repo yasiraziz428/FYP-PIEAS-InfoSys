@@ -960,7 +960,7 @@ const Parameters = () => {
             type="sumbit"
             className="mt-5 px-5 btn btn-dark text-center form-control"
           >
-            Update Parameters
+            Update Configuration
           </button>
         </div>
       </form>

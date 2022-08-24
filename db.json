@@ -106,12 +106,6 @@
       "department": "Chemistry",
       "designation": "Visiting Faculty C",
       "id": 20
-    },
-    {
-      "employeeName": "new1",
-      "department": "ME",
-      "designation": "Visiting Faculty A",
-      "id": 21
     }
   ],
   "courses": [
@@ -1051,9 +1045,9 @@
       "phd_contact_hours": 0,
       "pay_rate": 3000,
       "financial_impact": 96000,
-      "payment_due": 96000,
+      "payment_due": 93000,
       "total_classes": 32,
-      "compensated_classes": 0,
+      "compensated_classes": -1,
       "courses": [
         {
           "id": 12,
@@ -1065,9 +1059,9 @@
           "contact_hours": 2,
           "credit_hours": 2,
           "financial_impact": 96000,
-          "payment_due": 96000,
+          "payment_due": 93000,
           "total_classes": 32,
-          "compensated_classes": 0
+          "compensated_classes": -1
         }
       ],
       "id": 27

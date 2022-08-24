@@ -160,8 +160,8 @@ const Report = () => {
             <thead>
               <tr>
                 <th>#</th>
-                <th>Year</th>
-                <th>Semester</th>
+                {/* <th>Year</th>
+                <th>Semester</th> */}
                 <th>Name of Visiting Faculty Member (Dept)</th>
                 <th>Program</th>
                 <th>Name of Course / Lab</th>
@@ -192,8 +192,8 @@ const Report = () => {
                     .map((payment, index) => (
                       <tr>
                         <th>{index + 1}</th>
-                        <td>{payment.year}</td>
-                        <td>{payment.semester}</td>
+                        {/* <td>{payment.year}</td>
+                        <td>{payment.semester}</td> */}
                         <td>
                           {payment.employee_data.employeeName} (
                           {payment.employee_data.department})
@@ -247,8 +247,8 @@ const Report = () => {
 
               <tr>
                 <td></td>
-                <td></td>
-                <td></td>
+                {/* <td></td>
+                <td></td> */}
                 <td></td>
                 <td></td>
                 <td></td>
@@ -293,8 +293,8 @@ const Report = () => {
             <thead>
               <tr>
                 <th>#</th>
-                <th>Year</th>
-                <th>Semester</th>
+                {/* <th>Year</th>
+                <th>Semester</th> */}
                 <th>Name of TA / Lab Engineer (Dept)</th>
                 <th>Program</th>
                 <th>Name of Course / Lab</th>
@@ -325,8 +325,8 @@ const Report = () => {
                     .map((payment, index) => (
                       <tr>
                         <th>{index + 1}</th>
-                        <td>{payment.year}</td>
-                        <td>{payment.semester}</td>
+                        {/* <td>{payment.year}</td>
+                        <td>{payment.semester}</td> */}
                         <td>
                           {payment.employee_data.employeeName} (
                           {payment.employee_data.department})
@@ -380,8 +380,8 @@ const Report = () => {
 
               <tr>
                 <th></th>
-                <td></td>
-                <td></td>
+                {/* <td></td>
+                <td></td> */}
                 <td></td>
                 <td></td>
                 <td></td>
@@ -426,8 +426,8 @@ const Report = () => {
             <thead>
               <tr>
                 <th>#</th>
-                <th>Year</th>
-                <th>Semester</th>
+                {/* <th>Year</th>
+                <th>Semester</th> */}
                 <th>Name of Visiting Faculty Member (Dept)</th>
                 <th>Program</th>
                 <th>Name of Course / Lab</th>
@@ -458,8 +458,8 @@ const Report = () => {
                     .map((payment, index) => (
                       <tr>
                         <th>{index + 1}</th>
-                        <td>{payment.year}</td>
-                        <td>{payment.semester}</td>
+                        {/* <td>{payment.year}</td>
+                        <td>{payment.semester}</td> */}
                         <td>
                           {payment.employee_data.employeeName} (
                           {payment.employee_data.department})
@@ -516,8 +516,8 @@ const Report = () => {
 
               <tr>
                 <th></th>
-                <td></td>
-                <td></td>
+                {/* <td></td>
+                <td></td> */}
                 <td></td>
                 <td></td>
                 <td></td>
@@ -562,8 +562,8 @@ const Report = () => {
             <thead>
               <tr>
                 <th>#</th>
-                <th>Year</th>
-                <th>Semester</th>
+                {/* <th>Year</th>
+                <th>Semester</th> */}
                 <th>Name of TA / Lab Engineer (Dept)</th>
                 <th>Program</th>
                 <th>Name of Course / Lab</th>
@@ -594,8 +594,8 @@ const Report = () => {
                     .map((payment, index) => (
                       <tr>
                         <th>{index + 1}</th>
-                        <td>{payment.year}</td>
-                        <td>{payment.semester}</td>
+                        {/* <td>{payment.year}</td>
+                        <td>{payment.semester}</td> */}
                         <td>
                           {payment.employee_data.employeeName} (
                           {payment.employee_data.department})
@@ -652,8 +652,8 @@ const Report = () => {
 
               <tr>
                 <th></th>
-                <td></td>
-                <td></td>
+                {/* <td></td>
+                <td></td> */}
                 <td></td>
                 <td></td>
                 <td></td>

@@ -8,6 +8,7 @@ const AddWorkload = () => {
     semester: "",
     year: "",
     employeeName: "",
+    department: "",
     courseTitle1: "",
     courseTitle2: "",
     courseTitle3: "",
@@ -231,7 +232,7 @@ const AddWorkload = () => {
     //Start multiplying parameters with respective fields of workload getter variable of useState
     //Add them and set final score to that summed value
     //now add key to workload getter with key "workload" and value as "final score" calculated above
-
+    alert("Information added successfully!");
     await axios.post("http://localhost:3003/workloads", {
       ...workload,
       workLoad: final_score.toPrecision(3),

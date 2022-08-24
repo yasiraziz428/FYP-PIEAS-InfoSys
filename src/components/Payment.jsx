@@ -119,9 +119,9 @@ const Payment = () => {
         <thead>
           <tr>
             <th>#</th>
-            <th>Year</th>
-            <th>Semester</th>
-            <th>Employee</th>
+            {/* <th>Year</th>
+            <th>Semester</th> */}
+            <th className="px-5">Employee</th>
             <th>Designation</th>
             <th>Courses & Programs</th>
             <th>Course Contributions</th>
@@ -129,10 +129,10 @@ const Payment = () => {
             <th>Total Contact Hours</th>
             <th>Expected Classes</th>
             <th>Actual Classes</th>
-            <th>Pay Rate</th>
-            <th>Financial Impact in Rs</th>
-            <th>Payment Due in Rs</th>
-            <th className="px-3">± Classes</th>
+            <th>Pay_Rate</th>
+            <th className="px-3">Financial Impact</th>
+            <th className="px-3">Payment Due</th>
+            <th className="px-3">±Classes</th>
           </tr>
         </thead>
         <tbody>
@@ -151,8 +151,8 @@ const Payment = () => {
                 .map((payment, index) => (
                   <tr>
                     <th scope="row">{index + 1}</th>
-                    <td>{payment.year}</td>
-                    <td>{payment.semester}</td>
+                    {/* <td>{payment.year}</td>
+                    <td>{payment.semester}</td> */}
                     <td>
                       {payment.employee_data.employeeName} (
                       {payment.employee_data.department})

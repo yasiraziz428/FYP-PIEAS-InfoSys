@@ -17,9 +17,10 @@ const Workload = () => {
 
   const loadWorkload = async () => {
     const result = await axios.get("http://localhost:3003/workloads");
+    const workload_data = result.data;
     //Populating Years
     const yearsSet = new Set(
-      workload.filter((p) => p.year && p.year !== "").map((w) => w.year)
+      workload_data.filter((p) => p.year && p.year !== "").map((w) => w.year)
     );
     const yearsArray = [...yearsSet].sort();
     setYears(yearsArray);
@@ -207,14 +208,14 @@ const Workload = () => {
 
       <table
         className="table caption-top border shadow mt-2"
-        // style={{ fontSize: "12px" }}
+        style={{ fontSize: "11px" }}
       >
         <thead>
           <tr>
             <th>#</th>
-            <th>Semester</th>
-            <th>Year</th>
-            <th>Employee</th>
+            {/* <th>Semester</th>
+            <th>Year</th> */}
+            <th style={{ fontSize: "13px" }}>Employee</th>
             <th>Course 1</th>
             <th>Course 2</th>
             <th>Course 3</th>
@@ -224,18 +225,18 @@ const Workload = () => {
             <th>BS Project Supervisions</th>
             <th>MS/PhD Project Supervisions</th>
             <th>Research Project (Million)</th>
-            <th>International Journal</th>
-            <th>National Journal</th>
-            <th>International Conference</th>
-            <th>National Conference</th>
-            <th>Book (int)</th>
-            <th>Book (nat)</th>
+            <th>Journal (INT)</th>
+            <th>Journal (NAT)</th>
+            <th>Conf (INT)</th>
+            <th>Conf (NAT)</th>
+            <th>Book (INT)</th>
+            <th>Book (NAT)</th>
             <th>Book Chapter</th>
-            <th>Patent (int)</th>
-            <th>Patent (nat)</th>
-            <th>Journal / Conference Reviewer</th>
+            <th>Patent (INT)</th>
+            <th>Patent (NAT)</th>
+            <th>Journal / Conf Reviewer</th>
             <th>Technical Report</th>
-            <th>Development of Product</th>
+            <th>Dev of Product</th>
             <th>Workload</th>
             <th>Actions</th>
           </tr>
@@ -256,9 +257,11 @@ const Workload = () => {
                 .map((workloads, index) => (
                   <tr>
                     <th scope="row">{index + 1}</th>
-                    <td>{workloads.semester}</td>
-                    <td>{workloads.year}</td>
-                    <td>{workloads.employeeName}</td>
+                    {/* <td>{workloads.semester}</td>
+                    <td>{workloads.year}</td> */}
+                    <th style={{ fontSize: "13px" }}>
+                      {workloads.employeeName}
+                    </th>
                     <td>{workloads.courseTitle1}</td>
                     <td>{workloads.courseTitle2}</td>
                     <td>{workloads.courseTitle3}</td>
