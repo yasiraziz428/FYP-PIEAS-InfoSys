@@ -1355,21 +1355,6 @@
       "compensated_classes": 0,
       "courses": [],
       "id": 39
-    },
-    {
-      "employee_id": 20,
-      "year": "2022",
-      "semester": "Summer",
-      "total_contact_hours": 0,
-      "bs_contact_hours": 0,
-      "ms_contact_hours": 0,
-      "phd_contact_hours": 0,
-      "financial_impact": null,
-      "payment_due": null,
-      "total_classes": 0,
-      "compensated_classes": 0,
-      "courses": [],
-      "id": 40
     }
   ],
   "designations": [
