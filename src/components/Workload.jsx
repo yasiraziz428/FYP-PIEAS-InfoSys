@@ -38,15 +38,14 @@ const Workload = () => {
     const parameters_response = await axios.get(
       "http://localhost:3003/parameters"
     );
-    if (employees_response.data[0]) {
-      updatePayment(
-        employees_response.data[0],
-        workload.year,
-        workload.semester,
-        courses_response.data,
-        parameters_response.data
-      );
-    }
+
+    updatePayment(
+      workload.employeeName,
+      workload.year,
+      workload.semester,
+      courses_response.data,
+      parameters_response.data
+    );
   };
   const onSelectYear = (e) => {
     setSelectedYear(e.target.value);
@@ -56,7 +55,7 @@ const Workload = () => {
     setSelectedSemester(e.target.value);
   };
   const updatePayment = async (
-    employeeObject,
+    employeeName,
     year,
     semester,
     all_courses,
@@ -65,33 +64,35 @@ const Workload = () => {
     console.log("Updating");
     //checking if there is any existing payment
     const existing_payment = await axios.get(
-      `http://localhost:3003/payments/?employee_id=${employeeObject.id}&year=${year}&semester=${semester}`
+      `http://localhost:3003/payments/?employee_data.employeeName=${employeeName}&year=${year}&semester=${semester}`
     );
     let replace_id = undefined;
     if (existing_payment.data.length !== 0) {
       replace_id = existing_payment.data[0].id;
     }
 
-    //declarations
-    let bs_contact_hours = 0;
-    let ms_contact_hours = 0;
-    let phd_contact_hours = 0;
-    let total_classes = 0;
-    let courses = [];
+    if (replace_id) {
+      const employeeObject = existing_payment.data[0].employee_data;
+      //declarations
+      let bs_contact_hours = 0;
+      let ms_contact_hours = 0;
+      let phd_contact_hours = 0;
+      let total_classes = 0;
+      let courses = [];
 
-    //getting all workloads
-    const workload_response = await axios.get(
-      "http://localhost:3003/workloads"
-    );
+      //getting all workloads
+      const workload_response = await axios.get(
+        "http://localhost:3003/workloads"
+      );
 
-    workload_response.data
-      .filter(
+      const filtered_workloads = workload_response.data.filter(
         (w) =>
           w.employeeName === employeeObject.employeeName &&
           w.year === year &&
           w.semester === semester
-      )
-      .forEach((w) => {
+      );
+
+      filtered_workloads.forEach((w) => {
         if (w.bsContactHrs) {
           bs_contact_hours += w.bsContactHrs;
         }
@@ -138,44 +139,45 @@ const Workload = () => {
         }
       });
 
-    const total_contact_hours =
-      bs_contact_hours + ms_contact_hours + phd_contact_hours;
+      const total_contact_hours =
+        bs_contact_hours + ms_contact_hours + phd_contact_hours;
 
-    const financial_impact =
-      Number(total_contact_hours) *
-      Number(employeeObject.pay_rate) *
-      Number(parameters.totalWeeksInSemester[semester.toLowerCase()]);
+      const financial_impact =
+        Number(total_contact_hours) *
+        Number(employeeObject.pay_rate) *
+        Number(parameters.totalWeeksInSemester[semester.toLowerCase()]);
 
-    const compensated_classes = replace_id
-      ? existing_payment.data[0].compensated_classes
-      : 0;
-    const impact_per_class = financial_impact / total_classes;
-    const payment_due =
-      financial_impact + compensated_classes * impact_per_class;
+      const compensated_classes = replace_id
+        ? existing_payment.data[0].compensated_classes
+        : 0;
+      const impact_per_class = financial_impact / total_classes;
+      const payment_due =
+        financial_impact + compensated_classes * impact_per_class;
 
-    const final_payment_obj = {
-      employee_id: employeeObject.id,
-      year,
-      semester,
-      total_contact_hours,
-      bs_contact_hours,
-      ms_contact_hours,
-      phd_contact_hours,
-      pay_rate: employeeObject.pay_rate,
-      financial_impact,
-      payment_due,
-      total_classes,
-      compensated_classes,
-      courses,
-    };
-
-    if (replace_id) {
-      await axios.put(
-        `http://localhost:3003/payments/${replace_id}`,
-        final_payment_obj
-      );
-    } else {
-      await axios.post("http://localhost:3003/payments", final_payment_obj);
+      const final_payment_obj = {
+        employee_id: employeeObject.id,
+        year,
+        semester,
+        total_contact_hours,
+        bs_contact_hours,
+        ms_contact_hours,
+        phd_contact_hours,
+        pay_rate: employeeObject.pay_rate,
+        financial_impact,
+        payment_due,
+        total_classes,
+        compensated_classes,
+        courses,
+        employee_data: { ...employeeObject },
+      };
+      if (filtered_workloads.length === 0) {
+        await axios.delete(`http://localhost:3003/payments/${replace_id}`);
+      } else {
+        await axios.put(
+          `http://localhost:3003/payments/${replace_id}`,
+          final_payment_obj
+        );
+      }
     }
   };
 

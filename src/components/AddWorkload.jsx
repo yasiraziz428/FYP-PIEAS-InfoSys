@@ -87,6 +87,7 @@ const AddWorkload = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (workload["employeeName"] === "") return;
 
     //First get values of all three courses from workload getter of useState
     const courses_response = await axios.get("http://localhost:3003/courses");
@@ -379,6 +380,7 @@ const AddWorkload = () => {
       total_classes,
       compensated_classes,
       courses,
+      employee_data: { ...employeeObject },
     };
 
     if (replace_id) {
@@ -451,6 +453,7 @@ const AddWorkload = () => {
                       name="employeeName"
                       id="employeeName"
                       onChange={(e) => onInputChange(e)}
+                      required
                     >
                       <option selected="true" id="DesignationList-0">
                         -- Select --

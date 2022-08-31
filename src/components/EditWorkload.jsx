@@ -394,6 +394,7 @@ const EditWorkload = () => {
       total_classes,
       compensated_classes,
       courses,
+      employee_data: { ...employeeObject },
     };
 
     if (replace_id) {
@@ -423,6 +424,7 @@ const EditWorkload = () => {
                     id="semester"
                     value={semester}
                     onChange={(e) => onInputChange(e)}
+                    disabled={true}
                   >
                     <option selected="true" id="SemesterList-0">
                       -- Select --
@@ -447,6 +449,7 @@ const EditWorkload = () => {
                     name="year"
                     value={year}
                     onChange={(e) => onInputChange(e)}
+                    readOnly={true}
                   />
                 </div>
               </div>
@@ -467,6 +470,7 @@ const EditWorkload = () => {
                       id="employeeName"
                       value={employeeName}
                       onChange={(e) => onInputChange(e)}
+                      disabled={true}
                     >
                       <option id="DesignationList-0">-- Select --</option>
                       {employee.map((e, index) => (

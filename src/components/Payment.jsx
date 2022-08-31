@@ -28,15 +28,7 @@ const Payment = () => {
     const yearsArray = [...yearsSet].sort();
     setYears(yearsArray);
 
-    setPayments(
-      payments_data.map((p) => {
-        const employee = employees_data.find((e) => e.id === p.employee_id);
-        return {
-          ...p,
-          employee_data: { ...employee },
-        };
-      })
-    );
+    setPayments(payments_data.reverse());
   };
 
   const onSelectYear = (e) => {
